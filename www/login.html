@@ -43,7 +43,7 @@
             <div class="login_title">SIGN IN</div>
             <div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <form id="sign_up">
-                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Login is required" class="login_input" type="email" placeholder="Email ID*" name="email" /></div>
+                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Login is required" class="login_input" type="email" placeholder="Email ID*" id="user_email" name="email" /></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Password is required" class="login_input" type="password" placeholder="Password*" name="password" /></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Sign In" class="signin_btn"   /></div>
                 </form>
@@ -63,7 +63,7 @@
       
     </div> <!-- /container -->       
        
-
+		<script type="text/javascript" src="cordova.js"></script>
         <script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
@@ -89,17 +89,32 @@
 										  url:'http://himanshuverma.co.in/godrej/signin.php',
 										  data:signup_data,
 										  success:function(data){
-											 
-											  if(data=='1'){
+											 var email=$('#user_email').val();
+											  if(data=='failed'){
+												  
+												   $('.processing').hide();
+												  $('.failed').show();
+												  $('.signin_btn').removeAttr('disabled');
+												  	
+											  }else{
+												  
+												  
+												  
+												  
 												  $('.processing').hide();
 												  
 												  $('.login_input').val('');
 												  $('.success').show();
-												  setTimeout(function(){ window.location.href='welcome.html' }, 2000);	
-											  }else{
-												  $('.processing').hide();
-												  $('.failed').show();
-												  $('.signin_btn').removeAttr('disabled');
+												  
+												  localStorage.login="true";
+												  var res = data.split("#@#");
+												  localStorage.userid=res[0];
+												  localStorage.email=email;
+												  if(res[1]=='0'){
+												  setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);
+												  }else{
+													setTimeout(function(){ window.location.href='welcome.html' }, 2000);  
+												  }
 											  }
 											  
 											  

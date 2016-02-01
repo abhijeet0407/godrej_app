@@ -39,22 +39,24 @@
       <div class="row">
       	<div class="col-sm-10 col-xs-10 login_container col-centered" >
         	<div class="col-sm-12 col-xs-12 col-centered">
-            <img class="login_lock" src="img/register_icon.jpg" />
-            <div class="login_title">Create Account</div>
+            <img class="login_lock" id="profile_img" src="img/register_icon.jpg" />
+            <div class="login_title">Edit Profile</div>
             <div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <form id="sign_up">
-                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Name Required" required class="login_input" type="name" placeholder="Name*" name="name" /></div>
-                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Email Required" required class="login_input" type="email" placeholder="Email ID*" name="email" /></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Password Required" required class="login_input" type="password" placeholder="Password*" name="password" /></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Sign Up" class="signin_btn"   /></div>
+                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp">Profile Picture:  <a href="javascript:void(0)" onclick="getImage();">Upload a Photo</a><input type="hidden" id="profile_pic" name="profile_pic" /><br/><progress style="display:none;" max="100" value="0" id="ft-prog" ></progress></div>
+                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Emp Id Required" required class="login_input" type="text" placeholder="Employee Id*" name="emp_id" /></div>
+                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><select name="gender" required data-msg-required="Gender Required"><option value="">Select Gender</option><option value="Male">Male</option><option value="Female">Female</option></select></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Date of birth Required" required class="login_input" type="text" placeholder="Date of Birth*" name="dob" /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Designation Required" required class="login_input" type="text" placeholder="Designation*" name="designation" /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="hidden" name="id" id="profile_id" /><input type="submit" value="Sign Up" class="signin_btn"   /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><a href="welcome.html">Skip>></a></div>
                 </form>
                 <div class="msg col-sm-12 col-xs-12">
-                	  <div class="alert alert-success success" role="alert">Registered successfully. Redirecting to Sign In...</div>
+                	  <div class="alert alert-success success" role="alert">Profile updated successfully.</div>
                     <div class="alert alert-warning processing" role="alert">Processing your request please wait...</div>
-                    <div class="alert alert-warning already_account_alert" role="alert">User is already registered with this email please use different email id or sign in...</div>
-                    <div class="alert alert-danger failed" role="alert">Registration failed. Please check internet connection.</div>
+                    <div class="alert alert-danger failed" role="alert">Profile Updation failed. Please check internet connection.</div>
                 </div>
-              <div class="col-sm-12 col-xs-12 col-centered">Already have an account? <a href="login.html" class="primary-color sign-up-link">Sign In</a></div>  
+            
            </div> 
        </div> 
       
@@ -69,7 +71,69 @@
 		<script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
+		var statusDom = document.querySelector('#status');
+		 function getImage() {
+            // Retrieve image file location from specified source
+            navigator.camera.getPicture(uploadPhoto, function(message) {
+			alert('get picture failed');
+		},{
+			quality: 50, 
+			destinationType: navigator.camera.DestinationType.FILE_URI,
+			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
+		}
+            );
+ 
+        }
+ 
+        function uploadPhoto(imageURI) {
+            var options = new FileUploadOptions();
+            options.fileKey="file";
+            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
+            options.mimeType="image/jpeg";
+ 
+            var params = new Object();
+            params.value1 = "test";
+            params.value2 = "param";
+ 
+            options.params = params;
+            options.chunkedMode = false;
+ 
+            var ft = new FileTransfer();
+            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
+			document.getElementById("ft-prog").style.display="block";
+			ft.onprogress = function(progressEvent) {
+				
+		    var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+			document.getElementById("ft-prog").value = perc;
+				//statusDom.innerHTML = perc + "% loaded...";	
+			}
+			
+        }
+ 			
+        function win(r) {
+        /*    console.log("Code = " + r.responseCode);
+            console.log("Response = " + r.response);
+            console.log("Sent = " + r.bytesSent);*/
+			document.getElementById("ft-prog").value =100;
+			
+			document.getElementById("profile_pic").value=r.response;
+			document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
+           // alert(r.response);
+        }
+ 
+        function fail(error) {
+            alert("An error has occurred: Code = "+ error.code);
+        }
+		
+		
+		
+		
+		
 			$(document).ready(function(){
+				
+			
+				$('#profile_id').val(localStorage.getItem('userid'));
+				
 			
 				$('.signin_btn').click(function(){
 					$('.failed').hide();
@@ -85,7 +149,7 @@
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/register.php',
+										  url:'http://himanshuverma.co.in/godrej/profile_update.php',
 										  data:signup_data,
 										  success:function(data){
 											  if(data=='1'){
@@ -93,7 +157,7 @@
 												  
 												  $('.login_input').val('');
 												  $('.success').show();
-												  setTimeout(function(){ window.location.href='login.html' }, 2000);	
+												  setTimeout(function(){ window.location.href='welcome.html' }, 2000);	
 											  }else if(data=='2'){
 												  $('.processing').hide();
 												  $('.already_account_alert').show();
