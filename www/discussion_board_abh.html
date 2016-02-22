@@ -12,10 +12,10 @@
 
         
         <link rel="stylesheet" href="css/bootstrap.min.css">
- <link rel="stylesheet" href="css/font-awesome.css">
+
         <style>
             body {
-                padding-top: 10px;
+                padding-top: 50px;
                 padding-bottom: 20px;
             }
 			
@@ -31,22 +31,13 @@
 			.section-box hr {margin-top: 0;margin-bottom: 5px;border: 0;border-top: 1px solid rgb(199, 199, 199);}
 			.post_title{ font-size:20px;}
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
-			
-			.login_title {
-   
-    margin-top: 0px !important;
-	
-}
-.read_more{ font-size:12px; color:#337ab7;}
-.camera_icon_size{ font-size:18px !important;}
-.post_form{ border:1px solid #e4e4e4; padding:5px; padding-top:8px;}
-	.comment_submit_btn{ margin-top:10px;}		
+			.comment_submit_btn{ margin-top:5px;}
+			.comments_list_ul{ margin-top:5px; text-align:left; padding-left:0px;}
         </style>
         
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
-         <link rel="stylesheet" href="css/font-awesome.css">
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
@@ -56,40 +47,30 @@
         
     </head>
     <body>
-        <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.jpg"/></a>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
     
-    <div class="off-canvas-menu-wrp">
-    
-    <a id="ham-menu-close" href="javascript:void(0)">MENU</a>
-    
-<ul class="top-link">
-<li class="drop-link"><a class="profile-home" href="profile_edit.html">My Profile</a></li>
-<li class="drop-link"><a class="itenary-home" href="itenary.html">Itenary</a></li>
-<li class="drop-link"><a class="news-home" href="news.html">News and Update</a></li>
-<li class="drop-link"><a class="discu-home" href="discussion_board.html">Discussion Board</a></li>
-<li  class="drop-link"><a class="about-home" href="about.html">About</a></li>
-<li  class="drop-link"><a class="things-home" href="things.html">Things To Do</a></li>
-<!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
-</ul>
-</div>
+
+    <!-- Main jumbotron for a primary marketing message or call to action -->
     
 
     <div class="container">
       <!-- Example row of columns -->
-   		<!--<div class="row"><div class="col-sm-12 col-xs-12 col-centered login_input_wrp pull-right"><a href="add_post.html">Add post</a></div></div>-->
+   		<div class="row"><div class="col-sm-12 col-xs-12 col-centered login_input_wrp pull-right"><a href="add_post.html">Add post</a></div></div>
         
       <div class="row">
       	<div class="col-sm-12 col-xs-12" >
         	
             
-        <div class="login_title"><span class="title-icon">Discussion Board</span></div>
+        <div class="login_title">Discussion Board</div>
         <!--add post-->
-        		<form id="sign_up" class="post_form">
-                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp">Post Image:  <a href="javascript:void(0)" onClick="getImage();"><i class="fa fa-camera camera_icon_size"></i></a><input type="hidden" id="profile_pic" name="post_image" /></div>
+        		<form id="sign_up">
+                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp">Post Image:  <a href="javascript:void(0)" onclick="getImage();">Upload a Post</a><input type="hidden" id="profile_pic" name="post_image" /></div>
                 <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><progress style="display:none;" max="100" value="0" id="ft-prog" ></progress></div>
-                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Post Title Required" required class="form-control" type="text" placeholder="Post Title*" name="post_title" /></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><textarea data-msg-required="Post Description Required" required class="form-control textarea_input" type="text" placeholder="Post Description*" name="post_description" ></textarea></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="hidden" name="id" id="profile_id" /><input type="submit" value="Post" class=" btn btn-danger"   /></div>
+                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Post Title Required" required class="login_input" type="text" placeholder="Post Title*" name="post_title" /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><textarea data-msg-required="Post Description Required" required class="login_input textarea_input" type="text" placeholder="Post Description*" name="post_description" ></textarea></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="hidden" name="id" id="profile_id" /><input type="submit" value="Submit" class="signin_btn"   /></div>
                   
                 </form>
                 <div class="msg col-sm-12 col-xs-12">
@@ -98,14 +79,11 @@
                     <div class="alert alert-danger failed" role="alert">Post submission failed. Please check internet connection.</div>
                 </div>
         	<!--add post end-->
-            
-            
-            
         
-              
+               <div class="row">
                	<div id="posts">
                   </div>
-               
+               </div> 
         </div> 
        
       
@@ -127,8 +105,9 @@
       <div class="modal-body">
         <input type="text" class="new_comment form-control"  />
         <span class="comment_validation">Please enter comment to submit</span>
-      	 <input type="button" class="btn btn-xs btn-danger comment_submit_btn" value="comment" onKeyUp="keyupFunction()" /> 
+      	 <input type="button" class="btn btn-xs btn-danger comment_submit_btn" value="comment" onkeyup="keyupFunction()" /> 
          <ul class="comments_list_ul">
+         Loading...
          </ul>
         
       </div>
@@ -201,16 +180,6 @@
         <script type="text/javascript">
 		
 			$(document).ready(function(){
-				
-				$('a#ham-menu, a#ham-menu-close').click(function () {
-						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
-								val = $navigacia.css('left') === '100%' ? '0px' : '100%';
-						$navigacia.animate({
-								left: val
-						}, 300)
-		
-				});
-				
 			$('#profile_id').val(localStorage.getItem('userid'));
 			
 			//alert(localStorage.getItem('userid'));
@@ -295,56 +264,10 @@
 				//console.log(size);
 				$.each(posts,function(){
 					var liked='';
-					var fav_like='fa-heart-o'
 					if(this.liked=='yes'){
-					liked='yes';
-					fav_like='fa-heart';	
+					liked='yes';	
 					}
-					var big_img='';
-					
-					var descrip=this.description;
-					if(descrip.length>80){
-					descrip=descrip.substring(0, 80)+'...<span class="read_more inner_page" rel="'+this.postid+'">Read more</span>';	
-					}
-					
-			if(this.post_image!='')	{	
-		 big_img='<div class="upload-pic-big inner_page" rel="'+this.postid+'"><img src="http://www.himanshuverma.co.in/godrej/uploads/'+this.post_image+'"/></div>';
-			}
-					$('#posts').append('<div class="discussion-main-wrp">'+
-            
-            '<div class="top-pro-pic-wrp">'+
-          
-            
-           
-            '<div class="profile-pic-box" style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+this.profile_pic+')">'+
-            
-          
-            '</div>'+
-            
-           
-            '<div class="discussion-topic-title">'+
-            '<p class="inner_page" rel="'+this.postid+'">'+this.title+'</p>'+
-            '</div>'+
-           
-            '<div class="clearfix"></div>'+
-            
-            '</div>'+big_img+'<div class="discussion-board-desc-wrp">'+
-            
-            '<p>'+descrip+'</p>'+
-            
-            '</div>'+
-            
-            '<div class="discussion-like-wrp">'+
-            
-            '<span  class="like-btn wrp-icon" rel="'+this.postid+'"><i class="fa '+fav_like+' linke-icon like-count"></i><span>'+this.likes_count+'</span></span> ' +
-            '<span  class="wrp-icon comment-btn" rel="'+this.postid+'"><i class="fa fa-comment linke-icon comment_count"></i><span>'+this.comments_count+'</span></span>'+
-            
-            '<div class="clearfix"></div>'+
-            '</div>'+
-            
-            '</div>')
-					
-					/*$('#posts').append(' <div class="col-xs-12 col-sm-12">'
+					$('#posts').append(' <div class="col-xs-12 col-sm-12">'
             +'<div class="well well-sm">'
                +'<div class="row">'
                     +'<div class="col-xs-4 col-md-4 text-center">'
@@ -365,7 +288,7 @@
                     +'</div>'
                + '</div>'
             +'</div>'
-       + '</div>')*/
+       + '</div>')
 					
 					})
 			})
@@ -377,22 +300,22 @@
 		var status='like';
 		var postid=$(this)	.attr('rel');
 		var userid=	localStorage.getItem('userid');
-		var prev_count_no=parseInt($(this).find('span').text());
-		var count_no=parseInt($(this).find('span').text());
-		if($(this).find('i').hasClass('fa-heart')){
-		$(this).find('i').removeClass('fa-heart');
-		$(this).find('i').addClass('fa-heart-o');
+		var prev_count_no=parseInt($(this).text());
+		var count_no=parseInt($(this).text());
+		if($(this).hasClass('glyphicon-heart')){
+		$(this).removeClass('glyphicon-heart');
+		$(this).addClass('glyphicon-heart-empty');
 		status='unlike';
 			if(count_no>0){
 				count_no=count_no-1;	
-				$(this).find('span').text(count_no);
+				$(this).text(count_no);
 				
 			}
 		}else{
-			$(this).find('i').removeClass('fa-heart-o');
-			$(this).find('i').addClass('fa-heart');
+			$(this).removeClass('glyphicon-heart-empty');
+			$(this).addClass('glyphicon-heart');
 			count_no=count_no+1;	
-			$(this).find('span').text(count_no);
+			$(this).text(count_no);
 			$(this).bind('click');
 		}
 		
@@ -557,7 +480,7 @@
 				
 				 $('.comments_list_ul').html('');
 				$.each(comm,function(){
-					$('.comments_list_ul').append('<li><div class="emp_name"><span class="comment_profile"  style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+this.profile_pic+')"></span>'+this.emp_name+'</div><div class="emp_comment">'+this.comment+'</div></li>')
+					$('.comments_list_ul').append('<li><div class="emp_name">'+this.emp_name+'</div><div class="emp_comment">'+this.comment+'</div></li>')
 					
 					})
 					
@@ -573,16 +496,8 @@
 		
   
   
-  $('body').on('click','.inner_page',function(){
-	  var rel=$(this).attr('rel');
-	  window.location.href='discussion_board_inner.html#'+rel;
-	  
-	  })
-  
-  
 			})
 		 </script>
-
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         

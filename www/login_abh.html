@@ -15,8 +15,6 @@
             body {
                 padding-top: 50px;
                 padding-bottom: 20px;
-				background-image:url(img/login-bg.jpg); background-repeat:no-repeat; background-position:left top; background-size:cover;
-				background-color:#3fabe1;
             }
         </style>
         
@@ -41,9 +39,9 @@
       <div class="row">
       	<div class="col-sm-10 col-xs-10 login_container col-centered" >
         	<div class="col-sm-12 col-xs-12 col-centered">
-            <img class="login_lock" src="img/godrej-icon-main.png" />
-            <div class="login_title">LOG IN</div>
-            <!--<div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>-->
+            <img class="login_lock" src="img/login_lock.jpg" />
+            <div class="login_title">SIGN IN</div>
+            <div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <form id="sign_up">
                 	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Login is required" class="login_input" type="email" placeholder="Email ID*" id="user_email" name="email" /></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Password is required" class="login_input" type="password" placeholder="Password*" name="password" /></div>
@@ -55,7 +53,7 @@
                     <div class="alert alert-danger failed" role="alert">Signing  In failed, Please check your email and password.</div>
                 </div>
                 
-              <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr">Don't have an account? <a href="signup.html" class="primary-color sign-up-link">Sign Up</a></span></div>  
+              <div class="col-sm-12 col-xs-12 col-centered">Don't have an account? <a href="signup.html" class="primary-color sign-up-link">Sign Up</a></div>  
            </div> 
        </div> 
       
@@ -111,19 +109,11 @@
 												  localStorage.login="true";
 												  var res = data.split("#@#");
 												  localStorage.userid=res[0];
-												  localStorage.email=res[2];
-												  localStorage.empid=res[3];
-												  localStorage.profile_pic=res[4];
-												  localStorage.designation=res[5];
-												  localStorage.gender=res[6];
-												  localStorage.dob=res[7];
-												  localStorage.name=res[8];
+												  localStorage.email=email;
 												  if(res[1]=='0'){
 												  setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);
-												  }else if(localStorage.getItem('welcome')=='true'){
-													setTimeout(function(){ window.location.href='itenary.html' }, 2000);  
 												  }else{
-													  setTimeout(function(){ window.location.href='welcome.html' }, 2000);  
+													setTimeout(function(){ window.location.href='welcome.html' }, 2000);  
 												  }
 											  }
 											  

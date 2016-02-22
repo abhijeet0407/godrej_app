@@ -15,8 +15,6 @@
             body {
                 padding-top: 50px;
                 padding-bottom: 20px;
-				background-image:url(img/login-bg.jpg); background-repeat:no-repeat; background-position:left top; background-size:cover;
-				background-color:#3fabe1;
             }
         </style>
         
@@ -41,21 +39,27 @@
       <div class="row">
       	<div class="col-sm-10 col-xs-10 login_container col-centered" >
         	<div class="col-sm-12 col-xs-12 col-centered">
-            <img class="login_lock" src="img/godrej-icon-main.png" />
-            <div class="login_title">LOG IN</div>
-            <!--<div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>-->
+            <img class="login_lock" src="img/register_icon.jpg" />
+            <div class="login_title">Create Account</div>
+            <div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
                 <form id="sign_up">
-                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Login is required" class="login_input" type="email" placeholder="Email ID*" id="user_email" name="email" /></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Password is required" class="login_input" type="password" placeholder="Password*" name="password" /></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Sign In" class="signin_btn"   /></div>
+                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Emp Id Required" required class="login_input" type="text" placeholder="Employee Id*" name="emp_id" /></div>
+                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Name Required" required class="login_input" type="name" placeholder="Name*" name="name" /></div>
+                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Email Required" required class="login_input" type="email" placeholder="Email ID*" name="email" /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Password Required" required class="login_input" type="password" placeholder="Password*" name="password" /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Sign Up" class="signin_btn"   /></div>
                 </form>
                 <div class="msg col-sm-12 col-xs-12">
-                	  <div class="alert alert-success success" role="alert">Signed In successfully....</div>
+                	  <div class="alert alert-success success" role="alert">Registered successfully. Redirecting to Sign In...</div>
                     <div class="alert alert-warning processing" role="alert">Processing your request please wait...</div>
-                    <div class="alert alert-danger failed" role="alert">Signing  In failed, Please check your email and password.</div>
+                    
+                    <div class="alert alert-danger already_account_alert2" role="alert">Provided employee id is not registered with us. Kindly check the employee id to register.</div>
+                    
+                    <div class="alert alert-warning already_account_alert" role="alert">User is already registered with this email and/or emp id please use different email id or sign in...</div>
+                    <div class="alert alert-danger failed" role="alert">Registration failed. Please check internet connection.</div>
+                     
                 </div>
-                
-              <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr">Don't have an account? <a href="signup.html" class="primary-color sign-up-link">Sign Up</a></span></div>  
+              <div class="col-sm-12 col-xs-12 col-centered">Already have an account? <a href="login.html" class="primary-color sign-up-link">Sign In</a></div>  
            </div> 
        </div> 
       
@@ -71,69 +75,65 @@
         <script src="js/main.js"></script>
         <script type="text/javascript">
 			$(document).ready(function(){
-				
+			
 				$('.signin_btn').click(function(){
 					$('.failed').hide();
 					$('.processing').hide();
 					$('.success').hide();
+					$('.already_account_alert').hide();
+					$('.already_account_alert2').hide();
 					 $("#sign_up").validate({
       				  submitHandler:function (form){
-						  
-						 // form.submit();
 						  	///
 									$('.signin_btn').attr('disabled','disabled');
 									$('.processing').show();
 										var signup_data=$('#sign_up').serialize();
-										
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/signin.php',
+										  url:'http://himanshuverma.co.in/godrej/register.php',
 										  data:signup_data,
 										  success:function(data){
-											 var email=$('#user_email').val();
-											  if(data=='failed'){
-												  
-												   $('.processing').hide();
-												  $('.failed').show();
-												  $('.signin_btn').removeAttr('disabled');
-												  	
-											  }else{
-												  
-												  
-												  
-												  
+											  if(data=='1'){
 												  $('.processing').hide();
 												  
 												  $('.login_input').val('');
 												  $('.success').show();
+												  setTimeout(function(){ window.location.href='login.html' }, 2000);	
+											  }else if(data=='2'){
+												  $('.processing').hide();
+												  $('.already_account_alert').show();
+												  //setTimeout(function(){ window.location.href='login.html' }, 2000);
+												  $('.signin_btn').removeAttr('disabled');	
+											  }else if(data=='3'){
 												  
-												  localStorage.login="true";
-												  var res = data.split("#@#");
-												  localStorage.userid=res[0];
-												  localStorage.email=res[2];
-												  localStorage.empid=res[3];
-												  localStorage.profile_pic=res[4];
-												  localStorage.designation=res[5];
-												  localStorage.gender=res[6];
-												  localStorage.dob=res[7];
-												  localStorage.name=res[8];
-												  if(res[1]=='0'){
-												  setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);
-												  }else if(localStorage.getItem('welcome')=='true'){
-													setTimeout(function(){ window.location.href='itenary.html' }, 2000);  
-												  }else{
-													  setTimeout(function(){ window.location.href='welcome.html' }, 2000);  
-												  }
+												  $('.processing').hide();
+												  $('.already_account_alert2').show();
+												  //setTimeout(function(){ window.location.href='login.html' }, 2000);
+												  $('.signin_btn').removeAttr('disabled');	
+											  }else{
+												  $('.processing').hide();
+												  $('.failed').show();
+												  $('.signin_btn').removeAttr('disabled');
 											  }
 											  
 											  
 											  },
 										  error:function(){
+											 
+											$('.already_account_alert').hide();
+											$('.already_account_alert2').hide();
+											$('.processing').hide();
+											$('.success').hide();
 											$('.failed').show();
 											$('.signin_btn').removeAttr('disabled');
 											},
 										  fail: function(){
+											
+											$('.already_account_alert').hide();
+											$('.already_account_alert2').hide();
+											$('.processing').hide();
+											$('.success').hide();  
 											$('.failed').show();
 											$('.signin_btn').removeAttr('disabled');
 										  },
@@ -155,8 +155,6 @@
 				
 					
 				})
-				
-				
 				
 			})
 		 </script>

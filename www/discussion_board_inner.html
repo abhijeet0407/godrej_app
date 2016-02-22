@@ -12,7 +12,7 @@
 
         
         <link rel="stylesheet" href="css/bootstrap.min.css">
- <link rel="stylesheet" href="css/font-awesome.css">
+
         <style>
             body {
                 padding-top: 10px;
@@ -37,10 +37,7 @@
     margin-top: 0px !important;
 	
 }
-.read_more{ font-size:12px; color:#337ab7;}
-.camera_icon_size{ font-size:18px !important;}
-.post_form{ border:1px solid #e4e4e4; padding:5px; padding-top:8px;}
-	.comment_submit_btn{ margin-top:10px;}		
+		.comment_submit_btn{ margin-top:10px;}			
         </style>
         
         <link rel="stylesheet" href="css/main.css">
@@ -73,39 +70,24 @@
 </ul>
 </div>
     
+    
 
     <div class="container">
-      <!-- Example row of columns -->
-   		<!--<div class="row"><div class="col-sm-12 col-xs-12 col-centered login_input_wrp pull-right"><a href="add_post.html">Add post</a></div></div>-->
+     
         
       <div class="row">
       	<div class="col-sm-12 col-xs-12" >
-        	
-            
-        <div class="login_title"><span class="title-icon">Discussion Board</span></div>
-        <!--add post-->
-        		<form id="sign_up" class="post_form">
-                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp">Post Image:  <a href="javascript:void(0)" onClick="getImage();"><i class="fa fa-camera camera_icon_size"></i></a><input type="hidden" id="profile_pic" name="post_image" /></div>
-                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><progress style="display:none;" max="100" value="0" id="ft-prog" ></progress></div>
-                <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Post Title Required" required class="form-control" type="text" placeholder="Post Title*" name="post_title" /></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><textarea data-msg-required="Post Description Required" required class="form-control textarea_input" type="text" placeholder="Post Description*" name="post_description" ></textarea></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="hidden" name="id" id="profile_id" /><input type="submit" value="Post" class=" btn btn-danger"   /></div>
-                  
-                </form>
-                <div class="msg col-sm-12 col-xs-12">
-                	  <div class="alert alert-success success" role="alert">Post added successfully.</div>
-                    <div class="alert alert-warning processing" role="alert">Processing your request please wait...</div>
-                    <div class="alert alert-danger failed" role="alert">Post submission failed. Please check internet connection.</div>
-                </div>
-        	<!--add post end-->
-            
-            
-            
+        	<div class="login_title">
         
-              
-               	<div id="posts">
-                  </div>
-               
+        <span class="back-btn"><img src="img/back-btn_03.jpg" width="30"/></span>
+        
+        <span class="title-icon">Discussion Board</span>
+        
+        </div>
+        <div id="posts">
+        </div>
+       
+                
         </div> 
        
       
@@ -144,65 +126,11 @@
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
          <script type="text/javascript">
-		var statusDom = document.querySelector('#status');
-		 function getImage() {
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto, function(message) {
-			alert('get picture failed');
-		},{
-			quality: 50, 
-			destinationType: navigator.camera.DestinationType.FILE_URI,
-			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-		}
-            );
- 
-        }
- 
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
-			document.getElementById("ft-prog").style.display="block";
-			ft.onprogress = function(progressEvent) {
-				
-		    var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-			document.getElementById("ft-prog").value = perc;
-				//statusDom.innerHTML = perc + "% loaded...";	
-			}
-			
-        }
- 			
-        function win(r) {
-        /*    console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);*/
-			document.getElementById("ft-prog").value =100;
-			
-			document.getElementById("profile_pic").value=r.response;
-			//document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
-           // alert(r.response);
-        }
- 
-        function fail(error) {
-            alert("An error has occurred: Code = "+ error.code);
-        }
-		</script>
-        <script type="text/javascript">
 		
 			$(document).ready(function(){
 				
-				$('a#ham-menu, a#ham-menu-close').click(function () {
+				
+$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
 								val = $navigacia.css('left') === '100%' ? '0px' : '100%';
 						$navigacia.animate({
@@ -210,6 +138,7 @@
 						}, 300)
 		
 				});
+				
 				
 			$('#profile_id').val(localStorage.getItem('userid'));
 			
@@ -284,8 +213,8 @@
     items.push( "<li id='" + key + "'>" + val + "</li>" );
   });*/
   
-  
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
+  var post_id = window.location.hash.substr(1);
+  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid')+'&post_id='+post_id, function(data){
 						//	console.log(data);
 						 posts=data;
 					console.log(posts)
@@ -557,7 +486,7 @@
 				
 				 $('.comments_list_ul').html('');
 				$.each(comm,function(){
-					$('.comments_list_ul').append('<li><div class="emp_name"><span class="comment_profile"  style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+this.profile_pic+')"></span>'+this.emp_name+'</div><div class="emp_comment">'+this.comment+'</div></li>')
+					$('.comments_list_ul').append('<li><div class="emp_name">'+this.emp_name+'</div><div class="emp_comment">'+this.comment+'</div></li>')
 					
 					})
 					
@@ -579,10 +508,13 @@
 	  
 	  })
   
-  
+  $('.back-btn').click(function(){
+	  
+	  window.location.href='discussion_board.html'
+	  
+	  })
 			})
 		 </script>
-
 
         <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
         
