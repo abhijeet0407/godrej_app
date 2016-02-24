@@ -32,11 +32,7 @@
 			.post_title{ font-size:20px;}
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
-			.login_title {
-   
-    margin-top: 0px !important;
-	
-}
+			
 
 
 
@@ -65,9 +61,10 @@
     
 <ul class="top-link">
 <li class="drop-link"><a class="profile-home" href="profile_edit.html">My Profile</a></li>
-<li class="drop-link"><a class="itenary-home" href="itenary.html">Itenary</a></li>
+<li class="drop-link"><a class="Itinerary-home" href="Itinerary.html">Itinerary</a></li>
 <li class="drop-link"><a class="news-home" href="news.html">News and Update</a></li>
 <li class="drop-link"><a class="discu-home" href="discussion_board.html">Discussion Board</a></li>
+<li class="drop-link"><a class="discu-home" href="gallery.html">Gallery</a></li>
 <li  class="drop-link"><a class="about-home" href="about.html">About</a></li>
 <li  class="drop-link"><a class="things-home" href="things.html">Things To Do</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
@@ -84,7 +81,7 @@
       	<div class="col-sm-12 col-xs-12" >
         	
             
-        <div class="login_title"><span class="title-icon itenary-icon">ITENARY</span></div>
+        <div class="login_title"><span class="title-icon Itinerary-icon">Itinerary</span></div>
    
         
         <div class="itenar-wrp">
@@ -100,7 +97,7 @@
     
     <div id="tab-content">
         
-        <div class="itenary-inner" id="tab1">
+        <div class="Itinerary-inner" id="tab1">
            
            <div class="row"> 
             <div class="inner-itenanry-box">
@@ -161,7 +158,7 @@
             </div>
         </div>
         
-        <div class="itenary-inner" id="tab2">
+        <div class="Itinerary-inner" id="tab2">
             
             <div class="row">
             <div class="inner-itenanry-box">
@@ -222,7 +219,7 @@
          </div> 
         </div>
         
-        <div class="itenary-inner" id="tab3">
+        <div class="Itinerary-inner" id="tab3">
            
            <div class="row">
            <div class="inner-itenanry-box">
@@ -367,16 +364,16 @@
 			$(document).ready(function(){
 				
 				
-				$('#tab-content div.itenary-inner').hide();
-$('#tab-content div.itenary-inner:first').show();
+				$('#tab-content div.Itinerary-inner').hide();
+$('#tab-content div.Itinerary-inner:first').show();
 
 $('#nav li').click(function() {
     $('#nav li a').removeClass("active");
     $(this).find('a').addClass("active");
-    $('#tab-content div.itenary-inner').hide();
+    $('#tab-content div.Itinerary-inner').hide();
 
     var indexer = $(this).index(); //gets the current index of (this) which is #nav li
-    $('#tab-content div.itenary-inner:eq(' + indexer + ')').fadeIn(); //uses whatever index the link has to open the corresponding box 
+    $('#tab-content div.Itinerary-inner:eq(' + indexer + ')').fadeIn(); //uses whatever index the link has to open the corresponding box 
 });
 
 

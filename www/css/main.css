@@ -50,7 +50,7 @@ body{ font-family: 'zurich_btroman' !important;}
 	/*login css*/
 	.login_container{ text-align:center;}
 	img.login_lock{ max-width:75%;}
-	.login_title{ font-size:28px; margin-top:190px; margin-bottom:10px; color:#fff;}
+	.login_title{ font-size:28px; margin-bottom:10px; color:#fff; margin-top:35px;}
 	.login_description{ font-size:12px;  margin-bottom:20px; color:#767676;}
 	.login_input_wrp{ margin-bottom:10px;}
 	.login_input{ width:100%; padding:10px 15px; text-align:center; background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.1); }
@@ -80,25 +80,28 @@ span.white-clr a{ color:#e4ff00;}
     margin: 0 auto;
     width: 220px;}
 	
-	.itenary-icon{ width:135px; background-image: url(../img/itenary-icon_03.png) !important;
+	.itenary-icon{ width:135px; background-image: url(../img/Itinerary-icon_03.png) !important;
     background-repeat: no-repeat;
     background-position: 0px 4px; background-size: 30px !important;}
 	
 	.news-icon{ width:135px; background-image: url(../img/news-blue-icn_07.png) !important;
     background-repeat: no-repeat;
     background-position: 0px 4px; background-size: 30px !important;}
-		.about-icon{ width:135px; background-image: url(../img/about-blue-icn_14.png) !important;
+		.about-icon{ width:180px; background-image: url(../img/about-blue-icn_14.png) !important;
     background-repeat: no-repeat;
     background-position: 0px 4px; background-size: 30px !important;}
 	.things-icon{ width:135px; background-image: url(../img/things-to-do-blue-icn_18.png) !important;
     background-repeat: no-repeat;
     background-position: 8px 4px; background-size: 23px !important;}
 	span.back-btn{     float: right;
-    margin-top: -4px;}
+    margin-top: 30px;}
 
 .discussion-main-wrp{ width:100%; padding:20px 0px;}
 .top-pro-pic-wrp{ width:100%; margin-bottom:20px;}
 .profile-pic-box{ width:58px; height:58px; background-color:#0FF; border-radius:50%; background-image:url(../img/profile-pic_03.jpg); background-repeat:no-repeat; background-position:center; background-size:cover; float:left; margin-right:20px;}
+.profile-pic-box-small{ width:30px; height:30px; background-color:#0FF; border-radius:50%; background-image:url(../img/profile-pic_03.jpg); background-repeat:no-repeat; background-position:center; background-size:cover; float:left;}
+.profile-pic-box-post{width:58px; height:58px; background-color:#0FF; background-image:url(../img/profile-pic_03.jpg); background-repeat:no-repeat; background-position:center; background-size:cover; float:left; margin-right:20px; margin-top:10px; position:relative;}
+.delete_img{ position:absolute; top:-5px; right:-5px;}
 .discussion-topic-title{ float:left;}
 .discussion-topic-title p{ margin: 0px;
     color: #3fabe1;
@@ -111,7 +114,7 @@ span.white-clr a{ color:#e4ff00;}
 	.discussion-board-desc-wrp{ width:100%;}
     .discussion-board-desc-wrp p{ margin:0px; color: #3fabe1;
     font-size: 20px;
-    font-weight: 300; line-height:24px;}
+    font-weight: 300; line-height:24px; padding-bottom:10px;}
 	.discussion-like-wrp{ width:100%; margin:10px 0px;}
 	span.wrp-icon{ margin-right:20px; color:#3fabe1; font-size:16px;}
 	i.linke-icon{ color:#3fabe1; margin-right:5px; font-size:16px;}
@@ -119,6 +122,19 @@ span.white-clr a{ color:#e4ff00;}
 	.inner-desc-discussion-txt p{ font-size:14px;}
 
   .itenar-wrp{ width:100%;}
+  
+  
+  .about-desc-wrp{ width:100%;}
+  
+    .about-desc-wrp p{ margin:0px; color: #000;
+    font-size: 16px;
+    font-weight: 300; line-height:30px; padding-bottom:10px;}
+   .about-desc-wrp ul{
+	   padding-left:30px; 
+	   
+   }
+   
+   .about-desc-wrp ul li{ font-size:16px; line-height:30px; text-align:justify}
 
 /*tabs*/
 * { margin: 0; padding: 0; }
@@ -246,7 +262,7 @@ box-shadow:         -2px 0px 4px 0px rgba(50, 50, 50, 0.75);}
 }
 
 a#ham-menu{ position: absolute;
-    top: 10px;
+    top: 50px;
     left: 10px; z-index:99;}
 	
 	a#ham-menu-close{ padding: 0px 0px 0px 35px;
@@ -264,7 +280,7 @@ a#ham-menu{ position: absolute;
     top: 50px;}
 	
 	.off-canvas-menu-wrp ul li a.profile-home{ background-image:url(../img/profile-icon-blu_07.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
-	.off-canvas-menu-wrp ul li a.itenary-home{ background-image:url(../img/itenary-blue-icn_07.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
+	.off-canvas-menu-wrp ul li a.Itinerary-home{ background-image:url(../img/Itinerary-blue-icn_07.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
 	.off-canvas-menu-wrp ul li a.news-home{ background-image:url(../img/news-blue-icn_07.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
 	.off-canvas-menu-wrp ul li a.discu-home{ background-image:url(../img/discussion-board-icn-blue_11.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
 	.off-canvas-menu-wrp ul li a.about-home{ background-image:url(../img/about-blue-icn_14.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
@@ -327,17 +343,15 @@ a#ham-menu{ position: absolute;
     border: none;
     text-transform: uppercase;}
 	
-	.comments_list_ul{    background-color: #e4e4e4;
-    margin-top: 10px;}
 	.comments_list_ul{ list-style:none; list-style-type:none;}
-	.comments_list_ul li{padding: 5px 5px;
-    border-bottom: 1px solid #fff;}
+	.comments_list_ul li{padding: 10px 5px;
+    border-bottom: 1px solid #fafafa;}
 	.off-canvas-menu-wrp .drop-link{ border-bottom:1px solid #f4fbfe; background-image:url(../img/menu-blue-arrw_03.png); background-repeat:no-repeat; background-position:center right 10%; }
 	
 	.comment_profile{    width: 30px;
     height: 30px;
     background-color: #0FF;
-    border-radius: 50%;
+   
     
     background-repeat: no-repeat;
     background-position: center;
@@ -345,4 +359,7 @@ a#ham-menu{ position: absolute;
     float: left;
     margin-right: 20px;}
 	
-	.comments_list_ul .emp_name{ color:#3fabe1;}
+	.comments_list_ul .emp_name{ font-weight:bold; font-size:14px;}
+	
+	.listing_img{ height:100px;background-color:#0FF; background-image:url(../img/profile-pic_03.jpg); background-repeat:no-repeat; background-position:center; background-size:cover; float:left; margin-right:5px; margin-top:5px; position:relative;}
+	#myModal2 .modal-body{ padding:0px !important;}

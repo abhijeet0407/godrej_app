@@ -32,11 +32,7 @@
 			.post_title{ font-size:20px;}
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
-			.login_title {
-   
-    margin-top: 0px !important;
-	
-}
+			
 
 
 .signin_btn{ background-image:none !important;}
@@ -76,9 +72,10 @@
     
 <ul class="top-link">
 <li class="drop-link"><a class="profile-home" href="profile_edit.html">My Profile</a></li>
-<li class="drop-link"><a class="itenary-home" href="itenary.html">Itenary</a></li>
+<li class="drop-link"><a class="Itinerary-home" href="Itinerary.html">Itinerary</a></li>
 <li class="drop-link"><a class="news-home" href="news.html">News and Update</a></li>
 <li class="drop-link"><a class="discu-home" href="discussion_board.html">Discussion Board</a></li>
+<li class="drop-link"><a class="discu-home" href="gallery.html">Gallery</a></li>
 <li  class="drop-link"><a class="about-home" href="about.html">About</a></li>
 <li  class="drop-link"><a class="things-home" href="things.html">Things To Do</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
@@ -148,7 +145,8 @@
          
          <div class="inner-profile-form-wrp">
          <label>EMPLOYEE ID</label>
-         <input type="text" name="emp_id" disabled />
+         <input type="text" name="emp_id" readonly />
+         <progress style="display:none;" max="100" value="0" id="ft-prog" ></progress>
          </div>
          
           <div class="inner-profile-form-wrp">
@@ -169,7 +167,7 @@
          
           <div class="inner-profile-form-wrp">
          <label>e-mail</label>
-         <input type="text" name="email" disabled />
+         <input type="text" name="email" readonly />
          </div>
          
           <div class="inner-profile-form-wrp">
@@ -178,6 +176,7 @@
          </div>
          
          <div class="inner-profile-form-wrp" style="border-bottom:none;"> 
+         <input type="hidden" id="profile_id" name="id" />
          <input type="hidden" id="profile_pic" name="profile_pic" />       
          <input type="submit" value="submit" class="signin_btn"/>
          </div>
@@ -185,6 +184,11 @@
          
          
          <div class="clearfix"></div>
+         <div class="msg col-sm-12 col-xs-12">
+                	  <div class="alert alert-success success" role="alert">Profile updated successfully.</div>
+                    <div class="alert alert-warning processing" role="alert">Processing your request please wait...</div>
+                    <div class="alert alert-danger failed" role="alert">Profile Updation failed. Please check internet connection.</div>
+                </div>
          </div>
          </form>
          <div class="clearfix"></div>
@@ -199,7 +203,7 @@
     
 
        
-
+<script type="text/javascript" src="cordova.js"></script>
         <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
@@ -209,6 +213,7 @@
 				
 					var statusDom = document.querySelector('#status');
 		 function getImage() {
+			
             // Retrieve image file location from specified source
             navigator.camera.getPicture(uploadPhoto, function(message) {
 			alert('get picture failed');
@@ -222,6 +227,7 @@
         }
  
         function uploadPhoto(imageURI) {
+			
             var options = new FileUploadOptions();
             options.fileKey="file";
             options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
@@ -236,7 +242,7 @@
  
             var ft = new FileTransfer();
             ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
-			document.getElementById("ft-prog").style.display="block";
+			//document.getElementById("ft-prog").style.display="block";
 			ft.onprogress = function(progressEvent) {
 				
 		    var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
@@ -253,8 +259,8 @@
 			document.getElementById("ft-prog").value =100;
 			
 			document.getElementById("profile_pic").value=r.response;
-			
-			document.getElementById("profile_img").style.backgroundImage='url(http://himanshuverma.co.in/godrej/uploads/'+r.response+')';
+			localStorage.profile_pic=r.response;
+			document.getElementById("profile_img").style.backgroundImage='url(http://himanshuverma.co.in/godrej/uploads/thumb/'+r.response+')';
            // alert(r.response);
         }
  
@@ -280,7 +286,7 @@
 		
 				});
 				
-				
+					$('#profile_id').val(localStorage.getItem('userid'));
 				if(localStorage.getItem('name')!=null){
 					$('input[name="name"]').val(localStorage.getItem('name'));
 					$('.name_text').text(localStorage.getItem('name'));
@@ -304,6 +310,8 @@
 				
 				if(localStorage.getItem('profile_pic')!=null){
 					$('.profile-pic-circle').css('background-image', 'url(http://himanshuverma.co.in/godrej/uploads/'+localStorage.getItem('profile_pic')+')')
+					
+					$('input[name="profile_pic"]').val(localStorage.getItem('profile_pic'));
 				}
 				
 				if(localStorage.getItem('gender')!=null){
@@ -328,6 +336,7 @@
 									$('.signin_btn').attr('disabled','disabled');
 									$('.processing').show();
 										var signup_data=$('#sign_up').serialize();
+										
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
@@ -339,7 +348,7 @@
 												  
 												  $('.login_input').val('');
 												  $('.success').show();
-												  setTimeout(function(){ window.location.href='welcome.html' }, 2000);	
+												//  setTimeout(function(){ window.location.href='welcome.html' }, 2000);	
 											  }else if(data=='2'){
 												  $('.processing').hide();
 												  $('.already_account_alert').show();
@@ -354,10 +363,12 @@
 											  
 											  },
 										  error:function(){
+											
 											$('.failed').show();
 											$('.signin_btn').removeAttr('disabled');
 											},
 										  fail: function(){
+											 
 											$('.failed').show();
 											$('.signin_btn').removeAttr('disabled');
 										  },

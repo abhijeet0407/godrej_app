@@ -14,23 +14,29 @@
         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <style>
-           body {
+            body {
                 padding-top: 10px;
                 padding-bottom: 20px;
             }
 			
 			
-			.login_title span.title-icon{ width:175px !important;}
 			
 			
+			.glyphicon { margin-right:5px;}
+			.section-box h2 { margin-top:0px;}
+			.section-box h2 a { font-size:15px; }
+			.glyphicon-heart { color:#e74c3c;}
+			.glyphicon-comment { color:#27ae60;}
+			.separator { padding-right:5px;padding-left:5px; }
+			.section-box hr {margin-top: 0;margin-bottom: 5px;border: 0;border-top: 1px solid rgb(199, 199, 199);}
+			.post_title{ font-size:20px;}
+			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
-			.news_time{ color:#3fabe1; margin-bottom:10px; display:block;}
-			span.back-btn {
-   
-    position: absolute !important;
-    right: 20px !important;
-    top: 0px !important;
-}
+			
+		.comment_submit_btn{ margin-top:10px;}		
+		span.back-btn {
+    margin-top: 35px !important;	
+		}
         </style>
         
         <link rel="stylesheet" href="css/main.css">
@@ -63,48 +69,24 @@
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
+    
+    
 
     <div class="container">
      
         
       <div class="row">
       	<div class="col-sm-12 col-xs-12" >
-        	
-             <div class="login_title"><span class="title-icon about-icon">About Pune</span><span class="back-btn"><a href="about.html"><img src="img/back-btn_03.jpg" width="30"/></a></span></div>
+        	<span class="back-btn"><img src="img/back-btn_03.jpg" width="30"/></span><div class="login_title">
         
-
-            <div class="discussion-main-wrp">
-            
-            <div class="top-pro-pic-wrp">
-          
-            
-           
-            
-            
-           
-            <div class="discussion-topic-title">
-            <p>Heading</p>
-            </div>
-           
-            <div class="clearfix"></div>
-            
-            </div>
-            
-            
-            <div class="upload-pic-big">
-            <img src="img/big-upload-pic_06.jpg"/>
-            </div>
-            
-            <div class="discussion-board-desc-wrp inner-desc-discussion-txt">
-            
-            <p>Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo</p>
-            
-            </div>
-            
-           
-            
-            </div>
         
+        
+        <span class="title-icon">Discussion Board</span>
+        
+        </div>
+        <div id="posts">
+        </div>
+       
                 
         </div> 
        
@@ -127,7 +109,7 @@
       <div class="modal-body">
         <input type="text" class="new_comment form-control"  />
         <span class="comment_validation">Please enter comment to submit</span>
-      	 <input type="button" class="btn btn-xs btn-danger comment_submit_btn" onKeyUp="keyupFunction()" /> 
+      	 <input type="button" class="btn btn-xs btn-danger comment_submit_btn" value="comment" onKeyUp="keyupFunction()" /> 
          <ul class="comments_list_ul">
          </ul>
         
@@ -144,66 +126,11 @@
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
          <script type="text/javascript">
-		var statusDom = document.querySelector('#status');
-		 function getImage() {
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto, function(message) {
-			alert('get picture failed');
-		},{
-			quality: 50, 
-			destinationType: navigator.camera.DestinationType.FILE_URI,
-			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-		}
-            );
- 
-        }
- 
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
-			document.getElementById("ft-prog").style.display="block";
-			ft.onprogress = function(progressEvent) {
-				
-		    var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-			document.getElementById("ft-prog").value = perc;
-				//statusDom.innerHTML = perc + "% loaded...";	
-			}
-			
-        }
- 			
-        function win(r) {
-        /*    console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);*/
-			document.getElementById("ft-prog").value =100;
-			
-			document.getElementById("profile_pic").value=r.response;
-			//document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
-           // alert(r.response);
-        }
- 
-        function fail(error) {
-            alert("An error has occurred: Code = "+ error.code);
-        }
-		</script>
-        <script type="text/javascript">
 		
 			$(document).ready(function(){
 				
 				
-				$('a#ham-menu, a#ham-menu-close').click(function () {
+$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
 								val = $navigacia.css('left') === '100%' ? '0px' : '100%';
 						$navigacia.animate({
@@ -211,6 +138,7 @@
 						}, 300)
 		
 				});
+				
 				
 			$('#profile_id').val(localStorage.getItem('userid'));
 			
@@ -285,8 +213,8 @@
     items.push( "<li id='" + key + "'>" + val + "</li>" );
   });*/
   
-  
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
+  var post_id = window.location.hash.substr(1);
+  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid')+'&post_id='+post_id, function(data){
 						//	console.log(data);
 						 posts=data;
 					console.log(posts)
@@ -295,7 +223,57 @@
   			posts_complete.complete(function(data) {
 				//console.log(size);
 				$.each(posts,function(){
-					$('#posts').append(' <div class="col-xs-12 col-sm-12">'
+					var liked='';
+					var fav_like='fa-heart-o'
+					if(this.liked=='yes'){
+					liked='yes';
+					fav_like='fa-heart';	
+					}
+					var big_img='';
+					
+					var descrip=this.description;
+					if(descrip.length>80){
+					descrip=descrip.substring(0, 80)+'...<span class="read_more inner_page" rel="'+this.postid+'">Read more</span>';	
+					}
+					
+			if(this.post_image!='')	{	
+		 big_img='<div class="upload-pic-big inner_page" rel="'+this.postid+'"><img src="http://www.himanshuverma.co.in/godrej/uploads/'+this.post_image+'"/></div>';
+			}
+					$('#posts').append('<div class="discussion-main-wrp">'+
+            
+            '<div class="top-pro-pic-wrp">'+
+          
+            
+           
+            '<div class="profile-pic-box" style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+this.profile_pic+')">'+
+            
+          
+            '</div>'+
+            
+           
+            '<div class="discussion-topic-title">'+
+            '<p class="inner_page" rel="'+this.postid+'">'+this.title+'</p>'+
+            '</div>'+
+           
+            '<div class="clearfix"></div>'+
+            
+            '</div>'+big_img+'<div class="discussion-board-desc-wrp">'+
+            
+            '<p>'+descrip+'</p>'+
+            
+            '</div>'+
+            
+            '<div class="discussion-like-wrp">'+
+            
+            '<span  class="like-btn wrp-icon" rel="'+this.postid+'"><i class="fa '+fav_like+' linke-icon like-count"></i><span>'+this.likes_count+'</span></span> ' +
+            '<span  class="wrp-icon comment-btn" rel="'+this.postid+'"><i class="fa fa-comment linke-icon comment_count"></i><span>'+this.comments_count+'</span></span>'+
+            
+            '<div class="clearfix"></div>'+
+            '</div>'+
+            
+            '</div>')
+					
+					/*$('#posts').append(' <div class="col-xs-12 col-sm-12">'
             +'<div class="well well-sm">'
                +'<div class="row">'
                     +'<div class="col-xs-4 col-md-4 text-center">'
@@ -316,7 +294,7 @@
                     +'</div>'
                + '</div>'
             +'</div>'
-       + '</div>')
+       + '</div>')*/
 					
 					})
 			})
@@ -328,22 +306,22 @@
 		var status='like';
 		var postid=$(this)	.attr('rel');
 		var userid=	localStorage.getItem('userid');
-		var prev_count_no=parseInt($(this).text());
-		var count_no=parseInt($(this).text());
-		if($(this).hasClass('glyphicon-heart')){
-		$(this).removeClass('glyphicon-heart');
-		$(this).addClass('glyphicon-heart-empty');
+		var prev_count_no=parseInt($(this).find('span').text());
+		var count_no=parseInt($(this).find('span').text());
+		if($(this).find('i').hasClass('fa-heart')){
+		$(this).find('i').removeClass('fa-heart');
+		$(this).find('i').addClass('fa-heart-o');
 		status='unlike';
 			if(count_no>0){
 				count_no=count_no-1;	
-				$(this).text(count_no);
+				$(this).find('span').text(count_no);
 				
 			}
 		}else{
-			$(this).removeClass('glyphicon-heart-empty');
-			$(this).addClass('glyphicon-heart');
+			$(this).find('i').removeClass('fa-heart-o');
+			$(this).find('i').addClass('fa-heart');
 			count_no=count_no+1;	
-			$(this).text(count_no);
+			$(this).find('span').text(count_no);
 			$(this).bind('click');
 		}
 		
@@ -381,33 +359,46 @@
 		
 		
 		///
-		
+		var comm='';
 		$('body').on('click','.comment-btn',function(){
+			$('#myModal').modal('show');
 			$('a.comment-btn[rel="'+postid+'"]').unbind('click');
 			var postid=$(this).attr('rel');
 			$('.comment_submit_btn').attr('rel',postid);
 			
-									$.ajax({
+									/*$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
 										  url:'http://himanshuverma.co.in/godrej/comment_show.php',
 										  data:'postid='+postid,
 										  success:function(data){
-											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
-											  
-											  
+											  //$('a.comment-btn[rel="'+postid+'"]').bind('click');
+											  $('.comments_list_ul').html('');
+											 if(data==0) {
+												  $('.comments_list_ul').html('Be the first to comment');
+											 }else{
+												
+												
+												
+												 
+											 }
 											  },
 										  error:function(){
 											
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
+											//$('a.comment-btn[rel="'+postid+'"]').bind('click');
 											},
 										  fail: function(){
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
+										//	$('a.comment-btn[rel="'+postid+'"]').bind('click');
 											
 										  },
 										  timeout: 40000 
 									  
-									  })
+									  })*/
+									  
+									  
+								display_comments(postid)
+			
+			
 				
 			
 		})
@@ -420,12 +411,13 @@
 		
 		$('body').on('click','.comment_submit_btn',function(){
 			var postid=$(this).attr('rel');
+			var userid=	localStorage.getItem('userid');
 			if($('.new_comment').val()==''){
 					$('.comment_validation').show();
 			}else{
 				$('.comment_validation').hide();
 				
-				var comment_text=$('.new_comment').val();
+				var comment_text=encodeURIComponent($('.new_comment').val());
 				
 				/////////
 				
@@ -437,7 +429,8 @@
 										  data:'postid='+postid+'&userid='+userid+'&comment='+comment_text,
 										  success:function(data){
 											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
-											  $('.new_comment').val();
+											  $('.new_comment').val('');
+											  display_comments(postid);
 											  
 											  },
 										  error:function(){
@@ -470,8 +463,56 @@
 			
 		}
 		
+		
+		
+		
+		function display_comments(postid){
+			
+			$('.comments_list_ul').height($(window).height()-150);
+			$('.comments_list_ul').css('overflow-y','auto');
+				  var comments_complete=$.getJSON('http://himanshuverma.co.in/godrej/comment_show.php?postid='+postid, function(data){
+						//	console.log(data);
+						 comm=data;
+					//console.log(posts)
+					});
+  
+  			comments_complete.complete(function(data) {
+				//console.log(size);
+				
+				 $('.comments_list_ul').html('');
+											 if(comm==0) {
+												  $('.comments_list_ul').html('Be the first to comment');
+											 }else{
+				
+				 $('.comments_list_ul').html('');
+				$.each(comm,function(){
+					$('.comments_list_ul').append('<li><div class="emp_name">'+this.emp_name+'</div><div class="emp_comment">'+this.comment+'</div></li>')
+					
+					})
+					
+					
+											 }//if comment not zero
+					
+					
+			})
+			
+			
+			
+		}
+		
   
   
+  $('body').on('click','.inner_page',function(){
+	  var rel=$(this).attr('rel');
+	  window.location.href='discussion_board_inner.html#'+rel;
+	  
+	  })
+  
+  $('.back-btn').click(function(){
+	  
+	  window.location.href='discussion_board.html'
+	  
+	  })
 			})
 		 </script>
 
