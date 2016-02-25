@@ -12,7 +12,6 @@
 
         
         <link rel="stylesheet" href="css/bootstrap.min.css">
-         <link rel="stylesheet" href="css/jquery.fancybox.css">
 
         <style>
             body {
@@ -34,6 +33,7 @@
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
 			
+		.comment_submit_btn{ margin-top:10px;}		
 		span.back-btn {
     margin-top: 35px !important;	
 		}
@@ -49,7 +49,6 @@
         <script src="js/angular/angular.min.js"></script>
         <script src="js/ionic.min.js"></script>
         <script src="js/ionic-angular.min.js"></script>
-        <script src="js/jquery.fancybox.js"></script>
         
     </head>
     <body>
@@ -104,41 +103,21 @@
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header">
-        <button type="button" style="text-align: right;" class="close" data-dismiss="modal"><img style=" width:50%;" src="img/back-btn_03.jpg" /></button>
-        <h4 class="modal-title"><i class="fa fa-heart"></i><span class="comment_header"></span></h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">Comments</h4>
       </div>
       <div class="modal-body">
-       
+        <input type="text" class="new_comment form-control"  />
+        <span class="comment_validation">Please enter comment to submit</span>
+      	 <input type="button" class="btn btn-xs btn-danger comment_submit_btn" value="comment" onKeyUp="keyupFunction()" /> 
          <ul class="comments_list_ul">
          </ul>
         
       </div>
-     <div class="modal-footer"> 
-     	<div class="row">
-        <div class="col-sm-12 col-xs-12 ">
-         <div class="input-group">
-         <input type="text" class="new_comment form-control" placeholder="Write a comment"  />
-          <span class="input-group-btn"><button class="btn btn-xs btn-default form-control comment_submit_btn"  onKeyUp="keyupFunction()" ><i class="fa fa-send"></i></button></span>
-         </div> 
-        	</div> 
-         <div class="col-sm-12 col-xs-12">  
-          <span class="comment_validation">Please enter comment to submit</span>
-             
-         </div>    
-        </div>     
-             
-             
-             
-             
-        </div> 
-       
-            
-            
-        
-    </div>
       </div>
 
   </div>
+</div>
     
     <!--comment modal end-->
        
@@ -270,10 +249,7 @@
 		
 		
 			$(document).ready(function(){
-				$(".fancybox").fancybox({
-					openEffect	: 'none',
-					closeEffect	: 'none'
-				});
+				
 				$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
 								val = $navigacia.css('left') === '100%' ? '0px' : '100%';
@@ -390,13 +366,9 @@
 			big_img='<div class="row"><div class="col-sm-12 col-xs-12">';
 			for(var x=0;x<=this.post_img.length-1;x++){
 				if(this.post_img.length==1){
-					if(this.post_img[x]!=''){
-				big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
-					}
+				big_img=big_img+'<div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div>';
 				}else{
-					if(this.post_img[x]!=''){
-					big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
-					}
+					big_img=big_img+'<div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div>';
 				}
 			}
 			big_img=big_img+'</div></div>';
@@ -575,7 +547,7 @@
 		///
 		
 		
-		/*$('body').on('click','.listing_img',function(){
+		$('body').on('click','.listing_img',function(){
 		$('#myModal2').modal('show');
 		var bel=$(this).attr('bel');
 		var mel=$(this).attr('mel');
@@ -583,9 +555,9 @@
 		$('.modal_img').attr('src','http://himanshuverma.co.in/godrej/uploads/'+bel);
 		$('.modal_img_title').html('<div class="profile-pic-box-small" style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+tel+')"></div>&nbsp;<span style="margin-top:4px;">'+mel+'</span>')
 		
-		})*/
+		})
 		$('body').on('click','.comment_submit_btn',function(){
-			var postid=$(this).attr('rel');
+			
 			
 			var userid=	localStorage.getItem('userid');
 			if($('.new_comment').val()==''){

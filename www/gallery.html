@@ -12,6 +12,8 @@
 
         
         <link rel="stylesheet" href="css/bootstrap.min.css">
+         <link rel="stylesheet" href="css/jquery.fancybox.css">
+        
  <link rel="stylesheet" href="css/font-awesome.css">
         <style>
             body {
@@ -45,12 +47,14 @@
         <link rel="stylesheet" href="css/responsive.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
          <link rel="stylesheet" href="css/font-awesome.css">
+         <link rel="stylesheet" href="css/bootstrap.min.css">
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
         <script src="js/angular/angular.min.js"></script>
         <script src="js/ionic.min.js"></script>
         <script src="js/ionic-angular.min.js"></script>
+        <script src="js/jquery.fancybox.js"></script>
         
     </head>
     <body>
@@ -305,6 +309,12 @@
 		
 			$(document).ready(function(){
 				
+				$(".fancybox").fancybox({
+					openEffect	: 'none',
+					closeEffect	: 'none'
+				});
+				
+				
 				$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
 								val = $navigacia.css('left') === '100%' ? '0px' : '100%';
@@ -414,8 +424,9 @@
 				
 			
 			for(var x=0;x<=this.post_img.length-1;x++){
-				
-					big_img=big_img+'<div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div>';
+				if(this.post_img[x]!=''){
+					big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery1" href="http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
+				}
 				
 			}
 		
@@ -562,7 +573,7 @@
 		///
 		
 		
-		$('body').on('click','.listing_img',function(){
+	/*	$('body').on('click','.listing_img',function(){
 		$('#myModal2').modal('show');
 		var bel=$(this).attr('bel');
 		var mel=$(this).attr('mel');
@@ -570,7 +581,7 @@
 		$('.modal_img').attr('src','http://himanshuverma.co.in/godrej/uploads/'+bel);
 		$('.modal_img_title').html('<div class="profile-pic-box-small" style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+tel+')"></div>&nbsp;<span style="margin-top:4px;">'+mel+'</span>')
 		
-		})
+		})*/
 		$('body').on('click','.comment_submit_btn',function(){
 			
 			

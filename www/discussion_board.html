@@ -12,6 +12,7 @@
 
         
         <link rel="stylesheet" href="css/bootstrap.min.css">
+         <link rel="stylesheet" href="css/jquery.fancybox.css">
  <link rel="stylesheet" href="css/font-awesome.css">
         <style>
             body {
@@ -34,8 +35,9 @@
 			
 			
 .read_more{ font-size:12px; color:#337ab7;}
-.camera_icon_size{ font-size:18px !important;}
-.post_form{ border-bottom:1px solid #f7f7f7; padding:5px; padding-top:8px;}
+.camera_icon_size{ font-size:14px !important; text-decoration:none}
+.camera_icon_size hover{ text-decoration:none}
+/*.post_form{ border-bottom:1px solid #f7f7f7; padding:5px; padding-top:8px;}*/
 	.close{ opacity:1 !important;
 	;}
 
@@ -51,6 +53,7 @@
         <script src="js/angular/angular.min.js"></script>
         <script src="js/ionic.min.js"></script>
         <script src="js/ionic-angular.min.js"></script>
+        <script src="js/jquery.fancybox.js"></script>
         
     </head>
     <body>
@@ -89,12 +92,12 @@
                 <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Post Title Required" required class="form-control" type="text" placeholder="Post Title*" name="post_title" /></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><textarea data-msg-required="Post Description Required" required class="form-control textarea_input" type="text" placeholder="Post Description*" name="post_description" ></textarea></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="hidden" name="id" id="profile_id" /><input type="submit" value="Post" class=" btn btn-danger"   /></div>-->
-                 
+                  <div class="discon">
                  <div class="row">
                  
                      <div class="col-sm-3 col-xs-3 post_profile_box"></div>
                      
-                     <div class="col-sm-9 col-xs-9"><textarea name="description" class="form-control" style="border:none; border-color:Transparent; overflow:auto; box-shadow:none; resize:none;" placeholder="Whats on your mind?"></textarea><input type="hidden" name="id" id="profile_id" /></div>
+                     <div class="col-sm-9 col-xs-9"><textarea name="description" class="form-control" style="border:none; border-color:Transparent; overflow:auto; background-color:#edf9ff; box-shadow:none; resize:none;" placeholder="Whats on your mind?"></textarea><input type="hidden" name="id" id="profile_id" /></div>
                    <div col-sm-3 col-xs-3>  </div><div  class="col-sm-9 col-xs-9 img_container" ></div>
                      <div class="col-sm-12 col-xs-12" style="text-align:right;"><a href="javascript:void(0)" onClick="getImage();"><i class="fa fa-camera camera_icon_size"></i>&nbsp;PHOTO</a>&nbsp;<button style="display:none;" type="button" value="POST" class="btn btn-info post_subm" ><i class="fa fa-send"></i></button></div>
                      <div class="clearfix"></div>
@@ -112,13 +115,15 @@
             
             
             
-        
+        </div>
               
                	<div id="posts">
                   </div>
                
-        </div> 
+        
        
+      
+      </div>
       
       </div>
    
@@ -257,8 +262,10 @@
             console.log("Response = " + r.response);
             console.log("Sent = " + r.bytesSent);*/
 			document.getElementById("ft-prog").value =100;
+			if(r.response!=''){
 			$('.img_container').append('<input rel="post_img_'+img_count+'" type="hidden" name="post_image[]" value="'+r.response+'" />');
 			$('.img_container').append('<div rel="post_img_'+img_count+'" bel="'+img_count+'" class="profile-pic-box-post" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+r.response+');"><i class="fa fa-times-circle delete_img"></i></div>');
+			}
 			$('#ft-prog').hide();
 			img_count=img_count+1;
 			//document.getElementById("profile_pic").value=r.response;
@@ -308,7 +315,12 @@
 		
 		
 			$(document).ready(function(){
+			
 				
+				$(".fancybox").fancybox({
+					openEffect	: 'none',
+					closeEffect	: 'none'
+				});
 				$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
 								val = $navigacia.css('left') === '100%' ? '0px' : '100%';
@@ -424,9 +436,13 @@
 			big_img='<div class="row"><div class="col-sm-12 col-xs-12">';
 			for(var x=0;x<=this.post_img.length-1;x++){
 				if(this.post_img.length==1){
-				big_img=big_img+'<div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div>';
+					if(this.post_img[x]!=''){
+				big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
+					}
 				}else{
-					big_img=big_img+'<div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div>';
+					if(this.post_img[x]!=''){
+					big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
+					}
 				}
 			}
 			big_img=big_img+'</div></div>';
@@ -446,14 +462,14 @@
             
            
             '<div class="discussion-topic-title">'+
-            '<p class="inner_page" rel="'+this.postid+'">'+this.name+'</p>'+
+            '<a  href="profile.html#'+this.userid+'">'+this.name+'</a>'+
             '</div>'+
            
             '<div class="clearfix"></div>'+
             
             '</div>'+big_img+'<div class="clearfix"></div><div class="discussion-board-desc-wrp">'+
             
-            '<p>'+descrip+'</p>'+
+            '<p class="desp">'+descrip+'</p>'+
             
             '</div>'+
             
@@ -605,7 +621,7 @@
 		///
 		
 		
-		$('body').on('click','.listing_img',function(){
+		/*$('body').on('click','.listing_img',function(){
 		$('#myModal2').modal('show');
 		var bel=$(this).attr('bel');
 		var mel=$(this).attr('mel');
@@ -613,9 +629,9 @@
 		$('.modal_img').attr('src','http://himanshuverma.co.in/godrej/uploads/'+bel);
 		$('.modal_img_title').html('<div class="profile-pic-box-small" style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+tel+')"></div>&nbsp;<span style="margin-top:4px;">'+mel+'</span>')
 		
-		})
+		})*/
 		$('body').on('click','.comment_submit_btn',function(){
-			
+			var postid=$(this).attr('rel');
 			
 			var userid=	localStorage.getItem('userid');
 			if($('.new_comment').val()==''){
