@@ -13,7 +13,7 @@
 }
 
 
-body{ font-family: 'zurich_btroman' !important;}
+body{ font-family: 'zurich_btroman' !important; overflow:auto !important;}
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
