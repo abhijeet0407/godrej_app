@@ -59,7 +59,7 @@
     //
     function onDeviceReady() {
         // Now safe to use device APIs
-		alert("Device Ready")
+		//alert("Device Ready")
 		var push = PushNotification.init({
     android: {
         senderID: "499804570054"
@@ -71,7 +71,7 @@
     },
     windows: {}
 });
-alert(push);
+//alert(push);
 push.on('registration', function(data) {
     // data.registrationId
 	alert(data.registrationId);
