@@ -49,15 +49,17 @@
 <link rel="stylesheet" href="css/jquerymobile.css" />
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
+        
         <script>
     $(document).bind('mobileinit',function(){
         $.mobile.changePage.defaults.changeHash = false;
         $.mobile.hashListeningEnabled = false;
         $.mobile.pushStateEnabled = false;
+		$.mobile.allowCrossDomainPages = true;
     });
 </script> 
-        <script src="js/jquerymobile.js"></script>
         
+        <script src="js/jquerymobile.js"></script>
         
     </head>
     <body>
@@ -128,6 +130,11 @@
         <script type="text/javascript">
 		
 			$(document).ready(function(){
+				
+			
+				
+				
+				
 				var off=0;
 				load_list(off);
 				$( document ).on( "mobileinit", function() {
