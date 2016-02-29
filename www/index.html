@@ -25,7 +25,7 @@
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
     </head>
-    <body>
+    <body onLoad="onLoad()">
         <!--[if lt IE 8]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
@@ -42,11 +42,24 @@
       
     </div> <!-- /container -->       
        
-
+<script type="text/javascript" src="cordova.js"></script>
         <script src="js/vendor/bootstrap.min.js"></script>
 
         <script src="js/main.js"></script>
-        <script type="text/javascript">
+        <script src="push.js"></script>
+        <script type="text/javascript" charset="utf-8">
+
+    // Wait for device API libraries to load
+    //
+    function onLoad() {
+        document.addEventListener("deviceready", onDeviceReady, false);
+    }
+
+    // device APIs are available
+    //
+    function onDeviceReady() {
+        // Now safe to use device APIs
+		alert("Device Ready")
 		var push = PushNotification.init({
     android: {
         senderID: "499804570054"
@@ -58,7 +71,7 @@
     },
     windows: {}
 });
-
+alert(push);
 push.on('registration', function(data) {
     // data.registrationId
 	alert(data.registrationId);
@@ -75,12 +88,21 @@ push.on('notification', function(data) {
 
 push.on('error', function(e) {
     // e.message
+		alert(e.message);
 });
+		
+		
+    }
+
+    </script>
+        
+        <script type="text/javascript">
+		
 			$(document).ready(function(){
 			if(localStorage.getItem('userid')==null){
 				//setTimeout(function(){ window.location.href='login.html' }, 2000);	
 			}else{
-				//setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);	
+				//setTimeout(function(){ window.location.href='menu.html' }, 2000);	
 			}
 			})
 		 </script>

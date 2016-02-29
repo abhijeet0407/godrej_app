@@ -113,9 +113,10 @@
 												  $('.login_input').val('');
 												  $('.success').show();
 												  
-												  localStorage.login="true";
+												 localStorage.login="true";
 												  var res = data.split("#@#");
 												  localStorage.userid=res[0];
+												  localStorage.first=res[0];
 												  localStorage.email=res[2];
 												  localStorage.empid=res[3];
 												  localStorage.profile_pic=res[4];
@@ -126,7 +127,7 @@
 												  if(res[1]=='0'){
 												  setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);
 												  }else if(localStorage.getItem('welcome')=='true'){
-													setTimeout(function(){ window.location.href='Itinerary.html' }, 2000);  
+													setTimeout(function(){ window.location.href='menu.html' }, 2000);  
 												  }else{
 													  setTimeout(function(){ window.location.href='welcome.html' }, 2000);  
 												  }
