@@ -47,11 +47,40 @@
 
         <script src="js/main.js"></script>
         <script type="text/javascript">
+		var push = PushNotification.init({
+    android: {
+        senderID: "499804570054"
+    },
+    ios: {
+        alert: "true",
+        badge: "true",
+        sound: "true"
+    },
+    windows: {}
+});
+
+push.on('registration', function(data) {
+    // data.registrationId
+	alert(data.registrationId);
+});
+
+push.on('notification', function(data) {
+    // data.message,
+    // data.title,
+    // data.count,
+    // data.sound,
+    // data.image,
+    // data.additionalData
+});
+
+push.on('error', function(e) {
+    // e.message
+});
 			$(document).ready(function(){
 			if(localStorage.getItem('userid')==null){
-				setTimeout(function(){ window.location.href='login.html' }, 2000);	
+				//setTimeout(function(){ window.location.href='login.html' }, 2000);	
 			}else{
-				setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);	
+				//setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);	
 			}
 			})
 		 </script>

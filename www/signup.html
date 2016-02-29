@@ -54,7 +54,7 @@
                 <form id="sign_up">
                 <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Emp Id Required" required class="login_input" type="text" placeholder="Employee Id*" name="emp_id" /></div>
                 <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Name Required" required class="login_input" type="name" placeholder="Name*" name="name" /></div>
-                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Email Required" required class="login_input" type="email" placeholder="Email ID*" name="email" /></div>
+                	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><div class="input-group"><input data-msg-required="Email Required" required class="login_input" type="text" placeholder="Email ID*" name="email" /><span class="input-group-addon" id="basic-addon2">@godrej.com</span></div></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input data-msg-required="Password Required" required class="login_input" type="password" placeholder="Password*" name="password" /></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Sign Up" class="signin_btn"   /></div>
                 </form>
@@ -68,6 +68,7 @@
                     <div class="alert alert-danger failed" role="alert">Registration failed. Please check internet connection.</div>
                      
                 </div>
+                 <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr"><a href="forgot.html" class="primary-color sign-up-link">Forgot password?</a></span></div> 
               <div class="col-sm-12 col-xs-12 col-centered">Already have an account? <a href="login.html" class="primary-color sign-up-link">Sign In</a></div>  
               
               <img class="login_lock" src="img/godrej-icon-main.png" />

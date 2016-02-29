@@ -61,13 +61,14 @@
     <a id="ham-menu-close" href="javascript:void(0)">MENU</a>
     
 <ul class="top-link">
-<li class="drop-link"><a class="profile-home" href="profile_edit.html">My Profile</a></li>
-<li class="drop-link"><a class="Itinerary-home" href="Itinerary.html">Itinerary</a></li>
-<li class="drop-link"><a class="news-home" href="news.html">News and Update</a></li>
-<li class="drop-link"><a class="discu-home" href="discussion_board.html">Discussion Board</a></li>
-<li class="drop-link"><a class="discu-home" href="gallery.html">Gallery</a></li>
-<li  class="drop-link"><a class="about-home" href="about.html">About</a></li>
-<li  class="drop-link"><a class="things-home" href="things.html">Things To Do</a></li>
+<li class="drop-link"><a class="" href="profile_edit.html"><i class="fa fa-user"></i>&nbsp;&nbsp;My Profile</a></li>
+<li class="drop-link"><a class="" href="Itinerary.html"><i class="fa fa-map-o"></i>&nbsp;&nbsp;Itinerary</a></li>
+<li class="drop-link"><a class="" href="news.html"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Update</a></li>
+<li class="drop-link"><a class="" href="discussion_board.html"><i class="fa fa-comment"></i>&nbsp;&nbsp;Discussion Board</a></li>
+<li class="drop-link"><a class="" href="gallery.html"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Gallery</a></li>
+<li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
+<li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
+<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
@@ -99,7 +100,7 @@
             
            
             <div class="discussion-topic-title">
-            <p>Heading</p>
+            <p></p>
             </div>
            
             <div class="clearfix"></div>
@@ -108,34 +109,12 @@
             
             
             <div class="upload-pic-big">
-            <img src="img/big-upload-pic_06.jpg"/>
+            
             </div>
             
             <div class="about-desc-wrp">
             
-            <p align="justify">The name &lsquo;Pune&rsquo; is derived from the Sanskrit word &lsquo;Punya Nagari&rsquo; which means City of Virtue</p>
-<p align="justify">
-  The city is believed to have existed back in 937 AD as a small town. The leader of the Maratha Empire named Shivaji lived in this city when he was still a boy. During Shivaji&rsquo;s reign, he foresaw the city&rsquo;s significant development and growth.</p>
-<p align="justify">In the early 18th century, this city became a significant political center and became the seat of the Peshwas. After Pune was annexed to the British India in the 19th century, it served as the monsoon capital of the Presidency of Bombay and a cantonment town until the India&rsquo;s independence from the British.</p>
-<p align="justify">
-  Today, we bring you certain interesting facts about Pune about which you may have not known, but when read, will produce in you a feeling of respect and awe for this prominent city which has gained popularity in India due to the fast-paced growth and spurt of industrial and educational activity in the recent decade</p>
-<ul>
-  <li>Pune, the cultural capital of Maharashtra, is the eighth largest metropolis in India and the second largest in the state of Maharashtra</li>
-  <li>Pune has the impeccable record of highest growth within a span of 20 Years</li>
-  <li>Pune records the highest number of two wheelers in the world</li>
-  <li>Pune is considered the fashion capital of east</li>
-  <li>Challenging its counterparts Bangalore and Mumbai, Pune stands as a frontrunner wearing the crown of &lsquo;India&rsquo;s Silicon Valley&rsquo;.</li>
-  <li>Home to the Film and Television Institute of India, National Film Archives of India and an advocate of Marathi theatre, Pune has been and continues to champion its love for performing arts.</li>
-  <li>Pune is home to the Film Archives of India and the Film &amp; Television Institute of India (FTII). The Film Archives hold original copies of Indian movies since the beginning of the Indian film industry.</li>
-  <li>Pune is also known as &lsquo;Detroit of India&rsquo; because of a large number of auto manufacturers in Pune</li>
-  <li>Pune is also known to have produced maximum number of scientists for several high profile prize nominations</li>
-  <li>To the far lands, this city is known for its sweet puranpoli and fiery misal. One does not leave the city without carrying some edible souvenirs – Shrewsbury biscuits and bhakarwadi.</li>
-  <li>The National Tourism Board declared Pune &lsquo;the city with India&rsquo;s best heritage walks&rsquo;. A cultural initiative by Janwani, the Walk is an immersive experience through the city&rsquo;s glorious past.</li>
-  <li>With a music-obsessed youth, it is little wonder Pune is the birthplace of the happiest music festival – NH7. Remember also that console magician David Guetta chose Pune for his Indian debut!</li>
-  <li>Pune has the highest number of pubs in Asia; now you where to party!</li>
-  <li>Pune has deservedly acquired umpteen epithets – Queen of the Deccan, Oxford of the East, A Retirement Paradise, Military Hub, Student hub and IT city!</li>
-</ul>
-<p align="justify">A Deccan odyssey to the Maratha Empire of western Maharashtra, Pune is a city that welcomes you, teaches you, raises the bar high and knows how to celebrate life and enjoy its shortcomings.</p>
+      
             
             
             
@@ -162,63 +141,9 @@
         <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
-         <script type="text/javascript">
-		var statusDom = document.querySelector('#status');
-		 function getImage() {
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto, function(message) {
-			alert('get picture failed');
-		},{
-			quality: 50, 
-			destinationType: navigator.camera.DestinationType.FILE_URI,
-			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-		}
-            );
- 
-        }
- 
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
-			document.getElementById("ft-prog").style.display="block";
-			ft.onprogress = function(progressEvent) {
-				
-		    var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-			document.getElementById("ft-prog").value = perc;
-				//statusDom.innerHTML = perc + "% loaded...";	
-			}
-			
-        }
- 			
-        function win(r) {
-        /*    console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);*/
-			document.getElementById("ft-prog").value =100;
-			
-			document.getElementById("profile_pic").value=r.response;
-			//document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
-           // alert(r.response);
-        }
- 
-        function fail(error) {
-            alert("An error has occurred: Code = "+ error.code);
-        }
-		</script>
+       
         <script type="text/javascript">
-		
+		var post='';
 			$(document).ready(function(){
 				$('body').on('click','.discussion-main-wrp',function(){
 				
@@ -297,260 +222,27 @@ $('a#ham-menu, a#ham-menu-close').click(function () {
 				})
 			
 			
-			$('.signin_btn').click(function(){
-					$('.failed').hide();
-					$('.processing').hide();
-					$('.success').hide();
-					
-					 $("#sign_up").validate({
-      				  submitHandler:function (form){
-						  	///
-									$('.signin_btn').attr('disabled','disabled');
-									$('.processing').show();
-										var signup_data=$('#sign_up').serialize();
-										$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/add_post.php',
-										  data:signup_data,
-										  success:function(data){
-											  if(data=='1'){
-												  $('.processing').hide();
-												  
-												  $('.login_input').val('');
-												  $('.success').show();
-												  setTimeout(function(){ window.location.href='discussion_board.html' }, 2000);	
-											  }else{
-												  $('.processing').hide();
-												  $('.failed').show();
-												  $('.signin_btn').removeAttr('disabled');
-											  }
-											  
-											  
-											  },
-										  error:function(){
-											$('.failed').show();
-											$('.signin_btn').removeAttr('disabled');
-											},
-										  fail: function(){
-											$('.failed').show();
-											$('.signin_btn').removeAttr('disabled');
-										  },
-										  timeout: 40000 
-									  
-									  })
-							
-							
-							
-							
-							////
-						  
-						  
-						  
-                     
-					 	 }
-                      });
-					
-				
-					
-				})
-				
 			
 			
-			///////////
-				//setTimeout(function(){ window.location.href='login.html' }, 2000);	
-	/*			$.getJSON( "ajax/test.json", function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
-    items.push( "<li id='" + key + "'>" + val + "</li>" );
-  });*/
-  
-  
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
+	
+  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/about.php', function(data){
 						//	console.log(data);
 						 posts=data;
-					console.log(posts)
+					
 					});
   
   			posts_complete.complete(function(data) {
 				//console.log(size);
 				$.each(posts,function(){
-					$('#posts').append(' <div class="col-xs-12 col-sm-12">'
-            +'<div class="well well-sm">'
-               +'<div class="row">'
-                    +'<div class="col-xs-4 col-md-4 text-center">'
-                        +'<img src="http://www.himanshuverma.co.in/godrej/uploads/'+this.post_image+'" alt="bootsnipp"'
-                            +'class="img-rounded img-responsive" />'
-                    +'</div>'
-                    +'<div class="col-xs-8 col-md-8 section-box">'
-                       + '<div class="post_title">'+this.title+''
-                        +'</div>'
-                        +'<p class="post_description">'+this.description+'</p>'
-                       + '<hr />'
-                        +'<div class="row rating-desc">'
-                            +'<div class="col-md-12">'
-                               + '<a href="javascript:void(0)" class="like-btn" rel="'+this.postid+'" target="_blank"><span class="glyphicon glyphicon-heart like-count"></span>'+this.likes_count+'</a><span class="separator">|</span>'
-                               + '<a href="javascript:void(0)" class="comment-btn" rel="'+this.postid+'"  target="_blank"><span class="glyphicon glyphicon-comment"></span><span class="comment_count">('+this.comments_count+')</span></a>'
-                            +'</div>'
-                       + '</div>'
-                    +'</div>'
-               + '</div>'
-            +'</div>'
-       + '</div>')
-					
-					})
+					$('.discussion-topic-title p').text(this.title);
+					$('.upload-pic-big').html('<img src="http://himanshuverma.co.in/godrej/uploads/'+this.image+'" />');
+					$('.about-desc-wrp').html(this.description).text();
+				})
 			})
   
   
   
-  		$('body').on('click','.like-btn',function(){
-		$(this)	.unbind('click');
-		var status='like';
-		var postid=$(this)	.attr('rel');
-		var userid=	localStorage.getItem('userid');
-		var prev_count_no=parseInt($(this).text());
-		var count_no=parseInt($(this).text());
-		if($(this).hasClass('glyphicon-heart')){
-		$(this).removeClass('glyphicon-heart');
-		$(this).addClass('glyphicon-heart-empty');
-		status='unlike';
-			if(count_no>0){
-				count_no=count_no-1;	
-				$(this).text(count_no);
-				
-			}
-		}else{
-			$(this).removeClass('glyphicon-heart-empty');
-			$(this).addClass('glyphicon-heart');
-			count_no=count_no+1;	
-			$(this).text(count_no);
-			$(this).bind('click');
-		}
-		
-		
-		//
-			
-			$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/like_process.php',
-										  data:'postid='+postid+'&userid='+userid+'&status='+status,
-										  success:function(data){
-											  $('a.like-btn[rel="'+postid+'"]').bind('click');
-											  
-											  
-											  },
-										  error:function(){
-											
-											$('a.like-btn[rel="'+postid+'"]').bind('click');
-											},
-										  fail: function(){
-											$('a.like-btn[rel="'+postid+'"]').bind('click');
-											
-										  },
-										  timeout: 40000 
-									  
-									  })
-			
-			
-			//
-		
-		
-			
-		})	
-		
-		
-		///
-		
-		$('body').on('click','.comment-btn',function(){
-			$('a.comment-btn[rel="'+postid+'"]').unbind('click');
-			var postid=$(this).attr('rel');
-			$('.comment_submit_btn').attr('rel',postid);
-			
-									$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/comment_show.php',
-										  data:'postid='+postid,
-										  success:function(data){
-											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
-											  
-											  
-											  },
-										  error:function(){
-											
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											},
-										  fail: function(){
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											
-										  },
-										  timeout: 40000 
-									  
-									  })
-				
-			
-		})
-		
-		
-		
-		///
-		
-		
-		
-		$('body').on('click','.comment_submit_btn',function(){
-			var postid=$(this).attr('rel');
-			if($('.new_comment').val()==''){
-					$('.comment_validation').show();
-			}else{
-				$('.comment_validation').hide();
-				
-				var comment_text=$('.new_comment').val();
-				
-				/////////
-				
-				
-					$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/insert_comment.php',
-										  data:'postid='+postid+'&userid='+userid+'&comment='+comment_text,
-										  success:function(data){
-											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
-											  $('.new_comment').val();
-											  
-											  },
-										  error:function(){
-											
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											},
-										  fail: function(){
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											
-										  },
-										  timeout: 40000 
-									  
-									  })
-				
-				
-				
-				///////
-				
-				
-			}
-			
-		})
-		
-		function keyupFunction(){
-			if($('.new_comment').val()==''){
-					$('.comment_validation').show();
-			}else{
-				$('.comment_validation').hide();
-			}
-			
-		}
-		
-  
+  		
   
 			})
 		 </script>

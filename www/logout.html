@@ -47,20 +47,21 @@
       	<div class="col-sm-10 col-xs-10 login_container col-centered" >
         	<div class="col-sm-12 col-xs-12 col-centered">
             <img class="login_lock" src="img/godrej-icon-main.png" />
-            <div class="login_title">LOG IN</div>
+            <div class="login_title">LOG OUT</div>
+             <div class="alert alert-success success" role="alert">Logged out successfully....</div>
             <!--<div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>-->
-                <form id="sign_up">
+                <!--<form id="sign_up">
                 	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><div class="input-group"><input required data-msg-required="Login is required" class="login_input" type="text" placeholder="Email ID*" id="user_email" name="email" /><span class="input-group-addon" id="basic-addon2">@godrej.com</span></div></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Password is required" class="login_input" type="password" placeholder="Password*" name="password" /></div>
                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Sign In" class="signin_btn"   /></div>
-                </form>
+                </form>-->
                 <div class="msg col-sm-12 col-xs-12">
                 	  <div class="alert alert-success success" role="alert">Signed In successfully....</div>
                     <div class="alert alert-warning processing" role="alert">Processing your request please wait...</div>
                     <div class="alert alert-danger failed" role="alert">Signing  In failed, Please check your email and password.</div>
                 </div>
-                 <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr"> <a href="forgot.html" class="primary-color sign-up-link">Forgot password?</a></span></div> 
-              <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr">Don't have an account? <a href="signup.html" class="primary-color sign-up-link">Sign Up</a></span></div>  
+                
+           <!--   <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr">Don't have an account? <a href="signup.html" class="primary-color sign-up-link">Sign Up</a></span></div> --> 
            </div> 
        </div> 
       
@@ -76,6 +77,21 @@
         <script src="js/main.js"></script>
         <script type="text/javascript">
 			$(document).ready(function(){
+				
+				
+												 localStorage.removeItem(localStorage.userid);
+												 localStorage.removeItem(localStorage.empid);
+												 localStorage.removeItem(localStorage.profile_pic);
+												 localStorage.removeItem(localStorage.designation);
+												 localStorage.removeItem(localStorage.gender);
+												 localStorage.removeItem(localStorage.dob);
+												 localStorage.removeItem(localStorage.name);
+												 
+												   setTimeout(function() {
+														window.location.href='signup.html'
+												    }, 500);
+				
+				
 				
 				$('.signin_btn').click(function(){
 					$('.failed').hide();

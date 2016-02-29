@@ -38,7 +38,8 @@
   <gap:plugin name="org.apache.cordova.splashscreen"/>
   <gap:plugin name="org.apache.cordova.vibration"/>
   <gap:plugin name="com.ionic.keyboard" />
-  <plugin name="com.phonegap.plugins.pushplugin"  source="pgb" />
+  <preference name="android-build-tool" value="gradle" />
+	<plugin name="phonegap-plugin-push" source="npm" />
   <icon src="icon.png"/>
   <icon src="www/res/icon/android/icon-36-ldpi.png" gap:platform="android" gap:qualifier="ldpi"/>
   <icon src="www/res/icon/android/icon-48-mdpi.png" gap:platform="android" gap:qualifier="mdpi"/>

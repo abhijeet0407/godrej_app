@@ -47,20 +47,21 @@
       	<div class="col-sm-10 col-xs-10 login_container col-centered" >
         	<div class="col-sm-12 col-xs-12 col-centered">
             <img class="login_lock" src="img/godrej-icon-main.png" />
-            <div class="login_title">LOG IN</div>
+            <div class="login_title">FORGOT PASSWORD</div>
             <!--<div class="login_description">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>-->
                 <form id="sign_up">
                 	<div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><div class="input-group"><input required data-msg-required="Login is required" class="login_input" type="text" placeholder="Email ID*" id="user_email" name="email" /><span class="input-group-addon" id="basic-addon2">@godrej.com</span></div></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Password is required" class="login_input" type="password" placeholder="Password*" name="password" /></div>
-                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Sign In" class="signin_btn"   /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Password is required" class="login_input" type="password" placeholder="New Password*" id="password" name="password" /></div>
+                   <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input required data-msg-required="Password is required" class="login_input" type="password" placeholder="Confirm Password*" name="confirm_password" /></div>
+                  <div class="col-sm-12 col-xs-12 col-centered login_input_wrp"><input type="submit" value="Forgot Password" class="signin_btn"   /></div>
                 </form>
                 <div class="msg col-sm-12 col-xs-12">
-                	  <div class="alert alert-success success" role="alert">Signed In successfully....</div>
+                	  <div class="alert alert-success success" role="alert">Password updated successfully.... Redirecting</div>
                     <div class="alert alert-warning processing" role="alert">Processing your request please wait...</div>
-                    <div class="alert alert-danger failed" role="alert">Signing  In failed, Please check your email and password.</div>
+                    <div class="alert alert-danger failed" role="alert">Password updation failed, Please check your emailid.</div>
                 </div>
-                 <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr"> <a href="forgot.html" class="primary-color sign-up-link">Forgot password?</a></span></div> 
-              <div class="col-sm-12 col-xs-12 col-centered"><span class="white-clr">Don't have an account? <a href="signup.html" class="primary-color sign-up-link">Sign Up</a></span></div>  
+                
+               
            </div> 
        </div> 
       
@@ -73,6 +74,7 @@
 		<script type="text/javascript" src="cordova.js"></script>
         <script src="js/bootstrap.min.js"></script>
 		<script src="js/jquery.validate.min.js"></script>
+        <script src="js/valid_add.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
 			$(document).ready(function(){
@@ -82,6 +84,11 @@
 					$('.processing').hide();
 					$('.success').hide();
 					 $("#sign_up").validate({
+						 rules: {
+    password: "required",
+    confirm_password: {
+      equalTo: "#password"
+    }},
       				  submitHandler:function (form){
 						  
 						 // form.submit();
@@ -93,44 +100,11 @@
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/signin.php',
+										  url:'http://himanshuverma.co.in/godrej/forgot.php',
 										  data:signup_data,
 										  success:function(data){
-											 var email=$('#user_email').val();
-											  if(data=='failed'){
-												  
-												   $('.processing').hide();
-												  $('.failed').show();
-												  $('.signin_btn').removeAttr('disabled');
-												  	
-											  }else{
-												  
-												  
-												  
-												  
-												  $('.processing').hide();
-												  
-												  $('.login_input').val('');
-												  $('.success').show();
-												  
-												  localStorage.login="true";
-												  var res = data.split("#@#");
-												  localStorage.userid=res[0];
-												  localStorage.email=res[2];
-												  localStorage.empid=res[3];
-												  localStorage.profile_pic=res[4];
-												  localStorage.designation=res[5];
-												  localStorage.gender=res[6];
-												  localStorage.dob=res[7];
-												  localStorage.name=res[8];
-												  if(res[1]=='0'){
-												  setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);
-												  }else if(localStorage.getItem('welcome')=='true'){
-													setTimeout(function(){ window.location.href='Itinerary.html' }, 2000);  
-												  }else{
-													  setTimeout(function(){ window.location.href='welcome.html' }, 2000);  
-												  }
-											  }
+											 window.location.href='login.html'
+											 
 											  
 											  
 											  },
