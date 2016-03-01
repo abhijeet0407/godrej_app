@@ -58,7 +58,9 @@ body{ font-family: 'zurich_btroman' !important;}
 	}
 	/*login css*/
 	.login_container{ text-align:center; }
-	img.login_lock{ max-width:75%;}
+	img.login_lock{     max-width: 75%;
+    margin: 0 auto;
+    display: block;}
 	.login_s{ position:absolute;
 	bottom:10px;
 	text-align:center;
@@ -405,7 +407,43 @@ box-shadow:0px 0px 6px 0px rgba(0,0,0,0.30);}
 	.inner-menu-pic{ width:100%; text-align:center; min-height:50px; line-height:50px; font-size:24px;}
 	.inner-menu-title p{ text-align:center; font-size:14px;}
 	
+	
+	
+	@media only screen and (min-device-width : 480px) and (max-device-width : 767px) {
+		
+		
+			
+			
+			.wave-registration {
+    
+    padding-bottom: 93px;
+    background-image: url(../img/waver-registration-mobile_02.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
+    background-color: #34A1DA;
+}
+			
+
+	}
+	
+	
 	@media only screen and (min-device-width : 320px) and (max-device-width : 480px) {
+		
+		
+		
+			
+			
+			.wave-registration {
+    
+    padding-bottom: 93px;
+    background-image: url(../img/waver-registration-mobile_02.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
+    background-color: #34A1DA;
+}
+		
 
 	}
 	
@@ -415,14 +453,26 @@ and (max-device-width : 1024px)
 and (orientation : landscape) { 
 body.page_signup{    background-position: left top -797px;} 
 body.page_signup .login_container{ margin-top:0px;} 
-body.page_signup .login_lock{ margin-top:180px;}
+body.page_signup .login_lock{ margin-top:10px;}
 
 
 body.page_login{background-position: left top -370px;}
 
+.wave-registration {
+    
+    padding-bottom: 210px;
+    background-image: url(../img/waver-registration-mobile_02.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
+    background-color: #34A1DA;
+}
+
 
 }
 	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) {
+		
+		
 	
 	}
 	
@@ -437,6 +487,16 @@ body.page_signup{    background-position: left top -430px;}
 body.page_login #sign_up{ margin-top:140px;}
 
 body.page_login{background-position: left top -180px;}
+
+.wave-registration {
+    
+    padding-bottom: 160px;
+    background-image: url(../img/waver-registration-mobile_02.jpg);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: 100%;
+    background-color: #34A1DA;
+}
 
 
 }
