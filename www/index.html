@@ -104,25 +104,21 @@ push.on('error', function(e) {
     // e.message
 		alert(e.message);
 });
-		
-		
-    }
-
-    </script>
-        
-        <script type="text/javascript">
-		
-			$(document).ready(function(){
-			
-			function move_on(){
+	
+	
+	function move_on(){
 				if(localStorage.getItem('userid')==null){
 					setTimeout(function(){ window.location.href='login.html' }, 2000);	
 				}else{
 					setTimeout(function(){ window.location.href='menu.html' }, 2000);	
 				}
 			}
-			})
-		 </script>
+		
+		
+    }
+
+    </script>
+
 
         
     </head>
