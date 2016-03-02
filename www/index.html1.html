@@ -43,7 +43,6 @@
         // Now safe to use device APIs
 		//alert("Device Ready")
 		//push init
-		//move_on();	
 					var push = PushNotification.init({
 						android: {
 							senderID: "499804570054"
@@ -92,27 +91,18 @@
 		}
 
 push.on('notification', function(data) {
-	//alert(data.title+" Message: " +data.message);
+	alert(data.title+" Message: " +data.message);
     // data.message,
     // data.title,
     // data.count,
     // data.sound,
     // data.image,
-    data.additionalData
-	if(localStorage.getItem('userid')==null){
-		window.location.href='login.html'
-	}else{
-		if(data.additionalData=='news'){
-		window.location.href='news.html'
-		}else{
-			window.location.href='menu.html'
-		}
-	}
+    // data.additionalData
 });
 
 push.on('error', function(e) {
     // e.message
-	//	alert(e.message);
+		alert(e.message);
 });
 	
 	

@@ -25,7 +25,7 @@ body{ font-family: 'zurich_btroman' !important;}
 		float: none;
 		margin: 0 auto;
 	}
-	.primary-color{ color:#06bebe;}
+	.primary-color{ color:#E4FF4A;}
    /*common css*/
    .container { width: auto; }
    
@@ -57,6 +57,17 @@ body{ font-family: 'zurich_btroman' !important;}
 		
 	}
 	/*login css*/
+	
+	.wave-registration {
+   
+   padding-bottom: 160px;
+   background-image: url(../img/waver-registration-mobile_02.jpg);
+   background-repeat: no-repeat;
+   background-position: center bottom;
+   background-size: 100%;
+   background-color: #34A1DA;
+   padding-top: 40px;
+}
 	.login_container{ text-align:center; }
 	img.login_lock{     max-width: 75%;
     margin: 0 auto;
@@ -108,12 +119,12 @@ span.white-clr a{ color:#e4ff00;}
     background-position: 0px 4px; background-size: 30px !important;}
 		.about-icon{ width:180px; background-image: url(../img/about-blue-icn_14.png) !important;
     background-repeat: no-repeat;
-    background-position: 0px 4px; background-size: 30px !important;}
+    background-position: 0px 4px; /*background-size: 30px !important;*/}
 	.things-icon{ width:135px; background-image: url(../img/things-to-do-blue-icn_18.png) !important;
     background-repeat: no-repeat;
     background-position: 8px 4px; background-size: 19px !important;}
 	span.back-btn{     float: right;
-    margin-top: 30px;}
+    margin-top: 20px;}
 
 .discussion-main-wrp{ width:100%; padding:20px 0px;}
 .top-pro-pic-wrp{ width:100%; margin-bottom:5px;}
@@ -290,8 +301,8 @@ box-shadow:         -2px 0px 4px 0px rgba(50, 50, 50, 0.75);}
 }
 
 a#ham-menu{ position: absolute;
-    top: 35px;
-    left: 10px; z-index:99;}
+    top: 30px;
+    left: 10px; z-index:98;}
 	
 	a#ham-menu-close{ padding: 0px 0px 0px 35px;
     color: #34a1da;
@@ -394,16 +405,17 @@ a#ham-menu{ position: absolute;
 	
 	
 	.main-menu-wrp{ width:100%; padding:30px 0px;}
-	.inner-menu-wrp-main{ width:100%; min-height:85px; border:1px solid #e4e4e4; margin-bottom:30px; border:1px solid #d7dada; -webkit-border-radius: 3px; -moz-border-radius: 3px;border-radius: 3px;font-size:12px;font-family:arial, helvetica, sans-serif; padding: 10px 10px 10px 10px; text-decoration:none; display:inline-block;font-weight:bold; color: #FFFFFF;
- background-color: #f4f5f5; background-image: -webkit-gradient(linear, left top, left bottom, from(#f4f5f5), to(#dfdddd));
- background-image: -webkit-linear-gradient(top, #f4f5f5, #dfdddd);
- background-image: -moz-linear-gradient(top, #f4f5f5, #dfdddd);
- background-image: -ms-linear-gradient(top, #f4f5f5, #dfdddd);
- background-image: -o-linear-gradient(top, #f4f5f5, #dfdddd);
- background-image: linear-gradient(to bottom, #f4f5f5, #dfdddd);filter:progid:DXImageTransform.Microsoft.gradient(GradientType=0,startColorstr=#f4f5f5, endColorstr=#dfdddd); -webkit-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.30);
--moz-box-shadow: 0px 0px 6px 0px rgba(0,0,0,0.30);
-box-shadow:0px 0px 6px 0px rgba(0,0,0,0.30);}
-	.inner-menu-wrp-main a{ text-decoration:none; display:block;}
+	.inner-menu-wrp-main{ width:100%; min-height:85px;}
+	.inner-menu-wrp-main a{ text-decoration:none; display:block;   color:#FFF}
+	.blue { background:#3498db; }
+	.orange { background:#eda44d}
+	.green { background:#2ecc71}
+	.purple { background:#9b59b6}
+	.red { background:#cd4a3a}
+	.gray { background:#7e8ae4}
+	.green2 { background:#5dbeb1}
+	.yellow { background:#e7b628}
+	.col34 { background:#e4744b }
 	.inner-menu-pic{ width:100%; text-align:center; min-height:50px; line-height:50px; font-size:24px;}
 	.inner-menu-title p{ text-align:center; font-size:14px;}
 	

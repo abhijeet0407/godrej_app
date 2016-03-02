@@ -56,11 +56,19 @@
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
         
-    
+         
+        <script>
+    $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+		$.mobile.allowCrossDomainPages = true;
+    });
+</script> 
        
               <script src="js/jquery.fancybox.js"></script>
      
-       
+        <script src="js/jquerymobile.js"></script>
         
     </head>
     <body>
@@ -141,7 +149,7 @@
     <!--comment modal--> 
     	<!-- Modal -->
 <div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog" style="z-index: 9999 !important;">
+  <div class="modal-dialog" style="z-index: 99 !important;">
 
     <!-- Modal content-->
     <div class="modal-content">
@@ -335,9 +343,49 @@
 				
 			
 				var postid='';
+				var off=0;
+				load_list(off);
+				$( document ).on( "mobileinit", function() {
+				  $.mobile.loader.prototype.options.text = "loading";
+				  $.mobile.loader.prototype.options.textVisible = false;
+				  $.mobile.loader.prototype.options.theme = "a";
+				  $.mobile.loader.prototype.options.html = "";
+				});
+				$(document).on("scrollstop", checkScroll);
+				function checkScroll() {
+					var screenHeight = $.mobile.getScreenHeight(),
+    					contentHeight = $(".container").outerHeight(),
+    					scrolled = $(window).scrollTop()
+						 scrollEnd = contentHeight - screenHeight;
+						 
+						 if(scrolled >= scrollEnd){
+							  addMore();
+						 }
+						 
+						 
+				}
 				
-				load_list();
 				
+				function addMore() {
+				  $(document).off("scrollstop");
+				  $.mobile.loading("show", {
+					text: "loading more..",
+					textVisible: true
+				  });
+				  if($('.discussion-main-wrp').length){
+				  off=$('.discussion-main-wrp').length;
+				  }
+				  load_list(off)
+				  
+				  setTimeout(function() {
+    
+   			 $.mobile.loading("hide");
+    $(document).on("scrollstop", checkScroll);
+  }, 500);
+				  
+				  
+  
+				}
 				
 				
 				
@@ -426,9 +474,9 @@
     items.push( "<li id='" + key + "'>" + val + "</li>" );
   });*/
   
-function load_list(){
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
-						
+function load_list(off){
+  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid')+'&off='+off, function(data){
+							console.log('ttt'+data);
 						 posts=data;
 					//console.log(posts)
 					});
@@ -502,14 +550,35 @@ function load_list(){
             '<div class="discussion-like-wrp">'+
             
             '<span  class="like-btn wrp-icon" rel="'+this.postid+'"><i class="fa '+fav_like+' linke-icon like-count"></i><span>'+this.likes_count+'</span></span> ' +
-            '<span  class="wrp-icon comment-btn" rel="'+this.postid+'" bel="'+this.likes_count+'"><i class="fa fa-comment linke-icon comment_count"></i><span class="ccc">'+this.comments_count+'</span></span>'+
+            '<span  class="wrp-icon comment-btn" rel="'+this.postid+'" bel="'+this.likes_count+'"><i class="fa fa-comment linke-icon comment_count"></i><span>'+this.comments_count+'</span></span>'+
             
             '<div class="clearfix"></div>'+
             '</div>'+
             
             '</div>')
 					
-				
+					/*$('#posts').append(' <div class="col-xs-12 col-sm-12">'
+            +'<div class="well well-sm">'
+               +'<div class="row">'
+                    +'<div class="col-xs-4 col-md-4 text-center">'
+                        +'<img src="http://www.himanshuverma.co.in/godrej/uploads/'+this.post_image+'" alt="bootsnipp"'
+                            +'class="img-rounded img-responsive" />'
+                    +'</div>'
+                    +'<div class="col-xs-8 col-md-8 section-box">'
+                       + '<div class="post_title">'+this.title+''
+                        +'</div>'
+                        +'<p class="post_description">'+this.description+'</p>'
+                       + '<hr />'
+                        +'<div class="row rating-desc">'
+                            +'<div class="col-md-12">'
+                               + '<a href="javascript:void(0)" class="like-btn" rel="'+this.postid+'" target="_blank"><span class="glyphicon glyphicon-heart like-count"></span>'+this.likes_count+'</a><span class="separator">|</span>'
+                               + '<a href="javascript:void(0)" class="comment-btn" rel="'+this.postid+'"  target="_blank"><span class="glyphicon glyphicon-comment"></span><span class="comment_count">('+this.comments_count+')</span></a>'
+                            +'</div>'
+                       + '</div>'
+                    +'</div>'
+               + '</div>'
+            +'</div>'
+       + '</div>')*/
 					
 					})
 			})
@@ -660,17 +729,6 @@ function load_list(){
 											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
 											  $('.new_comment').val('');
 											  display_comments(postid);
-											  //
-											  	var current_count=parseInt($('.comment-btn[rel="'+postid+'"] span.ccc').text());
-												if(isNaN(current_count)){
-													
-												}else{
-													current_count=current_count+1;
-													$('.comment-btn[rel="'+postid+'"] span.ccc').text(current_count);
-												}
-											  
-											  
-											  //
 											  
 											  },
 										  error:function(){
@@ -730,7 +788,6 @@ function load_list(){
 					
 					})
 					
-				
 					
 											 }//if comment not zero
 					

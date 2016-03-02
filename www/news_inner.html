@@ -40,9 +40,7 @@
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
-        <script src="js/angular/angular.min.js"></script>
-        <script src="js/ionic.min.js"></script>
-        <script src="js/ionic-angular.min.js"></script>
+       
         
     </head>
     <body>
@@ -55,7 +53,7 @@
 <ul class="top-link">
 <li class="drop-link"><a class="" href="profile_edit.html"><i class="fa fa-user"></i>&nbsp;&nbsp;My Profile</a></li>
 <li class="drop-link"><a class="" href="Itinerary.html"><i class="fa fa-map-o"></i>&nbsp;&nbsp;Itinerary</a></li>
-<li class="drop-link"><a class="" href="news.html"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Update</a></li>
+<li class="drop-link"><a class="" href="news.html"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Updates</a></li>
 <li class="drop-link"><a class="" href="discussion_board.html"><i class="fa fa-comment"></i>&nbsp;&nbsp;Discussion Board</a></li>
 <li class="drop-link"><a class="" href="gallery.html"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Gallery</a></li>
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
@@ -72,7 +70,7 @@
       <div class="row">
       	<div class="col-sm-12 col-xs-12" >
         	
-             <div class="login_title"><span class="title-icon news-icon">News</span><span class="back-btn"><a href="news.html"><img src="img/back-btn_03.jpg" width="30"/></a></span></div>
+             <div class="login_title"><span class="title-icon news-icon">News & Updates</span><span class="back-btn"><a href="news.html"><img src="img/back-btn_03.jpg" width="30"/></a></span></div>
         
 
             <div class="discussion-main-wrp">
@@ -97,11 +95,11 @@
             <img src="img/big-upload-pic_06.jpg"/>
             </div>
             
-             <span class="news_time"><i class="fa fa-calendar"></i> 9th Feb, 2016</span>
+             <span class="news_time"><i class="fa fa-calendar"></i> </span>
             
             <div class="discussion-board-desc-wrp inner-desc-discussion-txt">
             
-            <p>Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum dolo Lorem ipsum dolor sit amet Lorem ipsum doloLorem ipsum dolor sit ametLorem ipsum doloLorem ipsum dolor sit amet Lorem ipsum dolo</p>
+            <p></p>
             
             </div>
             
@@ -119,27 +117,7 @@
     
     <!--comment modal--> 
     	<!-- Modal -->
-<div id="myModal" class="modal fade" role="dialog">
-  <div class="modal-dialog">
 
-    <!-- Modal content-->
-    <div class="modal-content">
-      <div class="modal-header">
-        <button type="button" class="close" data-dismiss="modal">&times;</button>
-        <h4 class="modal-title">Comments</h4>
-      </div>
-      <div class="modal-body">
-        <input type="text" class="new_comment form-control"  />
-        <span class="comment_validation">Please enter comment to submit</span>
-      	 <input type="button" class="btn btn-xs btn-danger comment_submit_btn" onKeyUp="keyupFunction()" /> 
-         <ul class="comments_list_ul">
-         </ul>
-        
-      </div>
-      </div>
-
-  </div>
-</div>
     
     <!--comment modal end-->
        
@@ -147,61 +125,7 @@
         <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
-         <script type="text/javascript">
-		var statusDom = document.querySelector('#status');
-		 function getImage() {
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto, function(message) {
-			alert('get picture failed');
-		},{
-			quality: 50, 
-			destinationType: navigator.camera.DestinationType.FILE_URI,
-			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-		}
-            );
- 
-        }
- 
-        function uploadPhoto(imageURI) {
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
-			document.getElementById("ft-prog").style.display="block";
-			ft.onprogress = function(progressEvent) {
-				
-		    var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-			document.getElementById("ft-prog").value = perc;
-				//statusDom.innerHTML = perc + "% loaded...";	
-			}
-			
-        }
- 			
-        function win(r) {
-        /*    console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);*/
-			document.getElementById("ft-prog").value =100;
-			
-			document.getElementById("profile_pic").value=r.response;
-			//document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
-           // alert(r.response);
-        }
- 
-        function fail(error) {
-            alert("An error has occurred: Code = "+ error.code);
-        }
-		</script>
+       
         <script type="text/javascript">
 		
 			$(document).ready(function(){
@@ -216,264 +140,40 @@
 		
 				});
 				
-			$('#profile_id').val(localStorage.getItem('userid'));
-			
-			//alert(localStorage.getItem('userid'));
-			////////////////
-			
-			$('.signin_btn').click(function(){
-					$('.failed').hide();
-					$('.processing').hide();
-					$('.success').hide();
-					
-					 $("#sign_up").validate({
-      				  submitHandler:function (form){
-						  	///
-									$('.signin_btn').attr('disabled','disabled');
-									$('.processing').show();
-										var signup_data=$('#sign_up').serialize();
-										$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/add_post.php',
-										  data:signup_data,
-										  success:function(data){
-											  if(data=='1'){
-												  $('.processing').hide();
-												  
-												  $('.login_input').val('');
-												  $('.success').show();
-												  setTimeout(function(){ window.location.href='discussion_board.html' }, 2000);	
-											  }else{
-												  $('.processing').hide();
-												  $('.failed').show();
-												  $('.signin_btn').removeAttr('disabled');
-											  }
-											  
-											  
-											  },
-										  error:function(){
-											$('.failed').show();
-											$('.signin_btn').removeAttr('disabled');
-											},
-										  fail: function(){
-											$('.failed').show();
-											$('.signin_btn').removeAttr('disabled');
-										  },
-										  timeout: 40000 
-									  
-									  })
-							
-							
-							
-							
-							////
-						  
-						  
-						  
-                     
-					 	 }
-                      });
-					
 				
+				 var post_id = window.location.hash.substr(1);
+				 load_list()
+				function load_list(){	
+		var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/news.php?id='+post_id, function(data){
+							
+						 posts=data;
 					
+					});
+  var iti_day='';
+  			posts_complete.complete(function() {
+				
+				$.each(posts,function(){
+				
+					$('.discussion-topic-title p').text(this.title);
+					$('.upload-pic-big img').attr('src','http://himanshuverma.co.in/godrej/uploads/'+this.image);
+				$('.discussion-board-desc-wrp').html(this.description)
+				$('.news_time').append(this.news_date)
 				})
 				
-			
-			
-			///////////
-				//setTimeout(function(){ window.location.href='login.html' }, 2000);	
-	/*			$.getJSON( "ajax/test.json", function( data ) {
-  var items = [];
-  $.each( data, function( key, val ) {
-    items.push( "<li id='" + key + "'>" + val + "</li>" );
-  });*/
-  
-  
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
-						//	console.log(data);
-						 posts=data;
-					console.log(posts)
-					});
-  
-  			posts_complete.complete(function(data) {
-				//console.log(size);
-				$.each(posts,function(){
-					$('#posts').append(' <div class="col-xs-12 col-sm-12">'
-            +'<div class="well well-sm">'
-               +'<div class="row">'
-                    +'<div class="col-xs-4 col-md-4 text-center">'
-                        +'<img src="http://www.himanshuverma.co.in/godrej/uploads/'+this.post_image+'" alt="bootsnipp"'
-                            +'class="img-rounded img-responsive" />'
-                    +'</div>'
-                    +'<div class="col-xs-8 col-md-8 section-box">'
-                       + '<div class="post_title">'+this.title+''
-                        +'</div>'
-                        +'<p class="post_description">'+this.description+'</p>'
-                       + '<hr />'
-                        +'<div class="row rating-desc">'
-                            +'<div class="col-md-12">'
-                               + '<a href="javascript:void(0)" class="like-btn" rel="'+this.postid+'" target="_blank"><span class="glyphicon glyphicon-heart like-count"></span>'+this.likes_count+'</a><span class="separator">|</span>'
-                               + '<a href="javascript:void(0)" class="comment-btn" rel="'+this.postid+'"  target="_blank"><span class="glyphicon glyphicon-comment"></span><span class="comment_count">('+this.comments_count+')</span></a>'
-                            +'</div>'
-                       + '</div>'
-                    +'</div>'
-               + '</div>'
-            +'</div>'
-       + '</div>')
-					
-					})
+				var width=$('.itenat-pic-wrp').width();
+				$('.itenat-pic-wrp').height(width);
+				
 			})
   
   
-  
-  		$('body').on('click','.like-btn',function(){
-		$(this)	.unbind('click');
-		var status='like';
-		var postid=$(this)	.attr('rel');
-		var userid=	localStorage.getItem('userid');
-		var prev_count_no=parseInt($(this).text());
-		var count_no=parseInt($(this).text());
-		if($(this).hasClass('glyphicon-heart')){
-		$(this).removeClass('glyphicon-heart');
-		$(this).addClass('glyphicon-heart-empty');
-		status='unlike';
-			if(count_no>0){
-				count_no=count_no-1;	
-				$(this).text(count_no);
-				
-			}
-		}else{
-			$(this).removeClass('glyphicon-heart-empty');
-			$(this).addClass('glyphicon-heart');
-			count_no=count_no+1;	
-			$(this).text(count_no);
-			$(this).bind('click');
-		}
-		
-		
-		//
-			
-			$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/like_process.php',
-										  data:'postid='+postid+'&userid='+userid+'&status='+status,
-										  success:function(data){
-											  $('a.like-btn[rel="'+postid+'"]').bind('click');
-											  
-											  
-											  },
-										  error:function(){
-											
-											$('a.like-btn[rel="'+postid+'"]').bind('click');
-											},
-										  fail: function(){
-											$('a.like-btn[rel="'+postid+'"]').bind('click');
-											
-										  },
-										  timeout: 40000 
-									  
-									  })
-			
-			
-			//
-		
-		
-			
-		})	
-		
-		
-		///
-		
-		$('body').on('click','.comment-btn',function(){
-			$('a.comment-btn[rel="'+postid+'"]').unbind('click');
-			var postid=$(this).attr('rel');
-			$('.comment_submit_btn').attr('rel',postid);
-			
-									$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/comment_show.php',
-										  data:'postid='+postid,
-										  success:function(data){
-											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
-											  
-											  
-											  },
-										  error:function(){
-											
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											},
-										  fail: function(){
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											
-										  },
-										  timeout: 40000 
-									  
-									  })
-				
-			
-		})
+	}
+  		
 		
 		
 		
-		///
 		
-		
-		
-		$('body').on('click','.comment_submit_btn',function(){
-			var postid=$(this).attr('rel');
-			if($('.new_comment').val()==''){
-					$('.comment_validation').show();
-			}else{
-				$('.comment_validation').hide();
-				
-				var comment_text=$('.new_comment').val();
-				
-				/////////
-				
-				
-					$.ajax({
-									  	  crossDomain:true,	
-										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/insert_comment.php',
-										  data:'postid='+postid+'&userid='+userid+'&comment='+comment_text,
-										  success:function(data){
-											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
-											  $('.new_comment').val();
-											  
-											  },
-										  error:function(){
-											
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											},
-										  fail: function(){
-											$('a.comment-btn[rel="'+postid+'"]').bind('click');
-											
-										  },
-										  timeout: 40000 
-									  
-									  })
-				
-				
-				
-				///////
-				
-				
-			}
-			
-		})
-		
-		function keyupFunction(){
-			if($('.new_comment').val()==''){
-					$('.comment_validation').show();
-			}else{
-				$('.comment_validation').hide();
-			}
-			
-		}
-		
+		///////////////////////////////////////
+	
   
   
 			})

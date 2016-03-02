@@ -33,7 +33,7 @@
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
 			
-
+#nav{    width: 484px !important; }
 
 
 
@@ -47,9 +47,7 @@
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
-        <script src="js/angular/angular.min.js"></script>
-        <script src="js/ionic.min.js"></script>
-        <script src="js/ionic-angular.min.js"></script>
+      
         
     </head>
     <body>
@@ -62,7 +60,7 @@
 <ul class="top-link">
 <li class="drop-link"><a class="" href="profile_edit.html"><i class="fa fa-user"></i>&nbsp;&nbsp;My Profile</a></li>
 <li class="drop-link"><a class="" href="Itinerary.html"><i class="fa fa-map-o"></i>&nbsp;&nbsp;Itinerary</a></li>
-<li class="drop-link"><a class="" href="news.html"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Update</a></li>
+<li class="drop-link"><a class="" href="news.html"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Updates</a></li>
 <li class="drop-link"><a class="" href="discussion_board.html"><i class="fa fa-comment"></i>&nbsp;&nbsp;Discussion Board</a></li>
 <li class="drop-link"><a class="" href="gallery.html"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Gallery</a></li>
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
@@ -94,6 +92,7 @@
         <li><a href="#" class="active">day 1</a></li>
         <li><a href="#">day 2</a></li>
         <li><a href="#">day 3</a></li>
+        <li><a href="#">day 4</a></li>
         
     </ul>
     
@@ -128,6 +127,23 @@
         </div>
         
         <div class="Itinerary-inner" id="tab3">
+           
+           <div class="row">
+           
+            
+            
+            
+            
+            
+            
+           </div>
+           
+           <div class="clearfix"></div>
+        </div>
+        
+        
+        
+        <div class="Itinerary-inner" id="tab4">
            
            <div class="row">
            
@@ -261,15 +277,10 @@ $('a#ham-menu, a#ham-menu-close').click(function () {
 				
 					$('#tab'+this.iti_day+' .row').append('<div class="inner-itenanry-box">'+
             
-            '<div class="col-md-3 col-sm-3 col-xs-3">'+
-            '<div class="itenat-pic-wrp" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.image+');"  > '+
-				
-           ' </div>'+
-           ' </div>'+
-            
-            '<div class="col-md-9 col-sm-9 col-xs-9">'+
+           
+            '<div class="col-md-12 col-sm-12 col-xs-12">'+
             '<div class="itenar-desc-wrp">'+
-            '<span class="clock-icon">'+this.from_time+' - '+this.to_time+'</span>'+this.description+'</div>'+
+            '<span class="clock-icon">'+this.from_time+' - '+this.to_time+'</span><span class="iti_desc" style="margin-left:15px;">'+this.description+'</span></div>'+
             '</div>'+
             '<div class="clearfix"></div>'+
             '</div>');

@@ -32,7 +32,6 @@
 			.post_title{ font-size:20px;}
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
-			
 
 .news_heading,.news_description,.news_time{ color:#34a1da; font-size:14px;}
 .news_heading{ font-size:16px;}
@@ -84,49 +83,18 @@
       	<div class="col-sm-12 col-xs-12" >
         	
             
-        <div class="login_title"><span class="title-icon about-icon">About Pune</span></div>
+        <div class="login_title"><span class="title-icon things-icon">Things to do</span></div>
    
         
         <div class="itenar-wrp news-wrp">
             
+         <h3></h3>
+           
+           
+            
+           
+
         
-           
-           
-            
-            <!--new-->
-            <div class="discussion-main-wrp">
-            
-            <div class="top-pro-pic-wrp">
-          
-            
-           
-            <div class="discussion-topic-title">
-            <p></p>
-            </div>
-           
-            <div class="clearfix"></div>
-            
-            </div>
-            
-            
-            <div class="upload-pic-big">
-            
-            </div>
-            
-            <div class="about-desc-wrp">
-            
-      
-            
-            
-            
-            
-            </div>
-            
-            
-            
-            </div>
-            <!--new end-->
-  
         <div class="clearfix"></div> 
         </div>       
         </div> 
@@ -142,13 +110,13 @@
         <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
-       
+        
         <script type="text/javascript">
-		var post='';
+		
 			$(document).ready(function(){
 				$('body').on('click','.discussion-main-wrp',function(){
 				
-				window.location.href='#';
+				window.location.href='things_inner.html';
 				
 				})
 				
@@ -216,34 +184,75 @@ $('a#ham-menu, a#ham-menu-close').click(function () {
 			//alert(localStorage.getItem('userid'));
 			////////////////
 			
-			$('body').on('click','.inner-itenanry-box',function(){
 				
-				window.location.href='news_inner.html';
-				
-				})
-			
-			
-			
-			
-	
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/about.php', function(data){
-						//	console.log(data);
+		/////////////////////////////////////////
+		var posts_complete2=$.getJSON('http://himanshuverma.co.in/godrej/things_title.php', function(data){
+							
+						 posts2=data;
+					
+					});
+					
+					posts_complete2.complete(function() {
+							$.each(posts2,function(){
+								$('.news-wrp h3').text(this.title)
+							})
+					})
+		
+		var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/things.php', function(data){
+							
 						 posts=data;
 					
 					});
-  
-  			posts_complete.complete(function(data) {
-				//console.log(size);
+  var iti_day='';
+  			posts_complete.complete(function() {
+				
 				$.each(posts,function(){
-					$('.discussion-topic-title p').text(this.title);
-					$('.upload-pic-big').html('<img src="http://himanshuverma.co.in/godrej/uploads/'+this.image+'" />');
-					$('.about-desc-wrp').html(this.description).text();
+				
+					$('.news-wrp').append('<div class="discussion-main-wrp">'+
+            
+            '<div class="top-pro-pic-wrp">'+
+          
+           
+           
+            '<div class="discussion-topic-title">'+
+            '<p>'+this.title+'</p>'+
+            '</div>'+
+           
+            '<div class="clearfix"></div>'+
+            
+           ' </div>'+
+            
+            
+           ' <div class="upload-pic-big"><img src="http://himanshuverma.co.in/godrej/uploads/'+this.image+'"</div>'+
+            
+            '<div class="discussion-board-desc-wrp">'+this.description+'</div>'+
+            
+            
+            
+            '</div>');
+				
+				
 				})
+				
+				var width=$('.itenat-pic-wrp').width();
+				$('.itenat-pic-wrp').height(width);
+				
 			})
   
   
   
   		
+		
+		
+		
+		
+		///////////////////////////////////////		
+				
+				
+			
+			
+		
+  
   
 			})
 		 </script>

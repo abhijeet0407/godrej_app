@@ -20,7 +20,7 @@
             }
 			
 			
-			.login_title span.title-icon{ width:180px !important;}
+			.login_title span.title-icon{ width:135px !important;}
 			
 			.glyphicon { margin-right:5px;}
 			.section-box h2 { margin-top:0px;}
@@ -34,9 +34,10 @@
 			
 			
 
+
 .news_heading,.news_description,.news_time{ color:#34a1da; font-size:14px;}
 .news_heading{ font-size:16px;}
-.news-wrp .inner-itenanry-box{ border-bottom:1px solid #34a1da; padding-bottom:15px;}
+.news-wrp .inner-itenanry-box{ border-bottom:1px solid #f4fbfe; padding-bottom:15px;}
 
 			
         </style>
@@ -45,12 +46,20 @@
         <link rel="stylesheet" href="css/responsive.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
          <link rel="stylesheet" href="css/font-awesome.css">
-
+<link rel="stylesheet" href="css/jquerymobile.css" />
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
-        <script src="js/angular/angular.min.js"></script>
-        <script src="js/ionic.min.js"></script>
-        <script src="js/ionic-angular.min.js"></script>
+        
+        <script>
+    $(document).bind('mobileinit',function(){
+        $.mobile.changePage.defaults.changeHash = false;
+        $.mobile.hashListeningEnabled = false;
+        $.mobile.pushStateEnabled = false;
+		$.mobile.allowCrossDomainPages = true;
+    });
+</script> 
+        
+        <script src="js/jquerymobile.js"></script>
         
     </head>
     <body>
@@ -84,49 +93,24 @@
       	<div class="col-sm-12 col-xs-12" >
         	
             
-        <div class="login_title"><span class="title-icon about-icon">About Pune</span></div>
+        <div class="login_title"><span class="title-icon news-icon">News and Updates</span></div>
    
         
         <div class="itenar-wrp news-wrp">
             
-        
+         <div class="row"> 
            
-           
-            
-            <!--new-->
-            <div class="discussion-main-wrp">
-            
-            <div class="top-pro-pic-wrp">
           
             
-           
-            <div class="discussion-topic-title">
-            <p></p>
-            </div>
-           
-            <div class="clearfix"></div>
-            
-            </div>
-            
-            
-            <div class="upload-pic-big">
-            
-            </div>
-            
-            <div class="about-desc-wrp">
-            
-      
-            
             
             
             
             </div>
-            
-            
-            
-            </div>
-            <!--new end-->
-  
+
+
+         
+        
+        
         <div class="clearfix"></div> 
         </div>       
         </div> 
@@ -142,32 +126,76 @@
         <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
-       
+         
         <script type="text/javascript">
-		var post='';
+		
 			$(document).ready(function(){
-				$('body').on('click','.discussion-main-wrp',function(){
 				
-				window.location.href='#';
+			
 				
-				})
+				
+				
+				var off=0;
+				load_list(off);
+				$( document ).on( "mobileinit", function() {
+				  $.mobile.loader.prototype.options.text = "loading";
+				  $.mobile.loader.prototype.options.textVisible = false;
+				  $.mobile.loader.prototype.options.theme = "a";
+				  $.mobile.loader.prototype.options.html = "";
+				});
+				$(document).on("scrollstop", checkScroll);
+				function checkScroll() {
+					var screenHeight = $.mobile.getScreenHeight(),
+    					contentHeight = $(".container").outerHeight(),
+    					scrolled = $(window).scrollTop()
+						 scrollEnd = contentHeight - screenHeight;
+						 
+						 if(scrolled >= scrollEnd){
+							  addMore();
+						 }
+						 
+						 
+				}
+				
+				
+				function addMore() {
+				  $(document).off("scrollstop");
+				  $.mobile.loading("show", {
+					text: "loading more..",
+					textVisible: true
+				  });
+				  off=$('.inner-itenanry-box').length;
+				  load_list(off)
+				  
+				  setTimeout(function() {
+    
+   			 $.mobile.loading("hide");
+    $(document).on("scrollstop", checkScroll);
+  }, 500);
+				  
+				  
+  
+				}
+				
+				
+				
 				
 				$('#tab-content div.Itinerary-inner').hide();
-$('#tab-content div.Itinerary-inner:first').show();
+				$('#tab-content div.Itinerary-inner:first').show();
 
-$('#nav li').click(function() {
-    $('#nav li a').removeClass("active");
-    $(this).find('a').addClass("active");
-    $('#tab-content div.Itinerary-inner').hide();
-
-    var indexer = $(this).index(); //gets the current index of (this) which is #nav li
-    $('#tab-content div.Itinerary-inner:eq(' + indexer + ')').fadeIn(); //uses whatever index the link has to open the corresponding box 
-});
-
-
+				$('#nav li').click(function() {
+					$('#nav li a').removeClass("active");
+					$(this).find('a').addClass("active");
+					$('#tab-content div.Itinerary-inner').hide();
+				
+					var indexer = $(this).index(); //gets the current index of (this) which is #nav li
+					$('#tab-content div.Itinerary-inner:eq(' + indexer + ')').fadeIn(); //uses whatever index the link has to open the corresponding box 
+				});
 
 
-$('a#ham-menu, a#ham-menu-close').click(function () {
+
+
+				$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
 								val = $navigacia.css('left') === '100%' ? '0px' : '100%';
 						$navigacia.animate({
@@ -223,28 +251,55 @@ $('a#ham-menu, a#ham-menu-close').click(function () {
 				})
 			
 			
-			
-			
-	
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/about.php', function(data){
-						//	console.log(data);
+		/////////////////////////////////////////
+		
+	function load_list(off){	
+		var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/news.php?off='+off, function(data){
+							
 						 posts=data;
 					
 					});
-  
-  			posts_complete.complete(function(data) {
-				//console.log(size);
+  var iti_day='';
+  			posts_complete.complete(function() {
+				
 				$.each(posts,function(){
-					$('.discussion-topic-title p').text(this.title);
-					$('.upload-pic-big').html('<img src="http://himanshuverma.co.in/godrej/uploads/'+this.image+'" />');
-					$('.about-desc-wrp').html(this.description).text();
+				
+					$('.news-wrp .row').append('<div class="inner-itenanry-box">'+
+            
+            '<div class="col-md-3 col-sm-3 col-xs-3">'+
+            '<div class="itenat-pic-wrp" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.image+');" >'+
+            
+           ' </div>'+
+           ' </div>'+
+            
+           ' <div class="col-md-9 col-sm-9 col-xs-9">'+
+          '  <div class="itenar-desc-wrp news_wrp">'+
+           ' <span class="news_heading">'+this.title+'</span>'+
+          '  <div class="news_description">'+this.description+'</div>'+
+          '  <span class="news_time"><i class="fa fa-calendar"></i> '+this.news_date+'</span>'+
+          '  </div>'+
+          '  </div>'+
+          '  <div class="clearfix"></div>'+
+          '  </div>');
+				
+				
 				})
+				
+				var width=$('.itenat-pic-wrp').width();
+				$('.itenat-pic-wrp').height(width);
+				
 			})
   
   
+	}
+  		
+		
+		
+		
+		
+		///////////////////////////////////////
   
   		
-  
 			})
 		 </script>
 

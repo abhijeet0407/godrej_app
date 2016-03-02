@@ -20,7 +20,7 @@
             }
 			
 			
-			.login_title span.title-icon{ width:135px !important;}
+			.login_title span.title-icon{ width:235px !important;}
 			
 			.glyphicon { margin-right:5px;}
 			.section-box h2 { margin-top:0px;}
@@ -50,16 +50,7 @@
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
         
-        <script>
-    $(document).bind('mobileinit',function(){
-        $.mobile.changePage.defaults.changeHash = false;
-        $.mobile.hashListeningEnabled = false;
-        $.mobile.pushStateEnabled = false;
-		$.mobile.allowCrossDomainPages = true;
-    });
-</script> 
-        
-        <script src="js/jquerymobile.js"></script>
+
         
     </head>
     <body>
@@ -72,7 +63,7 @@
 <ul class="top-link">
 <li class="drop-link"><a class="" href="profile_edit.html"><i class="fa fa-user"></i>&nbsp;&nbsp;My Profile</a></li>
 <li class="drop-link"><a class="" href="Itinerary.html"><i class="fa fa-map-o"></i>&nbsp;&nbsp;Itinerary</a></li>
-<li class="drop-link"><a class="" href="news.html"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Update</a></li>
+<li class="drop-link"><a class="" href="news.html"><i class="fa fa-newspaper-o"></i>&nbsp;&nbsp;News and Updates</a></li>
 <li class="drop-link"><a class="" href="discussion_board.html"><i class="fa fa-comment"></i>&nbsp;&nbsp;Discussion Board</a></li>
 <li class="drop-link"><a class="" href="gallery.html"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Gallery</a></li>
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
@@ -93,7 +84,7 @@
       	<div class="col-sm-12 col-xs-12" >
         	
             
-        <div class="login_title"><span class="title-icon news-icon">News</span></div>
+        <div class="login_title"><span class="title-icon news-icon">News and Updates</span></div>
    
         
         <div class="itenar-wrp news-wrp">
@@ -135,49 +126,8 @@
 				
 				
 				
-				var off=0;
-				load_list(off);
-				$( document ).on( "mobileinit", function() {
-				  $.mobile.loader.prototype.options.text = "loading";
-				  $.mobile.loader.prototype.options.textVisible = false;
-				  $.mobile.loader.prototype.options.theme = "a";
-				  $.mobile.loader.prototype.options.html = "";
-				});
-				$(document).on("scrollstop", checkScroll);
-				function checkScroll() {
-					var screenHeight = $.mobile.getScreenHeight(),
-    					contentHeight = $(".container").outerHeight(),
-    					scrolled = $(window).scrollTop()
-						 scrollEnd = contentHeight - screenHeight;
-						 
-						 if(scrolled >= scrollEnd){
-							  addMore();
-						 }
-						 
-						 
-				}
 				
-				
-				function addMore() {
-				  $(document).off("scrollstop");
-				  $.mobile.loading("show", {
-					text: "loading more..",
-					textVisible: true
-				  });
-				  off=$('.inner-itenanry-box').length;
-				  load_list(off)
-				  
-				  setTimeout(function() {
-    
-   			 $.mobile.loading("hide");
-    $(document).on("scrollstop", checkScroll);
-  }, 500);
-				  
-				  
-  
-				}
-				
-				
+				load_list();
 				
 				
 				$('#tab-content div.Itinerary-inner').hide();
@@ -244,17 +194,20 @@
 			//alert(localStorage.getItem('userid'));
 			////////////////
 			
-			$('body').on('click','.inner-itenanry-box',function(){
+		
 				
-				window.location.href='news_inner.html';
 				
-				})
+				  $('body').on('click','.inner_page',function(){
+	  var rel=$(this).attr('rel');
+	  window.location.href='news_inner.html#'+rel;
+	  
+	  })
 			
 			
 		/////////////////////////////////////////
 		
-	function load_list(off){	
-		var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/news.php?off='+off, function(data){
+	function load_list(){	
+		var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/news.php', function(data){
 							
 						 posts=data;
 					
@@ -263,19 +216,22 @@
   			posts_complete.complete(function() {
 				
 				$.each(posts,function(){
-				
+				var descrip=this.description;
+					if(descrip.length>80){
+					descrip=descrip.substring(0, 80)+'...<span class="read_more inner_page" rel="'+this.postid+'">Read more</span>';	
+					}
 					$('.news-wrp .row').append('<div class="inner-itenanry-box">'+
             
             '<div class="col-md-3 col-sm-3 col-xs-3">'+
-            '<div class="itenat-pic-wrp" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.image+');" >'+
+            '<div class="itenat-pic-wrp inner_page" rel="'+this.id+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.image+');" >'+
             
            ' </div>'+
            ' </div>'+
             
            ' <div class="col-md-9 col-sm-9 col-xs-9">'+
           '  <div class="itenar-desc-wrp news_wrp">'+
-           ' <span class="news_heading">'+this.title+'</span>'+
-          '  <div class="news_description">'+this.description+'</div>'+
+           ' <span class="news_heading inner_page" rel="'+this.id+'">'+this.title+'</span>'+
+          '  <div class="news_description inner_page" rel="'+this.id+'">'+descrip+'</div>'+
           '  <span class="news_time"><i class="fa fa-calendar"></i> '+this.news_date+'</span>'+
           '  </div>'+
           '  </div>'+
