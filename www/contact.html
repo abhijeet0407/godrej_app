@@ -97,7 +97,7 @@
       	<div class="col-sm-12 col-xs-12 bluehead" >
         	
             
-        <div class="login_title"><span class="title-icon profile-icn">CONTACT</span></div>
+        <div class="login_title"><span class="title-icon profile-icn">CONTACT US</span></div>
    </div>
         	<div class="col-sm-12 col-xs-12" >
         <div class="row">
@@ -116,19 +116,19 @@
          
           <div class="inner-profile-form-wrp">
          <label>Name</label>
-         <input data-msg-required="Name Required" readonly required type="text" name="name" value="Karthik Sholay" />
+         <input data-msg-required="Name Required" readonly required type="text" name="name" value="" />
          </div>
          
         <div class="inner-profile-form-wrp">
          <label>e-mail</label>
-         <input type="text" name="email" value="karthiks@godrej.com" readonly />
+         <input type="text" name="email" value="" readonly />
          </div>
          
-           <div class="inner-profile-form-wrp">
+        <!--   <div class="inner-profile-form-wrp">
          <label>Phone No. </label>
-         <input type="text" value="9076474998" name="phone" readonly />
+         <input type="text" value="" name="phone"  />
          </div>
-         
+         -->
           <div class="inner-profile-form-wrp" style="height:auto; padding-bottom:10px;">
          <label>Message</label>
          <textarea type="text" name="message" class="form-control" data-msg-required="Message Required" required ></textarea>
@@ -167,6 +167,28 @@
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
+	
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, false);
+                }
+
+                function backButtonCallback() {
+                    navigator.notification.confirm('do you want to exit the app?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
+	
 	
 	
 		
@@ -227,6 +249,16 @@
 			
 			
 				$('#profile_id').val(localStorage.getItem('userid'));
+				
+				
+				if(localStorage.getItem('name')!=null){
+					$('input[name="name"]').val(localStorage.getItem('name'));
+					$('.name_text').text(localStorage.getItem('name'));
+				}
+				
+				if(localStorage.getItem('email')!=null){
+					$('input[name="email"]').val(localStorage.getItem('email'));
+				}
 				
 			
 				$('.signin_btn').click(function(){

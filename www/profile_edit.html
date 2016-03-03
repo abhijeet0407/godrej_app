@@ -35,12 +35,19 @@
 
 
 .signin_btn{ background-image:none !important;}
-.profile_edit_icon{ width:50px; height:50px; border-radius:25px;  position:absolute; right:20px; top:20px;}
+.profile_edit_icon{ width:50px; height:50px; border-radius:25px;  position:absolute; right:20px; top:60px;}
 .profile_edit_icon img{ width:100%;}
 .pencil{ margin: 0 auto;
     font-size: 26px !important;
     padding-left: 14px;
-    padding-top: 12px; color:#40abe1 }			
+    padding-top: 12px; color:#40abe1 }	
+	.edit_text{ 
+	color:#fff; 
+	font-size:10px;     
+	position: absolute;
+    bottom: -14px;
+    left: 16px;
+    }		
         </style>
         
         <link rel="stylesheet" href="css/main.css">
@@ -103,7 +110,7 @@
         <div class="top-profile-wrp">
         
         <div class="center-line-wrp">
-        	<div class="profile_edit_icon" onclick="getImage();"><img src="img/profile-deit-icon_03.png" /></div>
+        	<div class="profile_edit_icon" onclick="getImage();"><img src="img/profile-deit-icon_03.png" /><span class="edit_text">Edit</span></div>
         &nbsp;
         </div>
         
@@ -111,6 +118,7 @@
         <div id="profile_img" class="profile-pic-circle">
         
         </div>
+        
         </div>
         
         <div class="profile-name-wrp">
@@ -157,14 +165,14 @@
          </div>
          
          <div class="inner-profile-form-wrp">
-         <label>Gender</label>
+         <label>Gender <sup>*</sup></label>
          <select class="form-control" name="gender" required data-msg-required="Gender Required"><option value="">Select Gender</option><option value="Male">Male</option><option value="Female">Female</option></select>
          </div>
          
          
          <div class="inner-profile-form-wrp">
-         <label>Date of Birth</label>
-         <input type="text" name="dob" id="datepicker" data-msg-required="Date of birth Required" required/>
+         <label>Date of Birth <sup>*</sup></label>
+         <input type="text" name="dob" id="datepicker" placeholder="DD/MM/YYYY" data-msg-required="Date of birth Required" required/>
          </div>
          
           <div class="inner-profile-form-wrp">
@@ -173,8 +181,29 @@
          </div>
          
           <div class="inner-profile-form-wrp">
-         <label>location</label>
-         <input type="text" name="designation" data-msg-required="Location Required" required/>
+         <label>location <sup>*</sup></label>
+         <select type="text" name="designation" class="form-control" data-msg-required="Location Required" required>
+         <option value="">Select Location</option>
+         <option value="Ahmedabad">Ahmedabad</option>
+         <option value="Bangalore">Bangalore</option>
+         <option value="Bhopal">Bhopal</option>
+         <option value="Bhubaneshwar">Bhubaneshwar</option>
+         <option value="Chandigarh">Chandigarh</option>
+         <option value="Chennai">Chennai</option>
+         <option value="Coimbatore">Coimbatore</option>
+         <option value="Delhi">Delhi</option>
+          <option value="Guwahati">Guwahati</option>
+          <option value="Hyderabad">Hyderabad</option>
+          <option value="Jaipur">Jaipur</option>
+          <option value="Kochi">Kochi</option>
+           <option value="Kolkata">Kolkata</option>
+           <option value="Lucknow">Lucknow</option>
+           <option value="Mumbai">Mumbai</option>
+           <option value="Patna">Patna</option>
+         <option value="Pune">Pune</option>
+         <option value="Raipur">Raipur</option>
+         <option value="Ranchi">Ranchi</option>
+         </select>
          </div>
          
          <div class="inner-profile-form-wrp" style="border-bottom:none;"> 
@@ -364,6 +393,8 @@
 												  if(localStorage.getItem('userid')==0){
 													  localStorage.first=1;
 												  setTimeout(function(){ window.location.href='welcome.html' }, 2000);
+												  }else{
+													  setTimeout(function(){ window.location.href='menu.html' }, 2000);
 												  }
 											  }else if(data=='2'){
 												  $('.processing').hide();

@@ -15,7 +15,7 @@
 
 }
 
-
+.bluehead{ position:fixed; top:0px; z-index:9;}
 body{ font-family: 'zurich_btroman' !important;}
 /* ==========================================================================
    Author's custom styles
@@ -27,7 +27,7 @@ body{ font-family: 'zurich_btroman' !important;}
 	}
 	.primary-color{ color:#E4FF4A;}
    /*common css*/
-   .container { width: auto; }
+   .container { width: auto; padding-top:60px; }
    
 	.ri
 	{
@@ -302,7 +302,7 @@ box-shadow:         -2px 0px 4px 0px rgba(50, 50, 50, 0.75);}
     color: #121212;
 }
 
-a#ham-menu{ position: absolute;
+a#ham-menu{ position: fixed;
     top: 10px;
     left: 10px; z-index:98;}
 	

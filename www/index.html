@@ -99,7 +99,7 @@ push.on('notification', function(data) {
     // data.sound,
     // data.image,
    // data.additionalData
-   alert(data.additionalData);
+   alert(JSON.stringify(data));
 	if(localStorage.getItem('userid')==null){
 		window.location.href='login.html'
 	}else{
@@ -144,7 +144,7 @@ push.on('error', function(e) {
 
     <div class="container">
       <!-- Example row of columns -->
-      <img class="ri" src="img/splash_logo.jpg" width="300" />
+      <img class="ri" src="img/godrej-icon-main.png" width="300" />
       
 		
       
