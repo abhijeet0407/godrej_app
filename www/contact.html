@@ -15,7 +15,7 @@
 
         <style>
             body {
-                padding-top: 10px;
+               
                 padding-bottom: 20px;
             }
 			
@@ -67,7 +67,7 @@
 
     <!-- Main jumbotron for a primary marketing message or call to action -->
     
-    <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.jpg"/></a>
+    <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.png"/></a>
     
     <div class="off-canvas-menu-wrp">
     
@@ -94,12 +94,12 @@
    		
         
       <div class="row">
-      	<div class="col-sm-12 col-xs-12" >
+      	<div class="col-sm-12 col-xs-12 bluehead" >
         	
             
         <div class="login_title"><span class="title-icon profile-icn">CONTACT</span></div>
-   
-        
+   </div>
+        	<div class="col-sm-12 col-xs-12" >
         <div class="row">
         <div class="profile-main-wrp">
         
@@ -108,25 +108,25 @@
          <form id="sign_up">
          <div class="profile-form-wrp">
          
-         <div class="inner-profile-form-wrp">
+         <!--<div class="inner-profile-form-wrp">
          <label>EMPLOYEE ID</label>
          <input type="text" name="emp_id" readonly />
          <progress style="display:none;" max="100" value="0" id="ft-prog" ></progress>
-         </div>
+         </div> -->
          
           <div class="inner-profile-form-wrp">
          <label>Name</label>
-         <input data-msg-required="Name Required" readonly required type="text" name="name"  />
+         <input data-msg-required="Name Required" readonly required type="text" name="name" value="Karthik Sholay" />
          </div>
          
         <div class="inner-profile-form-wrp">
          <label>e-mail</label>
-         <input type="text" name="email" readonly />
+         <input type="text" name="email" value="karthiks@godrej.com" readonly />
          </div>
          
            <div class="inner-profile-form-wrp">
          <label>Phone No. </label>
-         <input type="text" name="phone" required />
+         <input type="text" value="9076474998" name="phone" readonly />
          </div>
          
           <div class="inner-profile-form-wrp" style="height:auto; padding-bottom:10px;">
@@ -190,27 +190,27 @@
 		
 				});
 				
-					$('#profile_id').val(localStorage.getItem('userid'));
-				if(localStorage.getItem('name')!=null){
-					$('input[name="name"]').val(localStorage.getItem('name'));
-					$('.name_text').text(localStorage.getItem('name'));
-				}
+					//$('#profile_id').val(localStorage.getItem('userid'));
+				//if(localStorage.getItem('name')!=null){
+					//$('input[name="name"]').val(localStorage.getItem('name'));
+				//	$('.name_text').text(localStorage.getItem('name'));
+				//}
+				///
+				//if(localStorage.getItem('email')!=null){
+				//	$('input[name="email"]').val(localStorage.getItem('email'));
+				//}
 				
-				if(localStorage.getItem('email')!=null){
-					$('input[name="email"]').val(localStorage.getItem('email'));
-				}
+				//if(localStorage.getItem('dob')!=null){
+				//	$('input[name="dob"]').val(localStorage.getItem('dob'));
+				//}
 				
-				if(localStorage.getItem('dob')!=null){
-					$('input[name="dob"]').val(localStorage.getItem('dob'));
-				}
+				//if(localStorage.getItem('designation')!=null){
+				//	$('input[name="designation"]').val(localStorage.getItem('designation'));
+				//}
 				
-				if(localStorage.getItem('designation')!=null){
-					$('input[name="designation"]').val(localStorage.getItem('designation'));
-				}
-				
-				if(localStorage.getItem('empid')!=null){
-					$('input[name="emp_id"]').val(localStorage.getItem('empid'));
-				}
+				//if(localStorage.getItem('empid')!=null){
+				//	$('input[name="emp_id"]').val(localStorage.getItem('empid'));
+				//}
 				
 				if(localStorage.getItem('profile_pic')!=null){
 					$('.profile-pic-circle').css('background-image', 'url(http://himanshuverma.co.in/godrej/uploads/'+localStorage.getItem('profile_pic')+')')

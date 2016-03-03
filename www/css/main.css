@@ -55,6 +55,7 @@ body{ font-family: 'zurich_btroman' !important;}
 		background-color:#edf9ff;
 		padding:10px;
 		
+		
 	}
 	/*login css*/
 	
@@ -69,7 +70,7 @@ body{ font-family: 'zurich_btroman' !important;}
    padding-top: 40px;
 }
 	.login_container{ text-align:center; }
-	img.login_lock{     max-width: 75%;
+	img.login_lock{     max-width: 100%;
     margin: 0 auto;
     display: block;}
 	.login_s{ position:absolute;
@@ -80,7 +81,7 @@ body{ font-family: 'zurich_btroman' !important;}
 	img.login_lock1{    max-width: 60%;
    
 }
-	.login_title{ font-size:24px; margin-bottom:10px; color:#fff; margin-top:25px;}
+	.login_title{ font-size:24px; margin-bottom:10px; color:#fff; margin-top:0px;}
 	.login_description{ font-size:12px;  margin-bottom:20px; color:#767676;}
 	.login_input_wrp{ margin-bottom:10px;}
 	.login_input{ width:100%; padding:10px 15px; text-align:center; background:rgba(255,255,255,0.1); color:#fff; border:1px solid rgba(255,255,255,0.1); }
@@ -97,34 +98,34 @@ span.white-clr{ color:#fff;}
 span.white-clr a{ color:#e4ff00;}
 
 
-.login_title span.title-icon{ color: #34a1da;
+.login_title span.title-icon{ color: #FFF;
     font-size: 0.8em;
     font-weight: 300;
-    background-image: url(../img/discussion-board-icon_03.jpg);
+    /*background-image: url(../img/discussion-board-icon_03.jpg);
     background-repeat: no-repeat;
     background-position: 0px 4px;
-    background-size: 25px;
-    padding: 0px 0px 0px 34px;
+    background-size: 25px;*/
+    padding: 10px 0px 0px 0px;
     display: block;
     text-align: center;
     margin: 0 auto;
     width: 220px;}
 	
-	.itenary-icon{ width:135px; background-image: url(../img/Itinerary-icon_03.png) !important;
+	.itenary-icon{ width:135px; /*background-image: url(../img/Itinerary-icon_03.png) !important;
     background-repeat: no-repeat;
-    background-position: 0px 4px; background-size: 30px !important;}
+    background-position: 0px 4px; background-size: 30px !important;*/}
 	
-	.news-icon{ width:135px; background-image: url(../img/news-blue-icn_07.png) !important;
+	.news-icon{ width:135px; /*background-image: url(../img/news-blue-icn_07.png) !important;
     background-repeat: no-repeat;
-    background-position: 0px 4px; background-size: 30px !important;}
-		.about-icon{ width:180px; background-image: url(../img/about-blue-icn_14.png) !important;
+    background-position: 0px 4px; background-size: 30px !important;*/}
+		.about-icon{ width:180px; /*background-image: url(../img/about-blue-icn_14.png) !important;
     background-repeat: no-repeat;
     background-position: 0px 4px; /*background-size: 30px !important;*/}
-	.things-icon{ width:135px; background-image: url(../img/things-to-do-blue-icn_18.png) !important;
+	.things-icon{ width:135px; /*background-image: url(../img/things-to-do-blue-icn_18.png) !important;
     background-repeat: no-repeat;
-    background-position: 8px 4px; background-size: 19px !important;}
+    background-position: 8px 4px; background-size: 19px !important;*/}
 	span.back-btn{     float: right;
-    margin-top: 20px;}
+    margin-top: 5px;}
 
 .discussion-main-wrp{ width:100%; padding:20px 0px;}
 .top-pro-pic-wrp{ width:100%; margin-bottom:5px;}
@@ -199,14 +200,14 @@ li, p { font: 12px/16px 'zurich_btroman'; }
 }
 
 #nav li a {    
-    padding: 10px 30px;
-    width: 112px;
+    padding: 10px 10px;
+    width: 80px;
     border-radius: 3px;
     text-align: center;
     text-transform: uppercase;
     text-decoration: none;
     display: block;
-    font-size: 16px;
+    font-size: 14px;
     color: #fff;
     background: #34a1da;
     margin: 0px 3px;
@@ -236,15 +237,16 @@ li, p { font: 12px/16px 'zurich_btroman'; }
     font-size: 16px;
     background-image: url(../img/clock-icon_07.jpg);
     background-repeat: no-repeat;
-    background-position: 0px 3px;
-    background-size: 19px;
+    background-position: 0px 0px;
+    background-size: 18px;
     display: inline-block;
-    padding: 0px 0px 0px 27px;
+    padding: 0px 0px 0px 30px;
 }
 
-.itenar-desc-wrp  p{ font-size:13px; line-height:18px; padding:10px 0px 10px 0px;}
 
-.inner-itenanry-box{ margin-bottom:30px;}
+.itenar-desc-wrp  p{ font-size:14px; line-height:24px; padding:10px 0px 10px 0px; }
+
+.inner-itenanry-box{ margin-bottom:10px;}
 
 
 .off-canvas-menu-wrp{margin-left:-100% !important;left: 0; width:100%; background-color:#fff; height:100%; position:fixed;top:0px;  z-index:0; padding-top:5px;  z-index:9999;}
@@ -301,7 +303,7 @@ box-shadow:         -2px 0px 4px 0px rgba(50, 50, 50, 0.75);}
 }
 
 a#ham-menu{ position: absolute;
-    top: 30px;
+    top: 10px;
     left: 10px; z-index:98;}
 	
 	a#ham-menu-close{ padding: 0px 0px 0px 35px;
@@ -326,9 +328,9 @@ a#ham-menu{ position: absolute;
 	.off-canvas-menu-wrp ul li a.things-home{ background-image:url(../img/things-to-do-blue-icn_18.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
 	.off-canvas-menu-wrp ul li a.contact-home{ background-image:url(../img/contact-icn-blue_21.png); background-repeat:no-repeat; background-position:left center; background-size:25px;}
 	
-	.profile-icn{  width:135px; background-image: url(../img/profile-icon-blu_07.png) !important;
+	.profile-icn{  width:135px; /*background-image: url(../img/profile-icon-blu_07.png) !important;
     background-repeat: no-repeat;
-    background-position: 0px 0px !important; background-size: 25px !important;}
+    background-position: 0px 0px !important; background-size: 25px !important;*/}
 	
 	
 	.profile-main-wrp{ width:100%;}
@@ -416,6 +418,8 @@ a#ham-menu{ position: absolute;
 	.green2 { background:#5dbeb1}
 	.yellow { background:#e7b628}
 	.col34 { background:#e4744b }
+	
+	.bluehead { background:#3498db; margin-bottom:15px; }
 	.inner-menu-pic{ width:100%; text-align:center; min-height:50px; line-height:50px; font-size:24px;}
 	.inner-menu-title p{ text-align:center; font-size:14px;}
 	

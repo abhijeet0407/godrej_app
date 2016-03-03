@@ -15,6 +15,7 @@
 
         <style>
             body {
+               
                 padding-bottom: 20px;
             }
 			
@@ -51,7 +52,9 @@
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
-       
+        <script src="js/angular/angular.min.js"></script>
+        <script src="js/ionic.min.js"></script>
+        <script src="js/ionic-angular.min.js"></script>
         <script src="js/jquery-ui.min.js"></script>
         
         
@@ -94,53 +97,13 @@
       	<div class="col-sm-12 col-xs-12 bluehead" >
         	
             
-        <div class="login_title"><span class="title-icon profile-icn">PROFILE</span></div>
+        <div class="login_title"><span class="title-icon profile-icn">CONTACT</span></div>
    </div>
-        <div class="col-sm-12 col-xs-12" >
+        	<div class="col-sm-12 col-xs-12" >
         <div class="row">
         <div class="profile-main-wrp">
         
-        <div class="top-profile-wrp">
         
-        <div class="center-line-wrp">
-        	<div class="profile_edit_icon" onclick="getImage();"><img src="img/profile-deit-icon_03.png" /></div>
-        &nbsp;
-        </div>
-        
-        <div class="outer-circle-wrp">
-        <div id="profile_img" class="profile-pic-circle">
-        
-        </div>
-        </div>
-        
-        <div class="profile-name-wrp">
-        <p class="name_text"></p>
-        <span>Mumbai</span>
-        </div>
-        
-        
-        <div class="profile-color-band">
-        
-        <div class="color-band bottom-box-blue-1">
-        &nbsp;
-        </div>
-        
-        <div class="color-band bottom-box-blue-2">
-        &nbsp;
-        </div>
-        
-        <div class="color-band bottom-box-blue-3">
-        &nbsp;
-        </div>
-        
-        <div class="color-band bottom-box-blue-4">
-        &nbsp;
-        </div>
-        
-        <div class="clearfix"></div>
-        </div>
-        
-        </div>
          
          <form id="sign_up">
          <div class="profile-form-wrp">
@@ -153,33 +116,27 @@
          
           <div class="inner-profile-form-wrp">
          <label>Name</label>
-         <input data-msg-required="Name Required" required type="text" name="name"  />
+         <input data-msg-required="Name Required" readonly required type="text" name="name"  />
          </div>
          
-         <div class="inner-profile-form-wrp">
-         <label>Gender</label>
-         <select class="form-control" name="gender" required data-msg-required="Gender Required"><option value="">Select Gender</option><option value="Male">Male</option><option value="Female">Female</option></select>
-         </div>
-         
-         
-         <div class="inner-profile-form-wrp">
-         <label>Date of Birth</label>
-         <input type="text" name="dob" id="datepicker" data-msg-required="Date of birth Required" required/>
-         </div>
-         
-          <div class="inner-profile-form-wrp">
+        <div class="inner-profile-form-wrp">
          <label>e-mail</label>
          <input type="text" name="email" readonly />
          </div>
          
-          <div class="inner-profile-form-wrp">
-         <label>location</label>
-         <input type="text" name="designation" data-msg-required="Location Required" required/>
+           <div class="inner-profile-form-wrp">
+         <label>Phone No. </label>
+         <input type="text" name="phone" required />
+         </div>
+         
+          <div class="inner-profile-form-wrp" style="height:auto; padding-bottom:10px;">
+         <label>Message</label>
+         <textarea type="text" name="message" class="form-control" data-msg-required="Message Required" required ></textarea>
          </div>
          
          <div class="inner-profile-form-wrp" style="border-bottom:none;"> 
          <input type="hidden" id="profile_id" name="id" />
-         <input type="hidden" id="profile_pic" name="profile_pic" />       
+        
          <input type="submit" value="submit" class="signin_btn"/>
          </div>
          
@@ -187,9 +144,9 @@
          
          <div class="clearfix"></div>
          <div class="msg col-sm-12 col-xs-12">
-                	  <div class="alert alert-success success" role="alert">Profile updated successfully.</div>
+                	  <div class="alert alert-success success" role="alert">Message sent successfully.</div>
                     <div class="alert alert-warning processing" role="alert">Processing your request please wait...</div>
-                    <div class="alert alert-danger failed" role="alert">Profile Updation failed. Please check internet connection.</div>
+                    <div class="alert alert-danger failed" role="alert">Message sending failed. Please check internet connection.</div>
                 </div>
          </div>
          </form>
@@ -213,80 +170,14 @@
 	
 	
 		
-			/////////
-				
-					var statusDom = document.querySelector('#status');
-		 function getImage() {
-			
-            // Retrieve image file location from specified source
-            navigator.camera.getPicture(uploadPhoto, function(message) {
-			//alert('get picture failed');
-		},{
-			quality: 50, 
-			destinationType: navigator.camera.DestinationType.FILE_URI,
-			sourceType: navigator.camera.PictureSourceType.PHOTOLIBRARY
-		}
-            );
- 
-        }
- 
-        function uploadPhoto(imageURI) {
-			
-            var options = new FileUploadOptions();
-            options.fileKey="file";
-            options.fileName=imageURI.substr(imageURI.lastIndexOf('/')+1);
-            options.mimeType="image/jpeg";
- 
-            var params = new Object();
-            params.value1 = "test";
-            params.value2 = "param";
- 
-            options.params = params;
-            options.chunkedMode = false;
- 
-            var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
-			//document.getElementById("ft-prog").style.display="block";
-			ft.onprogress = function(progressEvent) {
-				document.getElementById("profile_img").style.backgroundImage='none';
-		    var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
-			//document.getElementById("ft-prog").value = perc;
-				//statusDom.innerHTML = perc + "% loaded...";	
-				//$("#profile_pic").css('background-image','none');
-				//$("#profile_pic").text(perc+'% uploaded');
-				document.getElementById("profile_img").style.paddingTop = "50px";
-				document.getElementById("profile_img").innerHTML=perc + "% uploaded...";	
-			}
-			
-        }
- 			
-        function win(r) {
-        /*    console.log("Code = " + r.responseCode);
-            console.log("Response = " + r.response);
-            console.log("Sent = " + r.bytesSent);*/
-			//$("#profile_pic").text('')
-			
-			document.getElementById("profile_pic").value=r.response;
-			document.getElementById("profile_img").innerHTML="";	
-			document.getElementById("profile_img").style.paddingTop = "0px";
-			localStorage.profile_pic=r.response;
-			document.getElementById("profile_img").style.backgroundImage='url(http://himanshuverma.co.in/godrej/uploads/thumb/'+r.response+')';
-           // alert(r.response);
-        }
- 
-        function fail(error) {
-           // alert("An error has occurred: Code = "+ error.code);
-        }
-				
-				
+		
 				////////
 				
 		
 		
 			$(document).ready(function(){
 				
-				 $( "#datepicker" ).datepicker({ yearRange: '1910:2016',changeMonth: true,
-      changeYear: true,dateFormat:'dd-mm-yy'});
+				
 				
 				
 				
@@ -353,18 +244,17 @@
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/profile_update.php',
+										  url:'http://himanshuverma.co.in/godrej/contact.php',
 										  data:signup_data,
 										  success:function(data){
+											 
 											  if(data=='1'){
+												   $('[name="message"]').val('');
 												  $('.processing').hide();
 												  
 												  $('.login_input').val('');
 												  $('.success').show();
-												  if(localStorage.getItem('userid')==0){
-													  localStorage.first=1;
-												  setTimeout(function(){ window.location.href='welcome.html' }, 2000);
-												  }
+												//  setTimeout(function(){ window.location.href='welcome.html' }, 2000);	
 											  }else if(data=='2'){
 												  $('.processing').hide();
 												  $('.already_account_alert').show();

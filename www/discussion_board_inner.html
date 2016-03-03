@@ -16,7 +16,7 @@
 
         <style>
             body {
-                padding-top: 10px;
+               
                 padding-bottom: 20px;
             }
 			
@@ -34,9 +34,7 @@
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
 			
-		span.back-btn {
-    margin-top: 35px !important;	
-		}
+		
         </style>
         
         <link rel="stylesheet" href="css/main.css">
@@ -50,7 +48,7 @@
         
     </head>
     <body>
-        <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.jpg"/></a>
+        <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.png"/></a>
     
     <div class="off-canvas-menu-wrp">
     
@@ -76,14 +74,16 @@
      
         
       <div class="row">
-      	<div class="col-sm-12 col-xs-12" >
-        	<span class="back-btn"><img src="img/back-btn_03.jpg" width="30"/></span><div class="login_title">
+      	<div class="col-sm-12 col-xs-12 bluehead">
+        	<span class="back-btn"><img src="img/back-btn_03.png" width="30"/></span><div class="login_title">
+       
         
         
-        
+       
         <span class="title-icon">Discussion Board</span>
         
-        </div>
+        </div> </div>
+         <div class="col-sm-12 col-xs-12">
         <div id="posts">
         </div>
        
@@ -478,6 +478,7 @@
 			if(count_no>0){
 				count_no=count_no-1;	
 				$(this).find('span').text(count_no);
+				$('.comment-btn[rel="'+postid+'"]').attr('bel',count_no);
 				
 			}
 		}else{
@@ -485,6 +486,7 @@
 			$(this).find('i').addClass('fa-heart');
 			count_no=count_no+1;	
 			$(this).find('span').text(count_no);
+			$('.comment-btn[rel="'+postid+'"]').attr('bel',count_no);
 			$(this).bind('click');
 		}
 		
@@ -526,7 +528,7 @@
 		$('body').on('click','.comment-btn',function(){
 			var postid=$(this).attr('rel');
 			var like_count=$(this).attr('bel');
-			$('.comment_header').text(' '+like_count+' Others like this ')
+			$('.comment_header').text(' '+like_count+' like this ')
 			$('#myModal').modal('show');
 			$('a.comment-btn[rel="'+postid+'"]').unbind('click');
 			var postid=$(this).attr('rel');

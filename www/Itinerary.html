@@ -15,7 +15,6 @@
 
         <style>
             body {
-                padding-top: 10px;
                 padding-bottom: 20px;
             }
 			
@@ -33,7 +32,7 @@
 			.comment_validation{ display:none; font-size:12px; color:#f00;}
 			
 			
-#nav{    width: 484px !important; }
+.itenar-desc-wrp  p{ margin-bottom:0px; }
 
 
 
@@ -51,7 +50,7 @@
         
     </head>
     <body>
-   <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.jpg"/></a>
+   <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.png"/></a>
     
     <div class="off-canvas-menu-wrp">
     
@@ -78,12 +77,13 @@
    		
         
       <div class="row">
-      	<div class="col-sm-12 col-xs-12" >
+      	<div class="col-sm-12 col-xs-12 bluehead" >
         	
             
         <div class="login_title"><span class="title-icon Itinerary-icon">Itinerary</span></div>
    
-        
+        </div>
+        <div class="col-sm-12 col-xs-12" >
         <div class="itenar-wrp">
             
          <div id="tabmenu">
@@ -280,7 +280,7 @@ $('a#ham-menu, a#ham-menu-close').click(function () {
            
             '<div class="col-md-12 col-sm-12 col-xs-12">'+
             '<div class="itenar-desc-wrp">'+
-            '<span class="clock-icon">'+this.from_time+' - '+this.to_time+'</span><span class="iti_desc" style="margin-left:15px;">'+this.description+'</span></div>'+
+            '<span class="clock-icon">'+this.date_time+'</span><span class="iti_desc" style="margin-left:15px;">'+this.description+'</span></div>'+
             '</div>'+
             '<div class="clearfix"></div>'+
             '</div>');

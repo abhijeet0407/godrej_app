@@ -98,7 +98,8 @@ push.on('notification', function(data) {
     // data.count,
     // data.sound,
     // data.image,
-    data.additionalData
+   // data.additionalData
+   alert(data.additionalData);
 	if(localStorage.getItem('userid')==null){
 		window.location.href='login.html'
 	}else{
