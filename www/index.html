@@ -92,18 +92,18 @@
 		}
 
 push.on('notification', function(data) {
-	alert(data.title+" Message: " +data.message+" type: "+data.additionalData.type);
+	//alert(data.title+" Message: " +data.message+" type: "+data.additionalData.type);
     // data.message,
     // data.title,
     // data.count,
     // data.sound,
     // data.image,
    // data.additionalData
-   alert(JSON.stringify(data));
+  
 	if(localStorage.getItem('userid')==null){
 		window.location.href='login.html'
 	}else{
-		if(data.additionalData=='news'){
+		if(data.additionalData.type=='news'){
 		window.location.href='news.html'
 		}else{
 			window.location.href='menu.html'
