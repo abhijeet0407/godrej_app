@@ -47,10 +47,7 @@
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
-        <script src="js/angular/angular.min.js"></script>
-        <script src="js/ionic.min.js"></script>
-        <script src="js/ionic-angular.min.js"></script>
-        
+       
         <style>
 		.col-md-6, col-sm-6, col-xs-6{
     border: 1px solid #FFF;
@@ -74,7 +71,7 @@
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
 <li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
-<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
+<li  class="drop-link"><a class="" onClick="backButtonCallback()" href="javascript:void(0)"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
@@ -194,7 +191,7 @@
         <i class="fa fa-envelope"></i>
         </div>
         <div class="inner-menu-title">
-        <p>Contact<br/>&nbsp;</p>
+        <p>Contact Us<br/>&nbsp;</p>
         </div>
         </a>
         </div>
@@ -217,7 +214,7 @@
         
         <div class="col-md-6 col-sm-6 col-xs-6 green2">
         <div class="inner-menu-wrp-main">
-        <a href="logout.html">
+        <a onClick="backButtonCallback()" href="javascript:void(0)">
         <div class="inner-menu-pic">
         <i class="fa fa-power-off"></i>
         </div>
