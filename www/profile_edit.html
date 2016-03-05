@@ -84,7 +84,7 @@
 <li class="drop-link"><a class="" href="discussion_board.html"><i class="fa fa-comment"></i>&nbsp;&nbsp;Discussion Board</a></li>
 <li class="drop-link"><a class="" href="gallery.html"><i class="fa fa-picture-o"></i>&nbsp;&nbsp;Gallery</a></li>
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
-<li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact</a></li>
+<li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
 <li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
@@ -182,7 +182,7 @@
          
           <div class="inner-profile-form-wrp">
          <label>location <sup>*</sup></label>
-         <select type="text" name="designation" class="form-control" data-msg-required="Location Required" required>
+         <select  name="designation" class="form-control" data-msg-required="Location Required" required>
          <option value="">Select Location</option>
          <option value="Ahmedabad">Ahmedabad</option>
          <option value="Bangalore">Bangalore</option>
@@ -343,7 +343,8 @@
 				}
 				
 				if(localStorage.getItem('designation')!=null){
-					$('input[name="designation"]').val(localStorage.getItem('designation'));
+					//alert(localStorage.getItem('designation'));
+					$('select[name="designation"]').val(localStorage.getItem('designation'));
 				}
 				
 				if(localStorage.getItem('empid')!=null){
@@ -357,7 +358,7 @@
 				}
 				
 				if(localStorage.getItem('gender')!=null){
-					$('select option[value="'+localStorage.getItem('gender')+'"]').attr('selected','selected');
+					$('select[name="gender"] option[value="'+localStorage.getItem('gender')+'"]').attr('selected','selected');
 					
 				}
 				
@@ -377,7 +378,19 @@
 						  	///
 									$('.signin_btn').attr('disabled','disabled');
 									$('.processing').show();
+									
 										var signup_data=$('#sign_up').serialize();
+									
+									
+												
+												
+												
+												  localStorage.profile_pic=$('input[name="profile_pic"]').val();
+												  localStorage.designation=$('select[name="designation"]').val();
+												  localStorage.gender=$('select[name="gender"]').val();
+												  localStorage.dob=$('input[name="dob"]').val();
+												  localStorage.name=$('input[name="name"]').val();
+									
 										
 										$.ajax({
 									  	  crossDomain:true,	
@@ -386,11 +399,14 @@
 										  data:signup_data,
 										  success:function(data){
 											  if(data=='1'){
+												  
+												  
+												  
 												  $('.processing').hide();
 												  
 												  $('.login_input').val('');
 												  $('.success').show();
-												  if(localStorage.getItem('userid')==0){
+												  if(localStorage.getItem('first')==0){
 													  localStorage.first=1;
 												  setTimeout(function(){ window.location.href='welcome.html' }, 2000);
 												  }else{
