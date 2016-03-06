@@ -12,7 +12,7 @@
 
         
         <link rel="stylesheet" href="css/bootstrap.min.css">
-
+ <link rel="stylesheet" href="css/jquery.fancybox.css">
         <style>
             body {
                 padding-bottom: 20px;
@@ -50,9 +50,8 @@
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
-        <script src="js/angular/angular.min.js"></script>
-        <script src="js/ionic.min.js"></script>
-        <script src="js/ionic-angular.min.js"></script>
+     
+         <script src="js/jquery.fancybox.js"></script>
         
     </head>
     <body>
@@ -108,9 +107,11 @@
         </div>
         
         <div class="outer-circle-wrp">
+        <a class="fancybox">
         <div id="profile_img" class="profile-pic-circle">
         
         </div>
+        </a>
         </div>
         
         <div class="profile-name-wrp">
@@ -297,7 +298,10 @@
 		
 		
 			$(document).ready(function(){
-				
+				$(".fancybox").fancybox({
+					openEffect	: 'none',
+					closeEffect	: 'none'
+				});
 				
 				$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
@@ -331,6 +335,7 @@
 				$('.label_gender').text(this.gender);
 				$('input[name="dob"]').val(this.dob);
 				$('input[name="designation"]').val(this.designation);
+				$('.fancybox').attr('href','http://himanshuverma.co.in/godrej/uploads/'+this.profile_pic);
 				document.getElementById("profile_img").style.backgroundImage='url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.profile_pic+')';
 				
 				})

@@ -343,7 +343,7 @@ a#ham-menu{ position: fixed;
     background-color: #fff;
     border-radius: 50%;
     border: 5px solid #fff;
-    background-image: url(../img/profile-pic_03.jpg);
+    
     background-repeat: no-repeat;
     background-position: center center;
     position: absolute;
