@@ -75,6 +75,27 @@
 		<script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
 			$(document).ready(function(){
 				
 				$('.signin_btn').click(function(){
@@ -116,7 +137,7 @@
 												 localStorage.login="true";
 												  var res = data.split("#@#");
 												  localStorage.userid=res[0];
-												  localStorage.first=res[0];
+												  localStorage.first=res[1];
 												  localStorage.email=res[2];
 												  localStorage.empid=res[3];
 												  localStorage.profile_pic=res[4];
@@ -127,10 +148,8 @@
 												  
 												  if(res[1]=='0'){
 												  setTimeout(function(){ window.location.href='profile_edit.html' }, 2000);
-												  }else if(localStorage.getItem('welcome')=='true'){
-													setTimeout(function(){ window.location.href='menu.html' }, 2000);  
 												  }else{
-													  setTimeout(function(){ window.location.href='welcome.html' }, 2000);  
+													setTimeout(function(){ window.location.href='menu.html' }, 2000);  
 												  }
 											  }
 											  

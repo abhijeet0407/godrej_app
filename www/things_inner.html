@@ -59,7 +59,7 @@
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
 <li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
-<li  class="drop-link"><a class="" onClick="backButtonCallback()" href="javascript:void(0)"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
+<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
@@ -144,6 +144,27 @@
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
          <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
 		var statusDom = document.querySelector('#status');
 		 function getImage() {
             // Retrieve image file location from specified source
@@ -199,6 +220,27 @@
         }
 		</script>
         <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
 		
 			$(document).ready(function(){
 				

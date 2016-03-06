@@ -11,23 +11,27 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="css/jquery.fancybox.css">
         <style>
             body {
                 padding-bottom: 20px;
             }
 			
 .login_title span.title-icon{ background-image:none !important; padding:0px !important;}
-.skip{ font-size:12px; position:absolute;    right: 14px;
-    top: 50px; }
-.
+.skip{ font-size:13px; position:fixed;    right: 14px;
+    top: 15px; color:#FFF }
+	
         </style>
         
         <link rel="stylesheet" href="css/main.css">
         <link rel="stylesheet" href="css/responsive.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
+          <link rel="stylesheet" href="css/font-awesome.css">
 
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
+           <script src="js/jquery.fancybox.js"></script>
+        
     </head>
     <body>
          <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.png"/></a>
@@ -45,7 +49,7 @@
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
 <li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
-<li  class="drop-link"><a class="" onClick="backButtonCallback()" href="javascript:void(0)"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
+<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 
 </ul>
 </div>
@@ -54,10 +58,10 @@
    
      <div class="col-sm-12 col-xs-12 bluehead" >
       <!-- Example row of columns -->
-       <div class="login_title" style="padding-top:10px;"><span class="title-icon " >Welcome <!--<a class="skip" href="menu.html">Skip>></a>--></span></div>
+       <div class="login_title" style="padding-top:10px;"><span class="title-icon " >Welcome Note <a class="skip" href="menu.html">Skip</a></span></div>
      </div>
      <div class="col-sm-12 col-xs-12" >
-      <iframe id="video" src="https://www.youtube.com/embed/vX4cNFv_L-w" frameborder="0" allowfullscreen></iframe>
+      <a class="fancybox" href="img/welcome-note.jpg" ><img src="img/welcome-note.jpg" style="width:100%"></a>
 	  
       
     </div> <!-- /container -->       
@@ -67,7 +71,38 @@
 
         <script src="js/main.js"></script>
         <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
+	
+				
+				
+		
 		$(function(){
+			
+			$(".fancybox").fancybox({
+					openEffect	: 'none',
+					closeEffect	: 'none'
+				});
+			
 			localStorage.welcome='true';
 		  $('#video').css({ width: $(window).innerWidth() + 'px', height: $(window).innerHeight() + 'px' });
 		

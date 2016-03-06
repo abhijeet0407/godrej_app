@@ -77,6 +77,27 @@
         <script src="js/valid_add.js"></script>
         <script src="js/main.js"></script>
         <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
 			$(document).ready(function(){
 				
 				$('.signin_btn').click(function(){

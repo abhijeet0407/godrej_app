@@ -45,7 +45,7 @@
     color: #ababab;
     font-size: 10px;}
 	.ui-shadow{ box-shadow:none !important; }
-
+.load_more{ display:none; text-align:center; width:100%; background-color:#e4e4e4; height:20px; position:fixed; bottom:0px;  }	
         </style>
         
         <link rel="stylesheet" href="css/main.css">
@@ -79,7 +79,7 @@
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
 <li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
-<li  class="drop-link"><a class="" onClick="backButtonCallback()" href="javascript:void(0)"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
+<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
@@ -184,7 +184,7 @@
 
   </div>
   
-  
+  <div class="load_more">Loading more posts. Please wait....</div>
   
   
   <!--image modal-->
@@ -222,10 +222,53 @@
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
          <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
 		
 		</script>
         <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
 		var img_count=1;
+		
 		///////////////////////////////////////////////////
 		
 		
@@ -330,7 +373,19 @@
 				
 				/////
 				
+			//window scroll bottom
+			off=0;
+			$(window).on("scroll", function() {
+				var scrollHeight = $(document).height();
+				var scrollPosition = $(window).height() + $(window).scrollTop();
+				if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+					off=$('.discussion-main-wrp').length;
+					$('.load_more').show();
+					load_list(off);
+				}
+			});
 			
+			//window scroll bottom
 				
 				///
 				
@@ -338,7 +393,7 @@
 			
 				var postid='';
 				
-				load_list();
+				load_list(off);
 				
 				
 				
@@ -429,7 +484,7 @@
   });*/
   
 function load_list(){
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
+  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?off='+off+'&userid='+localStorage.getItem('userid'), function(data){
 						
 						 posts=data;
 					//console.log(posts)
@@ -437,6 +492,7 @@ function load_list(){
   if(posts!=null){
   			posts_complete.complete(function(data) {
 				//console.log(size);
+				$('.load_more').hide();
 				$.each(posts,function(){
 					var liked='';
 					var fav_like='fa-heart-o'

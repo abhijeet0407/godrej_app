@@ -36,10 +36,10 @@
         <link rel="stylesheet" href="css/responsive.css">
         <link rel="stylesheet" href="css/bootstrap-theme.min.css">
          <link rel="stylesheet" href="css/font-awesome.css">
-
+ <link rel="stylesheet" href="css/jquery.fancybox.css">
         <script src="js/modernizr-2.8.3-respond-1.4.2.min.js"></script>
         <script src="js/jquery-1.11.2.min.js"></script>
-       
+        <script src="js/jquery.fancybox.js"></script>
         
     </head>
     <body>
@@ -58,7 +58,7 @@
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
 <li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
-<li  class="drop-link"><a class="" onClick="backButtonCallback()" href="javascript:void(0)"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
+<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
@@ -93,7 +93,9 @@
             
             
             <div class="upload-pic-big">
+            <a class="fancybox">
             <img src="img/imgd.png"/>
+            </a>
             </div>
             
              <span class="news_time"><i class="fa fa-calendar"></i> </span>
@@ -128,9 +130,33 @@
         <script src="js/main.js"></script>
        
         <script type="text/javascript">
+	//////////////////
+	function deviceReady() {
+                    document.addEventListener('backbutton', backButtonCallback, true);
+                }
+
+                function backButtonCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmCallback);
+                    }
+                function confirmCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                    navigator.app.exitApp();
+                    return true;
+                    }
+                else {
+                    return false;
+                    }
+                } 
+
+	
+	////////////////
 		
 			$(document).ready(function(){
-				
+				$(".fancybox").fancybox({
+					openEffect	: 'none',
+					closeEffect	: 'none'
+				});
 				
 				$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
@@ -156,7 +182,12 @@
 				$.each(posts,function(){
 				
 					$('.discussion-topic-title p').text(this.title);
-					$('.upload-pic-big img').attr('src','http://himanshuverma.co.in/godrej/uploads/'+this.image);
+					if(this.image!=''){
+					$('.upload-pic-big a').attr('href','http://himanshuverma.co.in/godrej/uploads/'+this.image);
+					$('.upload-pic-big a img').attr('src','http://himanshuverma.co.in/godrej/uploads/'+this.image);
+					}else{
+					$('.upload-pic-big').remove();	
+					}
 				$('.discussion-board-desc-wrp').html(this.description)
 				$('.news_time').append(this.news_date)
 				})
