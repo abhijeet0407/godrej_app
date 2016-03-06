@@ -407,7 +407,9 @@ a#ham-menu{ position: fixed;
 	
 	
 	.main-menu-wrp{ width:100%; padding:30px 0px;}
-	.inner-menu-wrp-main{ width:100%; min-height:85px;}
+	.inner-menu-wrp-main{ width:100%;height: 100px;
+  line-height: 100px;
+  text-align: center;}
 	.inner-menu-wrp-main a{ text-decoration:none; display:block;   color:#FFF}
 	.blue { background:#3498db; }
 	.orange { background:#eda44d}
@@ -420,9 +422,13 @@ a#ham-menu{ position: fixed;
 	.col34 { background:#e4744b }
 	
 	.bluehead { background:#3498db; margin-bottom:15px; }
-	.inner-menu-pic{ width:100%; text-align:center; min-height:50px; line-height:50px; font-size:24px;}
-	.inner-menu-title p{ text-align:center; font-size:14px;}
+	.inner-menu-pic{ display: inline-block;
+  vertical-align: middle;
+  line-height: normal; }
 	
+	.inner-menu-pic p{     margin-bottom: 0px;
+    font-size: 18px;
+    line-height: 19px;}
 	
 	
 	@media only screen and (min-device-width : 480px) and (max-device-width : 767px) {

@@ -71,7 +71,7 @@
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
 <li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
-<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
+<li  class="drop-link"><a class="logout_btn" href="javascript:void(0)"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
@@ -98,11 +98,10 @@
         <div class="inner-menu-wrp-main">
         <a href="profile_edit.html">
         <div class="inner-menu-pic">
-        <i class="fa fa-user"></i>
+        <p><i class="fa fa-user"></i><br/>My Profile</p>
+
         </div>
-        <div class="inner-menu-title">
-        <p>My Profile<br/>&nbsp;</p>
-        </div>
+        
         </a>
         </div>
         </div>
@@ -113,11 +112,10 @@
         <div class="inner-menu-wrp-main">
         <a href="Itinerary.html" >
         <div class="inner-menu-pic">
-        <i class="fa fa-map-o"></i>
+        
+        <p><i class="fa fa-map-o"></i><br/>Itinerary</p>
         </div>
-        <div class="inner-menu-title">
-        <p>Itinerary<br/>&nbsp;</p>
-        </div>
+        
         </a>
         </div>
         </div>
@@ -127,11 +125,9 @@
         <div class="inner-menu-wrp-main">
         <a href="news.html">
         <div class="inner-menu-pic">
-        <i class="fa fa-newspaper-o"></i>
+        <p><i class="fa fa-newspaper-o"></i><br/>News and<br/> Updates</p>
         </div>
-        <div class="inner-menu-title">
-        <p>News and<br/> Updates</p>
-        </div>
+        
         </a>
         </div>
         </div>
@@ -142,11 +138,9 @@
         <div class="inner-menu-wrp-main">
         <a href="discussion_board.html">
         <div class="inner-menu-pic">
-        <i class="fa fa-comment"></i>
+        <p><i class="fa fa-comment"></i><br/>Discussion<br/> Board</p> 
         </div>
-        <div class="inner-menu-title">
-        <p>Discussion<br/> Board</p>
-        </div>
+       
         </a>
         </div>
         </div>
@@ -156,11 +150,9 @@
         <div class="inner-menu-wrp-main">
         <a href="gallery.html">
         <div class="inner-menu-pic">
-        <i class="fa fa-picture-o"></i>
+        <p><i class="fa fa-picture-o"></i><br/>Gallery</p>
         </div>
-        <div class="inner-menu-title">
-        <p>Gallery<br/>&nbsp;</p>
-        </div>
+        
         </a>
         </div>
         </div>
@@ -170,11 +162,9 @@
         <div class="inner-menu-wrp-main">
         <a href="things.html">
         <div class="inner-menu-pic">
-        <i class="fa fa-list-alt"></i>
+        <p><i class="fa fa-list-alt"></i><br/>Things To<br/> Do</p>
         </div>
-        <div class="inner-menu-title">
-        <p>Things To<br/> Do</p>
-        </div>
+        
         </a>
         </div>
         </div>
@@ -188,11 +178,9 @@
         <div class="inner-menu-wrp-main">
         <a href="contact.html">
         <div class="inner-menu-pic">
-        <i class="fa fa-envelope"></i>
+        <p><i class="fa fa-envelope"></i><br/>Contact Us</p>
         </div>
-        <div class="inner-menu-title">
-        <p>Contact Us<br/>&nbsp;</p>
-        </div>
+        
         </a>
         </div>
         </div>
@@ -202,11 +190,9 @@
         <div class="inner-menu-wrp-main">
         <a href="about.html">
         <div class="inner-menu-pic">
-        <i class="fa fa-info-circle"></i>
+        <p><i class="fa fa-info-circle"></i><br/>About</p>
         </div>
-        <div class="inner-menu-title">
-        <p>About<br/>&nbsp;</p>
-        </div>
+        
         </a>
         </div>
         </div>
@@ -214,13 +200,11 @@
         
         <div class="col-md-6 col-sm-6 col-xs-6 green2">
         <div class="inner-menu-wrp-main">
-        <a  href="logout.html">
+        <a  class="logout_btn" href="javascript:void(0)">
         <div class="inner-menu-pic">
-        <i class="fa fa-power-off"></i>
+        <p><i class="fa fa-power-off"></i><br/>Logout</p>
         </div>
-        <div class="inner-menu-title">
-        <p>Logout<br/>&nbsp;</p>
-        </div>
+       
         </a>
         </div>
         </div>
@@ -237,7 +221,7 @@
     </div> <!-- /container -->      
     
 
-       
+       <script type="text/javascript" src="cordova.js"></script>
 
         <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
@@ -267,6 +251,32 @@
 	////////////////
 		var post='';
 			$(document).ready(function(){
+				
+				////////
+				
+					$('.logout_btn').click(function(){
+				 logoutCallback();
+				
+				})	
+			
+			function logoutCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmlogoutCallback);
+                    }
+                function confirmlogoutCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                   window.location.href='logout.html'
+                    }
+                else {
+                   
+                    }
+                } 
+				
+				
+				///////
+				
+				
+				
 				$('body').on('click','.discussion-main-wrp',function(){
 				
 				window.location.href='about_inner.html';

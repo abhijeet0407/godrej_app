@@ -59,7 +59,7 @@
 <li  class="drop-link"><a class="" href="things.html"><i class="fa fa-list-alt"></i>&nbsp;&nbsp;Things To Do</a></li>
 <li  class="drop-link"><a class="" href="contact.html"><i class="fa fa-envelope"></i>&nbsp;&nbsp;Contact Us</a></li>
 <li  class="drop-link"><a class="" href="about.html"><i class="fa fa-info-circle"></i>&nbsp;&nbsp;About</a></li>
-<li  class="drop-link"><a class="" href="logout.html"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
+<li  class="drop-link"><a class="logout_btn" href="javascript:void(0)"><i class="fa fa-power-off"></i>&nbsp;&nbsp;Logout</a></li>
 <!--<li><a class="contact-home" href="javascript:void(0)">Contact</a></li>-->
 </ul>
 </div>
@@ -139,7 +139,7 @@
     
     <!--comment modal end-->
        
-
+<script type="text/javascript" src="cordova.js"></script>
         <script src="js/bootstrap.min.js"></script>
 <script src="js/jquery.validate.min.js"></script>
         <script src="js/main.js"></script>
@@ -243,7 +243,27 @@
 	////////////////
 		
 			$(document).ready(function(){
+				/////
+					
+				$('.logout_btn').click(function(){
+				 logoutCallback();
 				
+				})	
+			
+			function logoutCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmlogoutCallback);
+                    }
+                function confirmlogoutCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                   window.location.href='logout.html'
+                    }
+                else {
+                   
+                    }
+                } 
+				
+				////
 				
 				$('a#ham-menu, a#ham-menu-close').click(function () {
 						var $navigacia = $('body, .off-canvas-menu-wrp,.fixed'),
