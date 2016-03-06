@@ -100,15 +100,16 @@
 			$(document).ready(function(){
 				
 				
-												 localStorage.removeItem(localStorage.userid);
+												
+												 
+												   setTimeout(function() {
+													    localStorage.removeItem(localStorage.userid);
 												 localStorage.removeItem(localStorage.empid);
 												 localStorage.removeItem(localStorage.profile_pic);
 												 localStorage.removeItem(localStorage.designation);
 												 localStorage.removeItem(localStorage.gender);
 												 localStorage.removeItem(localStorage.dob);
 												 localStorage.removeItem(localStorage.name);
-												 
-												   setTimeout(function() {
 														window.location.href='login.html'
 												    }, 500);
 				
