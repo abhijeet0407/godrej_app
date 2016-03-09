@@ -49,7 +49,7 @@
        
            <script src="js/jquery.fancybox.js"></script>
     </head>
-    <body>
+    <body onLoad="onLoad()">
    <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.png"/></a>
     
     <div class="off-canvas-menu-wrp">
@@ -161,6 +161,29 @@ Hit the dance floor @ Area 51, High Spirits or 1000 Oaks! You prefer the outdoor
 	////////////////
 		
 			$(document).ready(function(){
+				
+				
+					/////
+					
+				$('.logout_btn').click(function(){
+				 logoutCallback();
+				
+				})	
+			
+			function logoutCallback() {
+					
+                    navigator.notification.confirm('Do you want to logout?',confirmlogoutCallback);
+                    }
+                function confirmlogoutCallback(buttonIndex) {
+                    if(buttonIndex == 1) {
+                   window.location.href='logout.html'
+                    }
+                else {
+                   
+                    }
+                } 
+				
+				////
 				
 				$(".fancybox").fancybox({
 					openEffect	: 'none',
