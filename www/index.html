@@ -64,7 +64,7 @@
 			push.on('registration', function(data) {
 				// data.registrationId
 				//$('#sds').text(data.registrationId)
-				//alert(data.registrationId);
+				alert(data.registrationId);
 				
 				$.ajax({
 									  	  crossDomain:true,	
@@ -113,7 +113,7 @@ push.on('notification', function(data) {
 
 push.on('error', function(e) {
     // e.message
-	//	alert(e.message);
+		alert(e.message);
 });
 	
 	
