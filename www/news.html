@@ -53,7 +53,7 @@
 
         
     </head>
-    <body onLoad="onLoad()">
+    <body>
    <a id="ham-menu" href="javascript:void(0)"><img width="25" src="img/hamburg-menu_03.png"/></a>
     
     <div class="off-canvas-menu-wrp">
@@ -279,7 +279,7 @@
 					if(descrip.length>80){
 					descrip=descrip.substring(0, 80)+'...<span class="read_more inner_page" rel="'+this.postid+'">Read more</span>';	
 					}
-					$('.news-wrp .row').append('<div class="inner-itenanry-box">'+
+					$('.news-wrp .row').append('<a class="inner-itenanry-box">'+
             
             '<div class="col-md-3 col-sm-3 col-xs-3">'+
             '<div class="itenat-pic-wrp inner_page" rel="'+this.id+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.image+');" >'+
@@ -295,7 +295,7 @@
           '  </div>'+
           '  </div>'+
           '  <div class="clearfix"></div>'+
-          '  </div>');
+          '  </a>');
 				
 				
 				})

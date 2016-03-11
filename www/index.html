@@ -34,7 +34,7 @@
     // Wait for device API libraries to load
     //
     function onLoad() {
-		alert('loaded')
+	
         document.addEventListener("deviceready", onDeviceReady, false);
     }
 
@@ -65,12 +65,12 @@
 			push.on('registration', function(data) {
 				// data.registrationId
 				//$('#sds').text(data.registrationId)
-				alert(data.registrationId);
+				//alert(data.registrationId);
 				
 				$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/reg.php',
+										  url:'http://himanshuverma.co.in/godrej/reg_ios.php',
 										  data:'reg='+data.registrationId,
 										  success:function(data){
 											  localStorage.regid='set';
@@ -114,7 +114,7 @@ push.on('notification', function(data) {
 
 push.on('error', function(e) {
     // e.message
-		alert(e.message);
+		//alert(e.message);
 });
 	
 	
