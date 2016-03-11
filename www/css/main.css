@@ -15,8 +15,11 @@
 
 }
 
-.bluehead{ position:fixed; top:0px; z-index:9;}
+.bluehead{ position:fixed; top:0px; z-index:9; padding-top:20px;}
 body{ font-family: 'zurich_btroman' !important;}
+body{ margin-top:20px !important;}
+a#ham-menu{ top:30px !important;}
+a#ham-menu-close{ z-index:999 !important;}
 /* ==========================================================================
    Author's custom styles
    ========================================================================== */
@@ -503,12 +506,13 @@ body.page_login{background-position: left top -370px;}
 and (min-device-width : 768px) 
 and (max-device-width : 1024px) 
 and (orientation : portrait) { 
-body.page_signup .login_container{ margin-top:80px;}
-body.page_signup .login_lock{ margin-top:150px;}
-body.page_signup{    background-position: left top -430px;} 
+
+body.page_signup .login_container{ margin-top:80px !important;}
+body.page_signup .login_lock{ margin-top:150px !important;}
+body.page_signup{    background-position: left top -430px !important;} 
 body.page_login #sign_up{ margin-top:140px;}
 
-body.page_login{background-position: left top -180px;}
+body.page_login{background-position: left top -180px !important;}
 
 .wave-registration {
     
