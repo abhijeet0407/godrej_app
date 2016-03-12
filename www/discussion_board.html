@@ -300,7 +300,7 @@
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
+            ft.upload(imageURI, "https://himanshuverma.co.in/godrej/upload.php", win, fail, options);
 			document.getElementById("ft-prog").style.display="block";
 			ft.onprogress = function(progressEvent) {
 				
@@ -318,12 +318,12 @@
 			document.getElementById("ft-prog").value =100;
 			if(r.response!=''){
 			$('.img_container').append('<input rel="post_img_'+img_count+'" type="hidden" name="post_image[]" value="'+r.response+'" />');
-			$('.img_container').append('<div rel="post_img_'+img_count+'" bel="'+img_count+'" class="profile-pic-box-post" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+r.response+');"><i class="fa fa-times-circle delete_img"></i></div>');
+			$('.img_container').append('<div rel="post_img_'+img_count+'" bel="'+img_count+'" class="profile-pic-box-post" style="background-image:url(https://himanshuverma.co.in/godrej/uploads/thumb/'+r.response+');"><i class="fa fa-times-circle delete_img"></i></div>');
 			}
 			$('#ft-prog').hide();
 			img_count=img_count+1;
 			//document.getElementById("profile_pic").value=r.response;
-			//document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
+			//document.getElementById("profile_img").src='https://himanshuverma.co.in/godrej/uploads/'+r.response;
            // alert(r.response);
 		   $('.post_subm').show();
         }
@@ -451,7 +451,7 @@
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/add_post.php',
+										  url:'https://himanshuverma.co.in/godrej/add_post.php',
 										  data:signup_data,
 										  success:function(data){
 											  if(data=='1'){
@@ -504,7 +504,7 @@
   });*/
   
 function load_list(){
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?off='+off+'&userid='+localStorage.getItem('userid'), function(data){
+  			var posts_complete=$.getJSON('https://himanshuverma.co.in/godrej/discussion_board_json.php?off='+off+'&userid='+localStorage.getItem('userid'), function(data){
 						
 						 posts=data;
 					//console.log(posts)
@@ -540,11 +540,11 @@ function load_list(){
 			for(var x=0;x<=this.post_img.length-1;x++){
 				if(this.post_img.length==1){
 					if(this.post_img[x]!=''){
-				big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
+				big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="https://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(https://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
 					}
 				}else{
 					if(this.post_img[x]!=''){
-					big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="http://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
+					big_img=big_img+'<a class="fancybox" title="'+this.name+'" rel="gallery'+this.postid+'" href="https://himanshuverma.co.in/godrej/uploads/'+this.post_img[x]+'"><div mel="'+this.name+'" tel="'+this.profile_pic+'" bel="'+this.post_img[x]+'" style="background-image:url(https://himanshuverma.co.in/godrej/uploads/thumb/'+this.post_img[x]+');'+col_size+'" class="listing_img    " rel="'+this.postid+'"></div></a>';
 					}
 				}
 			}
@@ -628,7 +628,7 @@ function load_list(){
 			$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/like_process.php',
+										  url:'https://himanshuverma.co.in/godrej/like_process.php',
 										  data:'postid='+postid+'&userid='+userid+'&status='+status,
 										  success:function(data){
 											  $('a.like-btn[rel="'+postid+'"]').bind('click');
@@ -669,7 +669,7 @@ function load_list(){
 									/*$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/comment_show.php',
+										  url:'https://himanshuverma.co.in/godrej/comment_show.php',
 										  data:'postid='+postid,
 										  success:function(data){
 											  //$('a.comment-btn[rel="'+postid+'"]').bind('click');
@@ -713,7 +713,7 @@ function load_list(){
 		var bel=$(this).attr('bel');
 		var mel=$(this).attr('mel');
 		var tel=$(this).attr('tel');
-		$('.modal_img').attr('src','http://himanshuverma.co.in/godrej/uploads/'+bel);
+		$('.modal_img').attr('src','https://himanshuverma.co.in/godrej/uploads/'+bel);
 		$('.modal_img_title').html('<div class="profile-pic-box-small" style="background-image:url(http://www.himanshuverma.co.in/godrej/uploads/'+tel+')"></div>&nbsp;<span style="margin-top:4px;">'+mel+'</span>')
 		
 		})*/
@@ -734,7 +734,7 @@ function load_list(){
 					$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/insert_comment.php',
+										  url:'https://himanshuverma.co.in/godrej/insert_comment.php',
 										  data:'postid='+postid+'&userid='+userid+'&comment='+comment_text,
 										  success:function(data){
 											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
@@ -790,7 +790,7 @@ function load_list(){
 			
 			$('.comments_list_ul').height($(window).height()-200);
 			$('.comments_list_ul').css('overflow-y','auto');
-				  var comments_complete=$.getJSON('http://himanshuverma.co.in/godrej/comment_show.php?postid='+postid, function(data){
+				  var comments_complete=$.getJSON('https://himanshuverma.co.in/godrej/comment_show.php?postid='+postid, function(data){
 							console.log(data);
 						 comm=data;
 					//console.log(posts)

@@ -265,7 +265,7 @@
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
+            ft.upload(imageURI, "https://himanshuverma.co.in/godrej/upload.php", win, fail, options);
 			//document.getElementById("ft-prog").style.display="block";
 			ft.onprogress = function(progressEvent) {
 				
@@ -284,7 +284,7 @@
 			
 			document.getElementById("profile_pic").value=r.response;
 			localStorage.profile_pic=r.response;
-			document.getElementById("profile_img").style.backgroundImage='url(http://himanshuverma.co.in/godrej/uploads/thumb/'+r.response+')';
+			document.getElementById("profile_img").style.backgroundImage='url(https://himanshuverma.co.in/godrej/uploads/thumb/'+r.response+')';
            // alert(r.response);
         }
  
@@ -340,7 +340,7 @@
 				
 				var posts='';
 				var post_id = window.location.hash.substr(1);
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/profile.php?id='+post_id, function(data){
+  			var posts_complete=$.getJSON('https://himanshuverma.co.in/godrej/profile.php?id='+post_id, function(data){
 						//	console.log(data);
 						 posts=data;
 					console.log(data);
@@ -361,8 +361,8 @@
 				$('.label_gender').text(this.gender);
 				$('input[name="dob"]').val(this.dob);
 				$('input[name="designation"]').val(this.designation);
-				$('.fancybox').attr('href','http://himanshuverma.co.in/godrej/uploads/'+this.profile_pic);
-				document.getElementById("profile_img").style.backgroundImage='url(http://himanshuverma.co.in/godrej/uploads/thumb/'+this.profile_pic+')';
+				$('.fancybox').attr('href','https://himanshuverma.co.in/godrej/uploads/'+this.profile_pic);
+				document.getElementById("profile_img").style.backgroundImage='url(https://himanshuverma.co.in/godrej/uploads/thumb/'+this.profile_pic+')';
 				
 				})
 			})
@@ -388,7 +388,7 @@
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/profile_update.php',
+										  url:'https://himanshuverma.co.in/godrej/profile_update.php',
 										  data:signup_data,
 										  success:function(data){
 											  if(data=='1'){

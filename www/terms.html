@@ -241,7 +241,7 @@ By using the Mobile App, you are consenting to all terms contained in Mobile App
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
+            ft.upload(imageURI, "https://himanshuverma.co.in/godrej/upload.php", win, fail, options);
 			document.getElementById("ft-prog").style.display="block";
 			ft.onprogress = function(progressEvent) {
 				
@@ -259,7 +259,7 @@ By using the Mobile App, you are consenting to all terms contained in Mobile App
 			document.getElementById("ft-prog").value =100;
 			
 			document.getElementById("profile_pic").value=r.response;
-			//document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
+			//document.getElementById("profile_img").src='https://himanshuverma.co.in/godrej/uploads/'+r.response;
            // alert(r.response);
         }
  
@@ -321,7 +321,7 @@ By using the Mobile App, you are consenting to all terms contained in Mobile App
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/add_post.php',
+										  url:'https://himanshuverma.co.in/godrej/add_post.php',
 										  data:signup_data,
 										  success:function(data){
 											  if(data=='1'){
@@ -376,7 +376,7 @@ By using the Mobile App, you are consenting to all terms contained in Mobile App
   });*/
   
   
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
+  			var posts_complete=$.getJSON('https://himanshuverma.co.in/godrej/discussion_board_json.php?userid='+localStorage.getItem('userid'), function(data){
 						//	console.log(data);
 						 posts=data;
 					console.log(posts)
@@ -443,7 +443,7 @@ By using the Mobile App, you are consenting to all terms contained in Mobile App
 			$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/like_process.php',
+										  url:'https://himanshuverma.co.in/godrej/like_process.php',
 										  data:'postid='+postid+'&userid='+userid+'&status='+status,
 										  success:function(data){
 											  $('a.like-btn[rel="'+postid+'"]').bind('click');
@@ -480,7 +480,7 @@ By using the Mobile App, you are consenting to all terms contained in Mobile App
 									$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/comment_show.php',
+										  url:'https://himanshuverma.co.in/godrej/comment_show.php',
 										  data:'postid='+postid,
 										  success:function(data){
 											  $('a.comment-btn[rel="'+postid+'"]').bind('click');
@@ -523,7 +523,7 @@ By using the Mobile App, you are consenting to all terms contained in Mobile App
 					$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/insert_comment.php',
+										  url:'https://himanshuverma.co.in/godrej/insert_comment.php',
 										  data:'postid='+postid+'&userid='+userid+'&comment='+comment_text,
 										  success:function(data){
 											  $('a.comment-btn[rel="'+postid+'"]').bind('click');

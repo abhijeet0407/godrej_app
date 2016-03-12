@@ -272,7 +272,7 @@ $('a#ham-menu, a#ham-menu-close').click(function () {
 			
 			
 	
-  			var posts_complete=$.getJSON('http://himanshuverma.co.in/godrej/about.php', function(data){
+  			var posts_complete=$.getJSON('https://himanshuverma.co.in/godrej/about.php', function(data){
 						//	console.log(data);
 						 posts=data;
 					
@@ -282,7 +282,7 @@ $('a#ham-menu, a#ham-menu-close').click(function () {
 				//console.log(size);
 				$.each(posts,function(){
 					$('.discussion-topic-title p').text(this.title);
-					$('.upload-pic-big').html('<img src="http://himanshuverma.co.in/godrej/uploads/'+this.image+'" />');
+					$('.upload-pic-big').html('<img src="https://himanshuverma.co.in/godrej/uploads/'+this.image+'" />');
 					$('.about-desc-wrp').html(this.description).text();
 				})
 			})

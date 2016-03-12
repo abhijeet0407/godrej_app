@@ -119,7 +119,7 @@
             options.chunkedMode = false;
  
             var ft = new FileTransfer();
-            ft.upload(imageURI, "http://himanshuverma.co.in/godrej/upload.php", win, fail, options);
+            ft.upload(imageURI, "https://himanshuverma.co.in/godrej/upload.php", win, fail, options);
 			document.getElementById("ft-prog").style.display="block";
 			ft.onprogress = function(progressEvent) {
 				
@@ -137,7 +137,7 @@
 			document.getElementById("ft-prog").value =100;
 			
 			document.getElementById("profile_pic").value=r.response;
-			document.getElementById("profile_img").src='http://himanshuverma.co.in/godrej/uploads/'+r.response;
+			document.getElementById("profile_img").src='https://himanshuverma.co.in/godrej/uploads/'+r.response;
            // alert(r.response);
         }
  
@@ -169,7 +169,7 @@
 										$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/add_post.php',
+										  url:'https://himanshuverma.co.in/godrej/add_post.php',
 										  data:signup_data,
 										  success:function(data){
 											  if(data=='1'){

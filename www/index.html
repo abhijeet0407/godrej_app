@@ -44,7 +44,7 @@
         // Now safe to use device APIs
 		//alert("Device Ready")
 		//push init
-		//move_on();	
+		move_on();	
 					var push = PushNotification.init({
 						android: {
 							senderID: "499804570054"
@@ -70,7 +70,7 @@
 				$.ajax({
 									  	  crossDomain:true,	
 										  type:'POST',
-										  url:'http://himanshuverma.co.in/godrej/reg_ios.php',
+										  url:'https://himanshuverma.co.in/godrej/reg_ios.php',
 										  data:'reg='+data.registrationId,
 										  success:function(data){
 											  localStorage.regid='set';
