@@ -398,7 +398,7 @@
 			$(window).on("scroll", function() {
 				var scrollHeight = $(document).height();
 				var scrollPosition = $(window).height() + $(window).scrollTop();
-				if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+				if (((scrollHeight - scrollPosition) / scrollHeight).toFixed(0) == 0) {
 					off=$('.discussion-main-wrp').length;
 					$('.load_more').show();
 					load_list(off);
@@ -503,10 +503,14 @@
     items.push( "<li id='" + key + "'>" + val + "</li>" );
   });*/
   
-function load_list(){
-  			var posts_complete=$.getJSON('https://himanshuverma.co.in/godrej/discussion_board_json.php?off='+off+'&userid='+localStorage.getItem('userid'), function(data){
+function load_list(off){
+	//alert(off);
+	var noCache = Date();
+	var posts='';
+  			var posts_complete=$.getJSON('https://himanshuverma.co.in/godrej/discussion_board_json.php?off='+off+'&userid='+localStorage.getItem('userid')+'&nocache='+noCache, function(data){
 						
 						 posts=data;
+						 //alert(posts)
 					//console.log(posts)
 					});
   if(posts!=null){
@@ -514,6 +518,7 @@ function load_list(){
 				//console.log(size);
 				$('.load_more').hide();
 				$.each(posts,function(){
+					
 					var liked='';
 					var fav_like='fa-heart-o'
 					if(this.liked=='yes'){

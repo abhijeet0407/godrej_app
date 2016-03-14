@@ -172,11 +172,16 @@
 				off=0;
 			//window scroll bottom
 			$(window).on("scroll", function() {
+				
 				var scrollHeight = $(document).height();
+				
 				var scrollPosition = $(window).height() + $(window).scrollTop();
-				if ((scrollHeight - scrollPosition) / scrollHeight === 0) {
+				
+				if (((scrollHeight - scrollPosition) / scrollHeight).toFixed(0) == 0) {
+					
 					off=$('.inner-itenanry-box').length;
 					$('.load_more').show();
+					
 					load_list(off);
 				}
 			});
@@ -266,6 +271,7 @@
 		/////////////////////////////////////////
 		
 	function load_list(off){	
+	//alert(off)
 		var posts_complete=$.getJSON('https://himanshuverma.co.in/godrej/news.php?off='+off, function(data){
 							
 						 posts=data;
